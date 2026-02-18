@@ -10,6 +10,8 @@ public class DoorSystem : MonoBehaviour
     [SerializeField] private AudioClip DoorSound;
     [SerializeField] private AudioSource _audioSource;
 
+    [SerializeField] private DoorLocked doorLocked;
+
     void Start()
     {
 
@@ -27,6 +29,12 @@ public class DoorSystem : MonoBehaviour
             {
                 if (hit.collider.gameObject == Door)
                 {
+                    if (Input.GetKey(KeyCode.F))
+                    {
+                        Debug.Log("locked");
+                        doorLocked.KeyLock();
+                    }
+
                     _audioSource.PlayOneShot(DoorSound);
                     isOpen = !isOpen;
                 }
