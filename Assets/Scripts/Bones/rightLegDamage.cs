@@ -7,7 +7,7 @@ public class rightLegDamage : damageBase
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("legDamage active");
+        Debug.Log("rightLegDamage");
         LimbDamage = 0.0f;
         Health = 100.0f;
 
@@ -27,14 +27,14 @@ public class rightLegDamage : damageBase
     {
         if (collision.gameObject.tag == "damage")
         {
-            Debug.Log("leg damaged" + LimbDamage);
+            Debug.Log("Right leg damaged" + LimbDamage);
             LimbDamage+= 1;
             Health -= 10;
         }
     }
     private void damageDebuff()
     {
-        Debug.Log("leg damaged, movement speed reduced");
+        Debug.Log("Right leg damaged, movement speed reduced");
         Aud.Play();
     }
 

@@ -388,8 +388,8 @@ GameObject:
   - component: {fileID: 377922818}
   - component: {fileID: 377922817}
   - component: {fileID: 377922816}
-  - component: {fileID: 377922815}
   - component: {fileID: 377922819}
+  - component: {fileID: 377922820}
   m_Layer: 0
   m_Name: leg stand in
   m_TagString: Untagged
@@ -412,19 +412,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1712275477}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &377922815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 377922813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d217ad6281fa5c94dbc7d2d94418b773, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Aud: {fileID: 1462105952}
 --- !u!65 &377922816
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -526,6 +513,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &377922820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377922813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb40f7c5675445c41b76f920ce6158ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Aud: {fileID: 1462105952}
 --- !u!1 &617426500
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,8 +538,8 @@ GameObject:
   - component: {fileID: 617426506}
   - component: {fileID: 617426505}
   - component: {fileID: 617426504}
-  - component: {fileID: 617426503}
   - component: {fileID: 617426502}
+  - component: {fileID: 617426507}
   m_Layer: 0
   m_Name: Arm stand in 2
   m_TagString: Untagged
@@ -589,19 +589,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &617426503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617426500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d217ad6281fa5c94dbc7d2d94418b773, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Aud: {fileID: 0}
 --- !u!65 &617426504
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -676,6 +663,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 617426500}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &617426507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617426500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ec486c05e8a27459eca0abb7b71644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Aud: {fileID: 1462105952}
 --- !u!1 &620794045
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,9 +688,8 @@ GameObject:
   - component: {fileID: 620794052}
   - component: {fileID: 620794051}
   - component: {fileID: 620794050}
-  - component: {fileID: 620794049}
   - component: {fileID: 620794048}
-  - component: {fileID: 620794047}
+  - component: {fileID: 620794053}
   m_Layer: 0
   m_Name: leg stand in 2
   m_TagString: Untagged
@@ -713,19 +712,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1712275477}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &620794047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 620794045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d217ad6281fa5c94dbc7d2d94418b773, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Aud: {fileID: 0}
 --- !u!54 &620794048
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -753,19 +739,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &620794049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 620794045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d217ad6281fa5c94dbc7d2d94418b773, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Aud: {fileID: 1462105952}
 --- !u!65 &620794050
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -840,6 +813,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620794045}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &620794053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620794045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d217ad6281fa5c94dbc7d2d94418b773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Aud: {fileID: 1462105952}
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,6 +977,7 @@ GameObject:
   - component: {fileID: 1387064882}
   - component: {fileID: 1387064881}
   - component: {fileID: 1387064880}
+  - component: {fileID: 1387064885}
   m_Layer: 0
   m_Name: 'Arm stand in '
   m_TagString: Untagged
@@ -1127,6 +1114,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1387064878}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1387064885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387064878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9dac3e96a4d7a4da9d68c2de3ad82e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Aud: {fileID: 1462105952}
 --- !u!1 &1462105951
 GameObject:
   m_ObjectHideFlags: 0
