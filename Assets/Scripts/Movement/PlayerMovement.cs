@@ -2,71 +2,148 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private CharacterController characterController;
-    [SerializeField] private Camera cameraTransform;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float sprintMultiplier;
+    private float initialSpeed;
 
-    [Header("Movement Settings")]
-    [SerializeField] private float walkingSpeed = 3f;
-    [SerializeField] private float runningSpeed = 5f;
-    [SerializeField] private float jumpHeight = 8f;
-    [SerializeField] private float gravity = 20f;
 
-    [Header("Mouse Look")]
-    [SerializeField] private float mouseSensitivity = 100f;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpCoolDown;
+    [SerializeField] private float airMultiplier;
+    [SerializeField] bool readyToJump = true;
 
-    private Vector3 velocity;
-    private float xRotation;
-    private bool isRunning;
+    [SerializeField] private float groundDrag;
 
-    void Start()
+    [SerializeField] private float playerHeight;
+    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private bool grounded;
+
+    [SerializeField] private Transform orientation;
+    [SerializeField] private Transform climbCheckTransform;
+
+    float horizontalInput;
+    float verticalInput;
+
+    Vector3 moveDirection;
+
+    Rigidbody rb;
+
+    private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
 
-        if (characterController == null)
-            characterController = GetComponent<CharacterController>();
+        initialSpeed = moveSpeed;
     }
 
-    void Update()
+    private void Update()
     {
-        HandleMovement();
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+
+        MyInput();
+        SpeedControl();
+
+        if (grounded)
+        {
+            rb.linearDamping = groundDrag;
+        }
+        else
+        {
+            rb.linearDamping = 0;
+        }
     }
 
-    void LateUpdate()
+    private void FixedUpdate()
     {
-        HandleMouseLook();
+        MovePlayer();
     }
 
-    private void HandleMovement()
+    private void MyInput()
     {
-        float inputX = Input.GetAxisRaw("Horizontal");
-        float inputZ = Input.GetAxisRaw("Vertical");
-        Vector3 move = transform.right * inputX + transform.forward * inputZ;
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
 
-        isRunning = Input.GetKey(KeyCode.LeftShift);
-        float speed = isRunning ? runningSpeed : walkingSpeed;
-        move *= speed;
+        if (Input.GetKey(KeyCode.Space) && readyToJump && grounded)
+        {
+            readyToJump = false;
+            Jump();
+            Invoke(nameof(ResetJump), jumpCoolDown);
+        }
 
-        if (characterController.isGrounded && velocity.y < 0)
-            velocity.y = -2f;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CheckMount();
+        }
 
-        if (Input.GetButtonDown("Jump") && characterController.isGrounded)
-            velocity.y = jumpHeight;
+        if (Input.GetKey(KeyCode.LeftShift) && grounded)
+        {
+            moveSpeed = initialSpeed * sprintMultiplier;
+        }
+        else
+        {
+            moveSpeed = initialSpeed;
+        }
 
-        velocity.y -= gravity * Time.deltaTime;
-
-        characterController.Move((move + velocity) * Time.deltaTime);
     }
 
-    private void HandleMouseLook()
+    private void MovePlayer()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        if (grounded)
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        else if (!grounded)
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+    }
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
-        cameraTransform.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        transform.Rotate(Vector3.up * mouseX);
+        if (flatVel.magnitude > moveSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+        }
+    }
+
+    private void Jump()
+    {
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+
+    private void ResetJump()
+    {
+        readyToJump = true;
+    }
+
+    private void CheckMount()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(climbCheckTransform.position, climbCheckTransform.forward, out hit, 1f))
+        {
+
+            if (hit.transform.CompareTag("ClimableObject"))
+            {
+                Vector3 targetPosition = hit.transform.position + Vector3.up * playerHeight;
+                StartCoroutine(SmoothClimb(targetPosition, 0.5f)); // 0.5f is the duration in seconds
+                Debug.Log(hit.transform.name);
+            }
+
+            // Add this coroutine to your class:
+            System.Collections.IEnumerator SmoothClimb(Vector3 targetPosition, float duration)
+            {
+                Vector3 startPosition = transform.position;
+                float elapsed = 0f;
+                while (elapsed < duration)
+                {
+                    transform.position = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
+                    elapsed += Time.deltaTime;
+                    yield return null;
+                }
+                transform.position = targetPosition;
+            }
+        }
+
     }
 }
