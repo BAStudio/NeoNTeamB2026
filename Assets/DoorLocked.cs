@@ -15,6 +15,19 @@ public class DoorLocked : MonoBehaviour
      
         
     }
+    public void Lock()
+    {
+        _isLocked = true;
+        Debug.Log("Door is now LOCKED");
+      
+    }
+
+    public void Unlock()
+    {
+        _isLocked = false;
+        Debug.Log("Door is now UNLOCKED");
+        
+    }
     public void PlayLockedSound()
     {
         if (_isLocked)
@@ -22,15 +35,9 @@ public class DoorLocked : MonoBehaviour
             _audioSource.PlayOneShot(_lockedSound);
         }
     }
-        public void KeyLock()
-    {
-        _isLocked = ! _isLocked;
-        
-        if(_lockedSound != null)
-        {
-            _audioSource.PlayOneShot(_lockedSound);
-        }
-    }
+       
+    
+    
 
 
 
