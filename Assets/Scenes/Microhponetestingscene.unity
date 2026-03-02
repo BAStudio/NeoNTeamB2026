@@ -275,7 +275,6 @@ GameObject:
   - component: {fileID: 501632011}
   - component: {fileID: 501632010}
   - component: {fileID: 501632017}
-  - component: {fileID: 501632016}
   - component: {fileID: 501632015}
   m_Layer: 0
   m_Name: player
@@ -412,23 +411,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ChannelUri: 
   m_ChannelName: Player
---- !u!114 &501632016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 501632009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a17143a20f8cc14eae94b6e586ade44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ChannelUri: 
-  m_ChannelName: Player
-  m_ParticipantUri: 
-  m_ParticipantName: Player
-  m_SilenceInChannelAudioMix: 0
 --- !u!82 &501632017
 AudioSource:
   m_ObjectHideFlags: 0
@@ -682,7 +664,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984768455}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -797,7 +779,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224027715}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8308d3f29f0174535ae020d5510fb4ca, type: 3}
   m_Name: 
@@ -829,7 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f05c7586198a6248ac284bff71dfa49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  participantTap: {fileID: 501632016}
+  participantTap: {fileID: 0}
   channelName: testingchannels
   captureSourceTap: {fileID: 501632015}
   playerhostid: 1

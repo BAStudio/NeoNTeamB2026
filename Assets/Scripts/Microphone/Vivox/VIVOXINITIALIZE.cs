@@ -25,9 +25,12 @@ public class Vivoxconnect : MonoBehaviour
         gameObject.GetComponent<VivoxParticipantTap>();
         //participantTap.VoiceTransmitEnabled = true;
         //participantTap.ParticipantName;
-        participantTap.ChannelName = channelName;
+        //participantTap.ChannelName = channelName;
+        
         gameObject.GetComponent<VivoxCaptureSourceTap>();
         captureSourceTap.ChannelName = channelName;
+
+
     }
 
 
@@ -53,7 +56,8 @@ public class Vivoxconnect : MonoBehaviour
     {
         await
         VivoxService.Instance.JoinGroupChannelAsync(channelName, ChatCapability.AudioOnly);
-
+        Debug.Log("Joining channel: " + channelName);
+        Debug.Log("Vivox Joining Channel");
         Debug.Log("Vivox Joined Channel");
     }
 
