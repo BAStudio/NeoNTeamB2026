@@ -1,11 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
     public float pickupRange = 3f;
-    public Transform handTransform;
-
-    private GameObject heldItem;
     private Camera playerCamera;
 
     void Start()
@@ -17,20 +14,12 @@ public class ItemPickup : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (heldItem == null)
-            {
-                TryPickup();
-            }
-            else
-            {
-                DropItem();
-            }
+            TryPickup();
         }
 
-        if (heldItem != null)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            heldItem.transform.position = handTransform.position;
-            heldItem.transform.rotation = handTransform.rotation;
+            InventorySystem.Instance.DropCurrentItem();
         }
     }
 
@@ -38,44 +27,38 @@ public class ItemPickup : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, pickupRange))
+        if (Physics.Raycast(playerCamera.transform.position,
+                            playerCamera.transform.forward,
+                            out hit,
+                            pickupRange))
         {
             if (hit.transform.CompareTag("Item"))
             {
-                heldItem = hit.transform.gameObject;
+                GameObject item = hit.transform.gameObject;
 
-                Rigidbody rb = heldItem.GetComponent<Rigidbody>();
+                Rigidbody rb = item.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
                     rb.isKinematic = true;
                     rb.detectCollisions = false;
                 }
 
-                heldItem.transform.SetParent(handTransform);
-                heldItem.transform.localPosition = Vector3.zero;
-                heldItem.transform.localRotation = Quaternion.identity;
+                bool added = InventorySystem.Instance.AddItem(item);
 
-                InventorySystem.Instance.AddItem(heldItem.name);
+                if (added)
+                {
+                    Debug.Log("Picked up: " + item.name);
+                }
+                else
+                {
+                    // inventory vol → physics terugzetten
+                    if (rb != null)
+                    {
+                        rb.isKinematic = false;
+                        rb.detectCollisions = true;
+                    }
+                }
             }
         }
-    }
-
-    void DropItem()
-    {
-        if (heldItem == null) return;
-
-        Rigidbody rb = heldItem.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.isKinematic = false;
-            rb.detectCollisions = true;
-            rb.AddForce(playerCamera.transform.forward * 5f, ForceMode.Impulse);
-        }
-
-        heldItem.transform.SetParent(null);
-
-        InventorySystem.Instance.RemoveItem(heldItem.name);
-
-        heldItem = null;
     }
 }
