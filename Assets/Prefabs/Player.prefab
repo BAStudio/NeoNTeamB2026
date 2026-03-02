@@ -163,7 +163,7 @@ MonoBehaviour:
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   grounded: 0
   orientation: {fileID: 2578446026071435161}
   climbCheckTransform: {fileID: 8056795347379905377}
