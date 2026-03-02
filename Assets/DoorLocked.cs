@@ -5,11 +5,14 @@ using UnityEngine.Audio;
 
 public class DoorLocked : MonoBehaviour
 {
-    [SerializeField] private bool _isLocked = true;
-    [SerializeField] private AudioClip _lockedSound;
-    [SerializeField] private AudioSource _audioSource;
+    [Header("Locking")]
+    [SerializeField] private bool isLocked = true;
 
-    public bool IsLocked => _isLocked; // Andere scripts mogen lezen of de deur locked is  Maar ze mogen het NIET aanpassen
+    [Header("Audio")]
+    [SerializeField] private AudioClip lockedSound;
+    [SerializeField] private AudioSource audioSource;
+
+    public bool IsLocked => isLocked; 
     private void Update()
     {
      
@@ -17,22 +20,22 @@ public class DoorLocked : MonoBehaviour
     }
     public void Lock()
     {
-        _isLocked = true;
+        isLocked = true;
         Debug.Log("Door is now LOCKED");
       
     }
 
     public void Unlock()
     {
-        _isLocked = false;
+        isLocked = false;
         Debug.Log("Door is now UNLOCKED");
         
     }
     public void PlayLockedSound()
     {
-        if (_isLocked)
+        if (isLocked)
         {
-            _audioSource.PlayOneShot(_lockedSound);
+            audioSource.PlayOneShot(lockedSound);
         }
     }
        

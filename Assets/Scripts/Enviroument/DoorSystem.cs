@@ -2,18 +2,27 @@ using UnityEngine;
 
 public class DoorSystem : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private bool isOpen = false;
-    [SerializeField] private GameObject Door;
-    [SerializeField] private GameObject TurningPoint;
-    public KeyCode OpenDoorKey = KeyCode.Mouse0;
-    [SerializeField] private float OpenSpeed = 2f;
-    [SerializeField] private AudioClip DoorSound;
-    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private GameObject door;
+    [SerializeField] private GameObject turningPoint;
+    [SerializeField] private float openSpeed = 2f;
+
+
+    [Header("Input")]
+    [SerializeField] KeyCode OpenDoorKey = KeyCode.Mouse0;
+    [SerializeField] private KeyCode lockKey = KeyCode.F;
+    [SerializeField] private KeyCode unlockKey = KeyCode.E;
+
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip doorSound;
+    [SerializeField] private AudioSource audioSource;
+
 
      private DoorLocked doorLocked;
 
-    [SerializeField] private KeyCode LockKey = KeyCode.F;
-    [SerializeField] private KeyCode UnlockKey = KeyCode.E;
+   
 
     void Start()
     {
@@ -30,19 +39,18 @@ public class DoorSystem : MonoBehaviour
 
         {
          
-            if (hit.collider.gameObject == Door)
+            if (hit.collider.gameObject == door)
             {
 
-                if (Input.GetKeyDown(LockKey))
+                if (Input.GetKeyDown(lockKey))
                 {
                     if (doorLocked != null) doorLocked.Lock();
 
-                    // deur meteen dicht als je lockt
                     isOpen = false;
                 }
 
-                // UNLOCK
-                if (Input.GetKeyDown(UnlockKey))
+
+                if (Input.GetKeyDown(unlockKey))
                 {
                     if (doorLocked != null) doorLocked.Unlock();
                 }
@@ -60,7 +68,7 @@ public class DoorSystem : MonoBehaviour
                     isOpen = !isOpen;
 
 
-                    _audioSource.PlayOneShot(DoorSound);
+                    audioSource.PlayOneShot(doorSound);
                 }
             }
         }
@@ -72,8 +80,8 @@ public class DoorSystem : MonoBehaviour
 
 
     private void SmoothRotate() 
-    {         Quaternion targetRotation = isOpen ? Quaternion.Euler(0, 90, 0) : Quaternion.Euler(0, 0, 0);
-        TurningPoint.transform.rotation = Quaternion.Slerp(TurningPoint.transform.rotation, targetRotation, Time.deltaTime * OpenSpeed);
+    {  Quaternion targetRotation = isOpen ? Quaternion.Euler(0, 90, 0) : Quaternion.Euler(0, 0, 0);
+       turningPoint.transform.rotation = Quaternion.Slerp(turningPoint.transform.rotation, targetRotation, Time.deltaTime * openSpeed);
     }
 
 
