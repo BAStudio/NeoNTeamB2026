@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class legDamage : damageBase
+public class rightLegDamage : damageBase
 {
     [SerializeField] private AudioSource Aud;
+    private bool isDebuffed = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,11 +16,13 @@ public class legDamage : damageBase
     // Update is called once per frame
     void Update()
     {
-        if (LimbDamage == 3f)
+        if (!isDebuffed && LimbDamage >= 3f)
         {
             damageDebuff();
+            isDebuffed = true;
+            return;
         }
-        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "damage")
@@ -34,4 +37,6 @@ public class legDamage : damageBase
         Debug.Log("leg damaged, movement speed reduced");
         Aud.Play();
     }
+
+    private void healing() { }
 }
