@@ -26,11 +26,8 @@ public class EnemyMovingController : MonoBehaviour
     {
         Vector3 randomDirection = Random.insideUnitSphere * distance;
         randomDirection += origin;
-
         NavMeshHit navHit;
-
         NavMesh.SamplePosition(randomDirection, out navHit, distance, NavMesh.AllAreas);
-
         return navHit.position;
     }
     private void Update()
