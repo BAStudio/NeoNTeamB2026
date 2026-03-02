@@ -12,8 +12,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float airMultiplier;
     [SerializeField] bool readyToJump = true;
 
-
-
     [SerializeField] private float groundDrag;
 
     [SerializeField] private float playerHeight;
@@ -21,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool grounded;
 
     [SerializeField] private Transform orientation;
+    [SerializeField] private Transform climbCheckTransform;
 
     float horizontalInput;
     float verticalInput;
@@ -71,6 +70,11 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCoolDown);
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CheckMount();
+        }
+
         if (Input.GetKey(KeyCode.LeftShift) && grounded)
         {
             moveSpeed = initialSpeed * sprintMultiplier;
@@ -111,6 +115,19 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
+    }
+
+    private void CheckMount()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(climbCheckTransform.position, climbCheckTransform.forward, out hit, 1f))
+        {
+
+            if (hit.transform.CompareTag("ClimableObject"))
+            {
+                Debug.Log(hit.transform.name);
+            }
+        }
     }
 
 }
