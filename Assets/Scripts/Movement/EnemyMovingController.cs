@@ -1,15 +1,19 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
+using Unity.AI.Navigation;
 
 public class EnemyMovingController : MonoBehaviour
 {
     public GameObject Player;
-    float speed = 3f;
+    float speed = 1f;
     [SerializeField] private Animator animator;
     public NavMeshAgent agent;
     [SerializeField] private float distanceToPlayer;
     private bool indistance;
-
+    [SerializeField] private float wanderingradius = 10f;
+    [SerializeField] private float wanderingtimer = 5f;
+    private float timer;
 
 
     private void Start()
@@ -17,6 +21,17 @@ public class EnemyMovingController : MonoBehaviour
         //animator = GetComponent<Animator>();
         Player = GameObject.FindGameObjectWithTag("Player");
         //animator.SetBool("IsWalking", true);
+    }
+    private Vector3 RandomNavSphere(Vector3 origin, float distance)
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * distance;
+        randomDirection += origin;
+
+        NavMeshHit navHit;
+
+        NavMesh.SamplePosition(randomDirection, out navHit, distance, NavMesh.AllAreas);
+
+        return navHit.position;
     }
     private void Update()
     {
@@ -46,14 +61,21 @@ public class EnemyMovingController : MonoBehaviour
         }
         else
         {
-            agent.SetDestination(transform.position);
+            timer += Time.deltaTime;
+
+            if (timer >= wanderingtimer)
+            {
+                Vector3 newPos = RandomNavSphere(transform.position, wanderingradius);
+                agent.SetDestination(newPos);
+                timer = 0;
+            }
         }
+
     }
 
-    private void MoveTowardsPlayer()
+    private void OnAnimatorMove()
     {
-
-
+        
     }
     private void OnCollisionEnter(Collision collision)
     {
