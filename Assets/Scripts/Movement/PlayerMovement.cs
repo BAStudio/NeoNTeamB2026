@@ -125,9 +125,25 @@ public class PlayerMovement : MonoBehaviour
 
             if (hit.transform.CompareTag("ClimableObject"))
             {
+                Vector3 targetPosition = hit.transform.position + Vector3.up * playerHeight;
+                StartCoroutine(SmoothClimb(targetPosition, 0.5f)); // 0.5f is the duration in seconds
                 Debug.Log(hit.transform.name);
             }
-        }
-    }
 
+            // Add this coroutine to your class:
+            System.Collections.IEnumerator SmoothClimb(Vector3 targetPosition, float duration)
+            {
+                Vector3 startPosition = transform.position;
+                float elapsed = 0f;
+                while (elapsed < duration)
+                {
+                    transform.position = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
+                    elapsed += Time.deltaTime;
+                    yield return null;
+                }
+                transform.position = targetPosition;
+            }
+        }
+
+    }
 }
