@@ -39,22 +39,22 @@ public class EnemyMovingController : MonoBehaviour
         }
         else
         {
-            indistance = false;
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 2f))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    indistance = true;
+                }
+            }
+
         }
 
         if (indistance == true)
         {
             agent.SetDestination(Player.transform.position);
             //animator.SetBool("IsWalking", true);
-            if (distanceToPlayer < 2f)
-            {
-                //animator.SetBool("attac", true);
-            }
-            if (distanceToPlayer > 5f)
-            {
-                indistance = false;
-                //animator.SetBool("IsWalking", false);
-            }
         }
         else
         {
