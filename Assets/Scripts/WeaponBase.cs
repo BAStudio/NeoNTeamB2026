@@ -11,7 +11,7 @@ public abstract class WeaponBase : MonoBehaviour
     protected float reloadCooldown = 0f;
     protected virtual void Update()
     {
-        if (Input.GetMouseButton(0) && Time.time >= lastShootTime && !isReloading && currentAmmo > 0)
+        if (Input.GetMouseButtonDown(0) && Time.time >= lastShootTime && !isReloading && currentAmmo > 0)
         {
             lastShootTime = Time.time + shootCooldown;
             Shoot();
@@ -40,5 +40,10 @@ public abstract class WeaponBase : MonoBehaviour
     {
         currentAmmo = maxAmmo;
         isReloading = false;
+    }
+    protected virtual void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, transform.forward * 10f);
     }
 }
