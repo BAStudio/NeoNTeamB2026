@@ -40,12 +40,19 @@ public class EnemyMovingController : MonoBehaviour
         else
         {
             RaycastHit hit;
+            Vector3 directionToPlayer = (Player.transform.position - transform.position).normalized;
+            float distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
 
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 2f))
+            if (Physics.Raycast(transform.position, directionToPlayer, out hit, distanceToPlayer))
             {
                 if (hit.collider.CompareTag("Player"))
                 {
+                    //indistance = hit.collider.CompareTag("Player");
                     indistance = true;
+                }
+                else
+                {
+                    indistance = false;
                 }
             }
 
