@@ -22,6 +22,12 @@ public class rightLegDamage : damageBase
             isDebuffed = true;
             return;
         }
+        if (isDebuffed && LimbDamage < 3f)
+        {
+            isDebuffed = false;
+            healedLimb();
+            return;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -38,5 +44,8 @@ public class rightLegDamage : damageBase
         Aud.Play();
     }
 
-    private void healing() { }
+    private void healedLimb()
+    {
+        Debug.Log("Right leg healed, movement speed restored");
+    }
 }

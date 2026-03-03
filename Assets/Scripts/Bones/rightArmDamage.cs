@@ -3,7 +3,7 @@ using UnityEngine;
 public class rightArmDamage : damageBase
 {
     [SerializeField] private AudioSource Aud;
-    private bool isDebuffed = false;
+    protected bool isDebuffed = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
