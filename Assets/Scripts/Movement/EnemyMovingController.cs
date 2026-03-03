@@ -14,6 +14,7 @@ public class EnemyMovingController : MonoBehaviour
     [SerializeField] private float wanderingradius = 10f;
     [SerializeField] private float wanderingtimer = 5f;
     private float timer;
+    [SerializeField] private float fieldofview = 30f;
 
 
     private void Start()
@@ -41,20 +42,38 @@ public class EnemyMovingController : MonoBehaviour
         {
             RaycastHit hit;
             Vector3 directionToPlayer = (Player.transform.position - transform.position).normalized;
+            Vector3 vieldofview = Quaternion.Euler(0, fieldofview / 2, 0) * transform.forward;
             float distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
 
-            if (Physics.Raycast(transform.position, directionToPlayer, out hit, distanceToPlayer))
+            if (Vector3.Angle(transform.forward, directionToPlayer) < fieldofview / 2)
             {
-                if (hit.collider.CompareTag("Player"))
+                if (Physics.Raycast(transform.position, directionToPlayer, out hit, distanceToPlayer))
                 {
-                    //indistance = hit.collider.CompareTag("Player");
-                    indistance = true;
-                }
-                else
-                {
-                    indistance = false;
+                    if (hit.collider.CompareTag("Player"))
+                    {
+                        indistance = true;
+                    }
+                    else
+                    {
+                        indistance = false;
+                    }
                 }
             }
+
+
+
+            //if (Physics.Raycast(transform.position, directionToPlayer, out hit, distanceToPlayer))
+            //{
+            //    if (hit.collider.CompareTag("Player"))
+            //    {
+            //        //indistance = hit.collider.CompareTag("Player");
+            //        indistance = true;
+            //    }
+            //    else
+            //    {
+            //        indistance = false;
+            //    }
+            //}
 
         }
 
