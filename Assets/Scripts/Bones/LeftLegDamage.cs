@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LeftLegDamage : damageBase
+public class LeftLegDamage : DamageBase
 {
     [SerializeField] private AudioSource Aud;
     private bool isDebuffed = false;
