@@ -74,7 +74,11 @@ public class PlayerCam : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-
+            bobbingSpeed = initialBobSpeed * 2;
+        }
+        else
+        {
+            bobbingSpeed = initialBobSpeed;
         }
     }
 
