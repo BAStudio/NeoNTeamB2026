@@ -2834,6 +2834,11 @@ MonoBehaviour:
   sensX: 400
   sensY: 400
   orientation: {fileID: 849750392}
+  bobbingSpeed: 10
+  bobbingAmount: 0.15
+  horizontalBobbingAmount: 0.02
+  midpoint: {x: 0, y: 0, z: 0}
+  playerRigidbody: {fileID: 7689495063956903053}
   tiltAmount: 2
   tiltSmoothSpeed: 4
   sprintTiltMultiplier: 1.5
@@ -2852,6 +2857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 493569905}
+  playerCam: {fileID: 7029433914545470512}
 --- !u!23 &7557839843952365355
 MeshRenderer:
   m_ObjectHideFlags: 0
