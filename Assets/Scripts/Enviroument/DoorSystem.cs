@@ -6,6 +6,7 @@ public class DoorSystem : MonoBehaviour
     [SerializeField] private GameObject Door;
     [SerializeField] private GameObject TurningPoint;
     public KeyCode OpenDoorKey = KeyCode.Mouse0;
+
     [SerializeField] private float OpenSpeed = 2f;
     [SerializeField] private AudioClip DoorSound;
     [SerializeField] private AudioSource _audioSource;

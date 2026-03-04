@@ -165,10 +165,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7604d7a59ae712849a938100674533e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 1
+  isOpen: 0
   Door: {fileID: 1412444649}
   TurningPoint: {fileID: 153196331}
   OpenDoorKey: 323
+  isLocked: 0
   OpenSpeed: 2
   DoorSound: {fileID: 8300000, guid: 5e577e6efd90c704f9969afca9559233, type: 3}
   _audioSource: {fileID: 153196334}
