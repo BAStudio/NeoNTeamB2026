@@ -3,7 +3,6 @@ using UnityEngine;
 public class LeftLegDamage : damageBase
 {
     [SerializeField] private AudioSource Aud;
-    private bool isDebuffed = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,10 +15,10 @@ public class LeftLegDamage : damageBase
     // Update is called once per frame
     void Update()
     {
-        if (!isDebuffed && LimbDamage >= 3f)
+        if (!Leftlegisbroken && LimbDamage >= 3f)
         {
             damageDebuff();
-            isDebuffed = true;
+            Leftlegisbroken = true;
             return;
         }
     }

@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 public class rightArmDamage : damageBase
 {
     [SerializeField] private AudioSource Aud;
-    protected bool isDebuffed = false;
+    public static event Action HealedArmRight;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,10 +17,10 @@ public class rightArmDamage : damageBase
     // Update is called once per frame
     void Update()
     {
-        if (!isDebuffed && LimbDamage >= 3f)
+        if (!Rightarmisbroken && LimbDamage >= 3f)
         {
             damageDebuff();
-            isDebuffed = true;
+            Rightarmisbroken = true;
             return;
         }
     }
@@ -38,5 +39,8 @@ public class rightArmDamage : damageBase
         Aud.Play();
     }
 
-    private void healing() { }
+    private void healing()
+    {
+        HealedArmRight?.Invoke();
+    }
 }
