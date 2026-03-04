@@ -7,14 +7,18 @@ public class EnemyMovingController : MonoBehaviour
 {
     public GameObject Player;
     float speed = 1f;
+    private float timer;
     [SerializeField] private Animator animator;
     public NavMeshAgent agent;
     [SerializeField] private float distanceToPlayer;
     private bool indistance;
     [SerializeField] private float wanderingradius = 10f;
     [SerializeField] private float wanderingtimer = 5f;
-    private float timer;
     [SerializeField] private float fieldofview = 30f;
+    [SerializeField] private float rotatespeed = 5f;
+
+    [SerializeField] private bool abletoseeplayer;
+    [SerializeField] private bool canusemicrohpone;
 
 
     private void Start()
@@ -34,63 +38,67 @@ public class EnemyMovingController : MonoBehaviour
     private void Update()
     {
         distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
+
+
         if (distanceToPlayer < 5f)
         {
+            agent.SetDestination(Player.transform.position);
             indistance = true;
         }
         else
         {
             RaycastHit hit;
-            Vector3 directionToPlayer = (Player.transform.position - transform.position).normalized;
-            Vector3 vieldofview = Quaternion.Euler(0, fieldofview / 2, 0) * transform.forward;
-            float distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
 
-            if (Vector3.Angle(transform.forward, directionToPlayer) < fieldofview / 2)
+            if (Player == null) return;
+
+            Vector3 directionToPlayer = (Player.transform.position - transform.position).normalized;
+            float distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
+            if (Vector3.Angle(transform.forward, directionToPlayer) < fieldofview / 2f)
             {
-                if (Physics.Raycast(transform.position, directionToPlayer, out hit, distanceToPlayer))
+                if (Physics.Raycast(transform.position, directionToPlayer, out hit, distanceToPlayer /*, layerMask */))
                 {
                     if (hit.collider.CompareTag("Player"))
                     {
+                        agent.SetDestination(Player.transform.position);
+                        Quaternion targetRot = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+                        transform.rotation = Quaternion.Slerp(
+                            transform.rotation,
+                            targetRot,
+                            rotatespeed * Time.deltaTime
+                            );
                         indistance = true;
+
                     }
                     else
                     {
                         indistance = false;
                     }
                 }
+                else
+                {
+                    indistance = false;
+                }
+            }
+            else
+            {
+                indistance = false;
             }
 
 
 
-            //if (Physics.Raycast(transform.position, directionToPlayer, out hit, distanceToPlayer))
-            //{
-            //    if (hit.collider.CompareTag("Player"))
-            //    {
-            //        //indistance = hit.collider.CompareTag("Player");
-            //        indistance = true;
-            //    }
-            //    else
-            //    {
-            //        indistance = false;
-            //    }
-            //}
-
-        }
-
-        if (indistance == true)
-        {
-            agent.SetDestination(Player.transform.position);
-            //animator.SetBool("IsWalking", true);
-        }
-        else
-        {
-            timer += Time.deltaTime;
-
-            if (timer >= wanderingtimer)
+            if (indistance == true)
             {
-                Vector3 newPos = RandomNavSphere(transform.position, wanderingradius);
-                agent.SetDestination(newPos);
-                timer = 0;
+            }
+            else
+            {
+                timer += Time.deltaTime;
+
+                if (timer >= wanderingtimer)
+                {
+                    Vector3 newPos = RandomNavSphere(transform.position, wanderingradius);
+                    agent.SetDestination(newPos);
+                    timer = 0;
+                }
             }
         }
 
