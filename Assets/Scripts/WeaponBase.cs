@@ -32,7 +32,9 @@ public abstract class WeaponBase : MonoBehaviour
     protected abstract void Shoot();
     protected virtual void StartReload()
     {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log("reloading");
+#endif
         isReloading = true;
         reloadCooldown = reloadTime;
     }
