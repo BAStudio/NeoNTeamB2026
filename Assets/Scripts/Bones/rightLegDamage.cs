@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class rightLegDamage : damageBase
+public class RightLegDamage : DamageBase
 {
     [SerializeField] private AudioSource Aud;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

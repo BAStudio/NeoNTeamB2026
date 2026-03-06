@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class rightArmDamage : damageBase
+public class RightArmDamage : DamageBase
 {
     [SerializeField] private AudioSource Aud;
     public static event Action HealedArmRight;
