@@ -1068,12 +1068,16 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8898557312452289731, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
+      propertyPath: micThreshold
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898557312452289731, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: wanderingtimer
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8898557312452289731, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: canusemicrohpone
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
