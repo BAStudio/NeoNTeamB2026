@@ -3,11 +3,12 @@
 public class InventorySystem : MonoBehaviour
 {
     public static InventorySystem Instance;
-
+    public System.Action OnInventoryChanged;
+    public int CurrentSlot => currentSlot;
     public Transform handTransform;
 
-    private GameObject[] slots = new GameObject[3];
-    private int currentSlot = 0;
+    private GameObject[] slots = new GameObject[5];
+    public int currentSlot = 0;
 
     void Awake()
     {
@@ -17,12 +18,23 @@ public class InventorySystem : MonoBehaviour
             Destroy(gameObject);
     }
 
+    void Start()
+    {
+        
+    }
+
     void Update()
     {
-        // Slot wisselen met 1,2,3
+        // Slot wisselen 
         if (Input.GetKeyDown(KeyCode.Alpha1)) ChangeSlot(0);
         if (Input.GetKeyDown(KeyCode.Alpha2)) ChangeSlot(1);
         if (Input.GetKeyDown(KeyCode.Alpha3)) ChangeSlot(2);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) ChangeSlot(3);
+        if (Input.GetKeyDown(KeyCode.Alpha5)) ChangeSlot(4);
+    }
+    public int GetCurrentSlotIndex()
+    {
+        return currentSlot;
     }
 
     public bool AddItem(GameObject item)
@@ -33,7 +45,6 @@ public class InventorySystem : MonoBehaviour
             {
                 slots[i] = item;
 
-                // Als dit de actieve slot is → direct in hand tonen
                 if (i == currentSlot)
                 {
                     item.SetActive(true);
@@ -46,6 +57,9 @@ public class InventorySystem : MonoBehaviour
                     item.SetActive(false);
                 }
 
+                
+                OnInventoryChanged?.Invoke();
+
                 Debug.Log("Item added to slot " + (i + 1));
                 PrintInventory();
                 return true;
@@ -54,6 +68,13 @@ public class InventorySystem : MonoBehaviour
 
         Debug.Log("Inventory full!");
         return false;
+    }
+
+    public GameObject GetItemInSlot(int index)
+    {
+        if (index >= 0 && index < slots.Length)
+            return slots[index];
+        return null;
     }
 
     public void ChangeSlot(int newSlot)
@@ -76,6 +97,8 @@ public class InventorySystem : MonoBehaviour
             item.transform.localRotation = Quaternion.identity;
         }
 
+        OnInventoryChanged?.Invoke();
+
         Debug.Log("Switched to slot " + (currentSlot + 1));
         PrintInventory();
     }
@@ -85,10 +108,7 @@ public class InventorySystem : MonoBehaviour
         if (slots[currentSlot] == null) return;
 
         GameObject item = slots[currentSlot];
-
-        // Eerst losmaken
         item.transform.SetParent(null);
-
         item.SetActive(true);
 
         Rigidbody rb = item.GetComponent<Rigidbody>();
@@ -96,17 +116,17 @@ public class InventorySystem : MonoBehaviour
         {
             rb.isKinematic = false;
             rb.detectCollisions = true;
-
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-
             rb.AddForce(Camera.main.transform.forward * 5f, ForceMode.Impulse);
         }
 
+        slots[currentSlot] = null; 
+
+        
+        OnInventoryChanged?.Invoke();
+
         Debug.Log("Dropped: " + item.name);
-
-        slots[currentSlot] = null;
-
         PrintInventory();
     }
 
