@@ -39,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform climbCheckTransform;
     [SerializeField] private PlayerCam playerCam;
 
+    [Header("Mount Settings")]
+    [SerializeField] private float mountDistance = 2f;
+    [SerializeField] private float mountHeight = 1f;
+    [SerializeField] private float mountDuration = 0.5f;
+
     float horizontalInput;
     float verticalInput;
 
@@ -182,15 +187,17 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(climbCheckTransform.position,
-            climbCheckTransform.forward, out hit, 1f))
+            climbCheckTransform.forward, out hit, mountDistance))
         {
             if (hit.transform.CompareTag("ClimableObject"))
             {
-                Vector3 targetPosition =
-                    hit.transform.position + Vector3.up * playerHeight;
+                Vector3 forwardMove = orientation.forward * mountDistance;
+                Vector3 upwardMove = Vector3.up * mountHeight;
+
+                Vector3 targetPosition = transform.position + forwardMove + upwardMove;
 
                 playerCam.TriggerMountKick();
-                StartCoroutine(SmoothClimb(targetPosition, 0.5f));
+                StartCoroutine(SmoothClimb(targetPosition, mountDuration));
             }
         }
     }

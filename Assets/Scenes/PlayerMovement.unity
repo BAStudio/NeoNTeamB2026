@@ -2972,6 +2972,9 @@ MonoBehaviour:
   orientation: {fileID: 849750392}
   climbCheckTransform: {fileID: 163548071}
   playerCam: {fileID: 7029433914545470512}
+  mountDistance: 1.5
+  mountHeight: 1
+  mountDuration: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
