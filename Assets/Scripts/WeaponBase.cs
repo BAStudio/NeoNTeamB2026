@@ -6,8 +6,9 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected int currentAmmo = 12;
     [SerializeField] protected float shootCooldown = 0.5f;
     [SerializeField] protected float reloadTime = 1.5f;
-    [SerializeField] protected ParticleSystem hitParticle;
     [SerializeField] protected float accuracy = 0.5f;
+    [SerializeField] protected GameObject bulletHolePrefab;
+    [SerializeField] protected ParticleSystem bulletSmoke;
     public float Accuracy => accuracy;
     protected float OriginalAccuracy;
     protected float lastShootTime = 0f;
@@ -67,18 +68,15 @@ public abstract class WeaponBase : MonoBehaviour
         Vector3 direction = (aimPoint - transform.position).normalized;
 
         float spread = 1 - accuracy;
-        direction.x += UnityEngine.Random.Range(-spread, spread);
-        direction.y += UnityEngine.Random.Range(-spread, spread);
-        direction.z += UnityEngine.Random.Range(-spread, spread);
-        return direction;
+        Vector2 randomCircle = UnityEngine.Random.insideUnitCircle * spread;
+        direction += cam.transform.right * randomCircle.x + cam.transform.up * randomCircle.y;
+        return direction.normalized;
     }
 
     protected abstract void Shoot();
     protected virtual void StartReload()
     {
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log("reloading");
-#endif
         isReloading = true;
         reloadCooldown = reloadTime;
     }
