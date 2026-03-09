@@ -36,6 +36,15 @@ public class PlayerCam : MonoBehaviour
     [SerializeField] private float sprintFovIncrease = 20f;
     [SerializeField] private float fovSmoothSpeed = 8f;
 
+    [Header("Mount Camera Kick")]
+    [SerializeField] private float mountKickTilt = 8f;
+    [SerializeField] private float mountKickUp = 0.12f;
+    [SerializeField] private float mountDuration = 0.35f;
+
+    private float mountTimer;
+    private bool mounting;
+    private float mountYOffset;
+
     private float xRotation;
     private float yRotation;
 
@@ -70,16 +79,12 @@ public class PlayerCam : MonoBehaviour
         HandleTilt();
         HandleHeadBobbing();
         HandleFov();
+    }
 
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            bobbingSpeed = initialBobSpeed * 2;
-        }
-        else
-        {
-            bobbingSpeed = initialBobSpeed;
-        }
+    public void TriggerMountKick()
+    {
+        mounting = true;
+        mountTimer = 0f;
     }
 
     private void Look()
@@ -101,7 +106,7 @@ public class PlayerCam : MonoBehaviour
         if (playerRigidbody != null)
         {
             Vector3 horizontalVelocity = new Vector3(playerRigidbody.linearVelocity.x, 0f, playerRigidbody.linearVelocity.z);
-            isMoving = horizontalVelocity.magnitude > 0.1f; // adjust threshold if needed
+            isMoving = horizontalVelocity.magnitude > 0.1f;
         }
         else
         {
@@ -119,22 +124,40 @@ public class PlayerCam : MonoBehaviour
         currentTiltZ = Mathf.Lerp(currentTiltZ, targetTiltZ, Time.deltaTime * tiltSmoothSpeed);
         currentTiltX = Mathf.Lerp(currentTiltX, targetTiltX, Time.deltaTime * tiltSmoothSpeed);
 
+        float mountTilt = 0f;
+
+        if (mounting)
+        {
+            mountTimer += Time.deltaTime;
+
+            float t = mountTimer / mountDuration;
+            float smooth = Mathf.SmoothStep(0, 1, t);
+
+            mountTilt = Mathf.Sin(smooth * Mathf.PI) * mountKickTilt;
+
+            if (mountTimer >= mountDuration)
+                mounting = false;
+        }
+
         Quaternion lookRotation = Quaternion.Euler(xRotation, yRotation, 0);
-        Quaternion tiltRotation = Quaternion.Euler(currentTiltX, 0f, currentTiltZ);
+        Quaternion tiltRotation = Quaternion.Euler(currentTiltX + mountTilt, 0f, currentTiltZ);
 
         transform.rotation = lookRotation * tiltRotation;
 
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 
-    // ---------------------------
-    // Smooth Walking Head Bob
-    // ---------------------------
     private void HandleHeadBobbing()
     {
+        if (Input.GetKey(KeyCode.LeftShift))
+            bobbingSpeed = initialBobSpeed * 2;
+        else
+            bobbingSpeed = initialBobSpeed;
+
         if (isMoving)
         {
             timer += bobbingSpeed * Time.deltaTime;
+
             if (timer > Mathf.PI * 2f)
                 timer -= Mathf.PI * 2f;
 
@@ -148,12 +171,26 @@ public class PlayerCam : MonoBehaviour
                 midpoint.z
             );
 
-            // Smoothly move camera toward sway position
             bobOffset = Vector3.Lerp(bobOffset, swayPosition, Time.deltaTime * 5f);
         }
         else
         {
             bobOffset = Vector3.Lerp(bobOffset, midpoint, Time.deltaTime * 5f);
+        }
+
+        if (mounting)
+        {
+            float t = mountTimer / mountDuration;
+            float smooth = Mathf.SmoothStep(0, 1, t);
+
+            float targetHeight = Mathf.Sin(smooth * Mathf.PI) * mountKickUp;
+            mountYOffset = Mathf.Lerp(mountYOffset, targetHeight, Time.deltaTime * 10f);
+
+            bobOffset.y += mountYOffset;
+        }
+        else
+        {
+            mountYOffset = Mathf.Lerp(mountYOffset, 0, Time.deltaTime * 10f);
         }
     }
 
@@ -166,8 +203,5 @@ public class PlayerCam : MonoBehaviour
         camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, targetFov, Time.deltaTime * fovSmoothSpeed);
     }
 
-    // ---------------------------
-    // Expose bob offset for MoveCamera
-    // ---------------------------
     public Vector3 GetBobOffset() => bobOffset;
 }

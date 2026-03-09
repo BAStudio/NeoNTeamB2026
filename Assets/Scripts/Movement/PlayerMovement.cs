@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sprintMultiplier;
     private float initialSpeed;
 
-
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpCoolDown;
     [SerializeField] private float airMultiplier;
@@ -20,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Transform orientation;
     [SerializeField] private Transform climbCheckTransform;
+
+    [SerializeField] private PlayerCam playerCam;
 
     float horizontalInput;
     float verticalInput;
@@ -44,13 +45,9 @@ public class PlayerMovement : MonoBehaviour
         SpeedControl();
 
         if (grounded)
-        {
             rb.linearDamping = groundDrag;
-        }
         else
-        {
             rb.linearDamping = 0;
-        }
     }
 
     private void FixedUpdate()
@@ -71,27 +68,21 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
-        {
             CheckMount();
-        }
 
         if (Input.GetKey(KeyCode.LeftShift) && grounded)
-        {
             moveSpeed = initialSpeed * sprintMultiplier;
-        }
         else
-        {
             moveSpeed = initialSpeed;
-        }
-
     }
 
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+
         if (grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        else if (!grounded)
+        else
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
     }
 
@@ -120,30 +111,31 @@ public class PlayerMovement : MonoBehaviour
     private void CheckMount()
     {
         RaycastHit hit;
+
         if (Physics.Raycast(climbCheckTransform.position, climbCheckTransform.forward, out hit, 1f))
         {
-
             if (hit.transform.CompareTag("ClimableObject"))
             {
                 Vector3 targetPosition = hit.transform.position + Vector3.up * playerHeight;
-                StartCoroutine(SmoothClimb(targetPosition, 0.5f)); // 0.5f is the duration in seconds
-                Debug.Log(hit.transform.name);
-            }
 
-            // Add this coroutine to your class:
-            System.Collections.IEnumerator SmoothClimb(Vector3 targetPosition, float duration)
-            {
-                Vector3 startPosition = transform.position;
-                float elapsed = 0f;
-                while (elapsed < duration)
-                {
-                    transform.position = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
-                    elapsed += Time.deltaTime;
-                    yield return null;
-                }
-                transform.position = targetPosition;
+                playerCam.TriggerMountKick();
+                StartCoroutine(SmoothClimb(targetPosition, 0.5f));
             }
         }
+    }
 
+    System.Collections.IEnumerator SmoothClimb(Vector3 targetPosition, float duration)
+    {
+        Vector3 startPosition = transform.position;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            transform.position = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = targetPosition;
     }
 }

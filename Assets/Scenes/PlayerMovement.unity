@@ -1267,7 +1267,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.5294604, y: 0.5025692, z: -3.0114758}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4816, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2844,6 +2844,9 @@ MonoBehaviour:
   sprintTiltMultiplier: 1.5
   sprintFovIncrease: 10
   fovSmoothSpeed: 8
+  mountKickTilt: 10
+  mountKickUp: 0
+  mountDuration: 0.7
 --- !u!114 &7029433914545470513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2964,6 +2967,7 @@ MonoBehaviour:
   grounded: 0
   orientation: {fileID: 849750392}
   climbCheckTransform: {fileID: 163548071}
+  playerCam: {fileID: 7029433914545470512}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
