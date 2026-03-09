@@ -4,12 +4,11 @@ using UnityEngine;
 public class RightArmDamage : DamageBase
 {
     [SerializeField] private AudioSource Aud;
-    public static event Action HealedArmRight;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Debug.Log("rightArmDamage active");
-        LimbDamage = 0.0f;
+        RightArmDamage = 0.0f;
         Health = 100.0f;
 
     }
@@ -17,10 +16,16 @@ public class RightArmDamage : DamageBase
     // Update is called once per frame
     void Update()
     {
-        if (!Rightarmisbroken && LimbDamage >= 3f)
+        if (!Rightarmisbroken && RightArmDamage >= 3f)
         {
             damageDebuff();
             Rightarmisbroken = true;
+            return;
+        }
+        if (Rightarmisbroken && RightArmDamage < 3f)
+        {
+            Rightarmisbroken = false;
+            healing();
             return;
         }
     }
@@ -28,8 +33,8 @@ public class RightArmDamage : DamageBase
     {
         if (collision.gameObject.tag == "damage")
         {
-            Debug.Log("Right Arm damaged" + LimbDamage);
-            LimbDamage += 1;
+            Debug.Log("Right Arm damaged" + RightArmDamage);
+            RightArmDamage += 1;
             Health -= 10;
         }
     }
@@ -41,6 +46,7 @@ public class RightArmDamage : DamageBase
 
     private void healing()
     {
-        HealedArmRight?.Invoke();
+        Debug.Log("Right arm healed, movement speed restored");
     }
 }
+

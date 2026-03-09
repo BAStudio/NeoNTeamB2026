@@ -7,7 +7,7 @@ public class LeftArmDamage : DamageBase
     void Start()
     {
         Debug.Log("leftArmDamage active");
-        LimbDamage = 0.0f;
+        LeftArmDamage = 0.0f;
         Health = 100.0f;
 
     }
@@ -15,10 +15,16 @@ public class LeftArmDamage : DamageBase
     // Update is called once per frame
     void Update()
     {
-        if (!Leftarmisbroken && LimbDamage >= 3f)
+        if (!Leftarmisbroken && LeftArmDamage >= 3f)
         {
             damageDebuff();
             Leftarmisbroken = true;
+            return;
+        }
+        if (Leftarmisbroken && LeftArmDamage < 3f)
+        {
+            Leftarmisbroken = false;
+            healing();
             return;
         }
     }
@@ -26,8 +32,8 @@ public class LeftArmDamage : DamageBase
     {
         if (collision.gameObject.tag == "damage")
         {
-            Debug.Log("Left arm damaged" + LimbDamage);
-            LimbDamage += 1;
+            Debug.Log("Left arm damaged" + RightArmDamage);
+            LeftArmDamage += 1;
             Health -= 10;
         }
     }
@@ -37,5 +43,8 @@ public class LeftArmDamage : DamageBase
         Aud.Play();
     }
 
-    private void healing() { }
+    private void healing()
+    {
+        Debug.Log("Left arm healed, movement speed restored");
+    }
 }

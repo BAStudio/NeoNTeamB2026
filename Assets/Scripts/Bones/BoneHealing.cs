@@ -11,21 +11,35 @@ public class BoneHealing : DamageBase
     // Update is called once per frame
     void Update()
     {
-        if (LimbDamage >= 3)
-        { 
-          
-        }
+
 
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "healing")
+        if (Leftlegisbroken && collision.gameObject.tag =="healing")
         {
-            Debug.Log("Bone healed" + LimbDamage);
-            LimbDamage -= 1;
-            Health += 10;
-            GameObject.Destroy(gameObject);
+            Leftlegisbroken = false;
+            LeftLegDamage -= 1;
+            Debug.Log("Left leg healed" + LeftLegDamage);
+        }
+        if (Rightlegisbroken && collision.gameObject.tag == "healing")
+        {
+            Rightlegisbroken = false;
+            RightLegDamage -= 1;
+            Debug.Log("Right leg healed" + RightLegDamage);
+        }
+        if (Leftarmisbroken && collision.gameObject.tag == "healing")
+        {
+            Leftarmisbroken = false;
+            RightArmDamage -= 1;
+            Debug.Log("Left arm healed" + LeftArmDamage);
+        }
+        if (Rightarmisbroken && collision.gameObject.tag =="healing")
+        {
+            Rightarmisbroken = false;
+            RightArmDamage -= 1;
+            Debug.Log("Right arm healed" + RightArmDamage);
         }
     }
 }

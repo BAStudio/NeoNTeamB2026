@@ -390,8 +390,9 @@ GameObject:
   - component: {fileID: 377922816}
   - component: {fileID: 377922819}
   - component: {fileID: 377922820}
+  - component: {fileID: 377922821}
   m_Layer: 0
-  m_Name: leg stand in
+  m_Name: Left leg stand in
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -526,6 +527,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Aud: {fileID: 1462105952}
+--- !u!114 &377922821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377922813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549a7f45df59f9844aba7aae6dcd215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &617426500
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,8 +553,9 @@ GameObject:
   - component: {fileID: 617426504}
   - component: {fileID: 617426502}
   - component: {fileID: 617426507}
+  - component: {fileID: 617426508}
   m_Layer: 0
-  m_Name: Arm stand in 2
+  m_Name: Left Arm stand in
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -676,6 +690,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Aud: {fileID: 1462105952}
+--- !u!114 &617426508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617426500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549a7f45df59f9844aba7aae6dcd215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &620794045
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,8 +716,9 @@ GameObject:
   - component: {fileID: 620794050}
   - component: {fileID: 620794048}
   - component: {fileID: 620794053}
+  - component: {fileID: 620794054}
   m_Layer: 0
-  m_Name: leg stand in 2
+  m_Name: 'Right leg stand in '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -826,6 +853,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Aud: {fileID: 1462105952}
+--- !u!114 &620794054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620794045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549a7f45df59f9844aba7aae6dcd215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &920021598
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +878,6 @@ GameObject:
   - component: {fileID: 920021601}
   - component: {fileID: 920021600}
   - component: {fileID: 920021599}
-  - component: {fileID: 920021604}
   m_Layer: 0
   m_Name: Healing
   m_TagString: healing
@@ -963,18 +1001,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &920021604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920021598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 549a7f45df59f9844aba7aae6dcd215c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,8 +1152,9 @@ GameObject:
   - component: {fileID: 1387064882}
   - component: {fileID: 1387064880}
   - component: {fileID: 1387064885}
+  - component: {fileID: 1387064886}
   m_Layer: 0
-  m_Name: 'Arm stand in '
+  m_Name: 'Right Arm stand in '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1262,6 +1289,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Aud: {fileID: 1462105952}
+--- !u!114 &1387064886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387064878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549a7f45df59f9844aba7aae6dcd215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1462105951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,6 +1550,7 @@ GameObject:
   - component: {fileID: 1712275476}
   - component: {fileID: 1712275475}
   - component: {fileID: 1712275474}
+  - component: {fileID: 1712275478}
   - component: {fileID: 1712275473}
   m_Layer: 0
   m_Name: person stand in
@@ -1624,6 +1664,18 @@ Transform:
   - {fileID: 620794046}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1712275478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712275472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549a7f45df59f9844aba7aae6dcd215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
