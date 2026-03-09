@@ -57,40 +57,42 @@ public class EnemyMovingController : MonoBehaviour
     }
     private void Update()
     {
-        if (micclip != null)
+        if (canusemicrohpone == true)
         {
-            int micPos = Microphone.GetPosition(micDevice) - sampleWindow;
-            if (micPos < 0) return;
-
-            float[] samples = new float[sampleWindow];
-            micclip.GetData(samples, micPos);
-
-            float level = 0f;
-
-            for (int i = 0; i < sampleWindow; i++)
+            if (micclip != null)
             {
-                level += Mathf.Abs(samples[i]);
+                int micPos = Microphone.GetPosition(micDevice) - sampleWindow;
+                if (micPos < 0) return;
+
+                float[] samples = new float[sampleWindow];
+                micclip.GetData(samples, micPos);
+
+                float level = 0f;
+
+                for (int i = 0; i < sampleWindow; i++)
+                {
+                    level += Mathf.Abs(samples[i]);
+                }
+
+                level = (level / sampleWindow) * micSensitivity;
+
+                if (level > micThreshold)
+                {
+                    heardplayer = true;
+                    lastheardposition = Player.transform.position;
+
+                    Debug.Log("Heard player. Mic level: " + level);
+                }
             }
-
-            level = (level / sampleWindow) * micSensitivity;
-
-            if (level > micThreshold)
-            {
-                heardplayer = true;
-                lastheardposition = Player.transform.position;
-
-                Debug.Log("Heard player. Mic level: " + level);
-            }
+            //        heardplayer = true;
+            //        lastheardposition = Player.transform.position;
+            //        Debug.Log("Heard player at position: " + lastheardposition);
+            //    }
+            //    else
+            //    {
+            //        heardplayer = false;
+            //    }
         }
-        //        heardplayer = true;
-        //        lastheardposition = Player.transform.position;
-        //        Debug.Log("Heard player at position: " + lastheardposition);
-        //    }
-        //    else
-        //    {
-        //        heardplayer = false;
-        //    }
-
         distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
         {
 
