@@ -11,10 +11,6 @@ public class BoneHealing : DamageBase
     // Update is called once per frame
     void Update()
     {
-        if (LimbDamage >= 3)
-        { 
-          
-        }
 
     }
 
