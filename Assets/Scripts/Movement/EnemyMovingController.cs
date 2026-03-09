@@ -38,14 +38,6 @@ public class EnemyMovingController : MonoBehaviour
     private void Update()
     {
         distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
-
-
-        if (distanceToPlayer < 5f)
-        {
-            agent.SetDestination(Player.transform.position);
-            indistance = true;
-        }
-        else
         {
             RaycastHit hit;
 
@@ -53,7 +45,7 @@ public class EnemyMovingController : MonoBehaviour
 
             Vector3 directionToPlayer = (Player.transform.position - transform.position).normalized;
             float distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
-            if (Vector3.Angle(transform.forward, directionToPlayer) < fieldofview / 2.2f)
+            if (Vector3.Angle(transform.forward, directionToPlayer) < fieldofview / 1.2f)
             {
                 if (Physics.Raycast(transform.position, directionToPlayer, out hit, distanceToPlayer /*, layerMask */))
                 {
@@ -85,7 +77,6 @@ public class EnemyMovingController : MonoBehaviour
             }
 
 
-
             if (indistance == true)
             {
             }
@@ -93,11 +84,10 @@ public class EnemyMovingController : MonoBehaviour
             {
                 timer += Time.deltaTime;
 
-                if (timer >= wanderingtimer)
+                if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
                 {
                     Vector3 newPos = RandomNavSphere(transform.position, wanderingradius);
                     agent.SetDestination(newPos);
-                    timer = 0;
                 }
             }
         }
