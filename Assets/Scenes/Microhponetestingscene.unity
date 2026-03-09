@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 375842925}
   - component: {fileID: 375842924}
   - component: {fileID: 375842923}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1010,6 +1010,10 @@ PrefabInstance:
     - target: {fileID: 3459152863833145124, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_Name
       value: MasterZombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814650463043460577, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
+      propertyPath: m_Speed
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalPosition.x
