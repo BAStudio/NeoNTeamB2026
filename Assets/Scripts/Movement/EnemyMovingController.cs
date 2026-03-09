@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using Unity.AI.Navigation;
+using UnityEngine.Audio;
 
 public class EnemyMovingController : MonoBehaviour
 {
@@ -17,6 +18,19 @@ public class EnemyMovingController : MonoBehaviour
     [SerializeField] private float fieldofview = 30f;
     [SerializeField] private float rotatespeed = 5f;
 
+    [Header("Microhpone")]
+    [SerializeField] private float hearingrange = 10f;
+    [SerializeField] private float hearingfieldofview = 360f;
+    [SerializeField] private float hearingrotatespeed = 60f;
+    [SerializeField] private float micSensitivity = 100f;
+    [SerializeField] private float micThreshold = 0.05f;
+    [SerializeField] private int sampleWindow = 128;
+
+    private AudioClip micclip;
+    private string micDevice;
+    private bool heardplayer;
+    private Vector3 lastheardposition;
+
     [SerializeField] private bool abletoseeplayer;
     [SerializeField] private bool canusemicrohpone;
 
@@ -26,6 +40,12 @@ public class EnemyMovingController : MonoBehaviour
         //animator = GetComponent<Animator>();
         Player = GameObject.FindGameObjectWithTag("Player");
         //animator.SetBool("IsWalking", true);
+        if (Microphone.devices.Length > 0)
+        {
+            micDevice = Microphone.devices[0];
+            micclip = Microphone.Start(micDevice, true, 10, 44100);
+            Debug.Log("Microphone found: " + micDevice);
+        }
     }
     private Vector3 RandomNavSphere(Vector3 origin, float distance)
     {
@@ -37,8 +57,54 @@ public class EnemyMovingController : MonoBehaviour
     }
     private void Update()
     {
+        if (micclip != null)
+        {
+            int micPos = Microphone.GetPosition(micDevice) - sampleWindow;
+            if (micPos < 0) return;
+
+            float[] samples = new float[sampleWindow];
+            micclip.GetData(samples, micPos);
+
+            float level = 0f;
+
+            for (int i = 0; i < sampleWindow; i++)
+            {
+                level += Mathf.Abs(samples[i]);
+            }
+
+            level = (level / sampleWindow) * micSensitivity;
+
+            if (level > micThreshold)
+            {
+                heardplayer = true;
+                lastheardposition = Player.transform.position;
+
+                Debug.Log("Heard player. Mic level: " + level);
+            }
+        }
+        //        heardplayer = true;
+        //        lastheardposition = Player.transform.position;
+        //        Debug.Log("Heard player at position: " + lastheardposition);
+        //    }
+        //    else
+        //    {
+        //        heardplayer = false;
+        //    }
+
         distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
         {
+
+            if (heardplayer) {
+                Vector3 directionToLastHeard = (lastheardposition - transform.position).normalized;
+                Quaternion targetRot = Quaternion.LookRotation(directionToLastHeard, Vector3.up);
+                transform.rotation = Quaternion.Slerp(
+                    transform.rotation,
+                    targetRot,
+                    hearingrotatespeed * Time.deltaTime
+                    );
+                agent.SetDestination(lastheardposition);
+            }
+
             RaycastHit hit;
 
             if (Player == null) return;
