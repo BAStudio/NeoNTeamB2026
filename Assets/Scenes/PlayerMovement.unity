@@ -2959,6 +2959,10 @@ MonoBehaviour:
   jumpCoolDown: 0.25
   airMultiplier: 0.25
   readyToJump: 0
+  crouchSpeedMultiplier: 0.5
+  crouchHeight: 0.5
+  crouchSmoothSpeed: 8
+  cameraHolder: {fileID: 383986784}
   groundDrag: 0
   playerHeight: 2
   whatIsGround:
