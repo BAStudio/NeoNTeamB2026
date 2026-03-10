@@ -80,8 +80,6 @@ public class EnemyMovingController : MonoBehaviour
                 {
                     heardplayer = true;
                     lastheardposition = Player.transform.position;
-
-                    Debug.Log("Heard player. Mic level: " + level);
                 }
                 else
                 {
