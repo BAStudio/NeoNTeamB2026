@@ -1,19 +1,17 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryToggle : MonoBehaviour
 {
-    [SerializeField] private Image inventoryBorder; // Lowercase 'i' is standard for private fields
+    public static bool IsOpen { get; private set; }
+    [SerializeField] private Image inventoryBorder;
+    [SerializeField] private GameObject[] slots;
+    [SerializeField] private GameObject arrow;
 
     void Start()
     {
-        // Try to get the image if it wasn't assigned in the Inspector
-        if (inventoryBorder == null)
-        {
-            inventoryBorder = GetComponent<Image>();
-        }
 
-        
     }
 
     void Update()
@@ -21,17 +19,27 @@ public class InventoryToggle : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             ToggleInventory();
-            Time.timeScale = inventoryBorder.enabled ? 0f : 1f; // Pause the game when inventory is open, resume when closed
-            Cursor.lockState = inventoryBorder.enabled ? CursorLockMode.None : CursorLockMode.Locked; // Unlock cursor when inventory is open, lock it when closed
+            Time.timeScale = inventoryBorder.enabled ? 0f : 1f;
+            Cursor.lockState = inventoryBorder.enabled ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = inventoryBorder.enabled;
         }
+        
     }
 
     private void ToggleInventory()
     {
         if (inventoryBorder != null)
         {
-            // This flips the true/false state (if it's on, it turns off, and vice versa)
             inventoryBorder.enabled = !inventoryBorder.enabled;
+            IsOpen = inventoryBorder.enabled;
+
+            foreach (GameObject slot in slots)
+            {
+                if (slot != null)
+                    slot.SetActive(IsOpen);
+            }
+
+            arrow.SetActive(IsOpen);
         }
     }
 }
