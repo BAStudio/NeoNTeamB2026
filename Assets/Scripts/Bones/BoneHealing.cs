@@ -1,45 +1,40 @@
 using UnityEngine;
 
-public class BoneHealing : DamageBase
+public class boneHealing : DamageBase
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (Leftlegisbroken && collision.gameObject.tag =="healing")
+        if (collision.gameObject.tag == "healing")
         {
-            Leftlegisbroken = false;
-            LeftLegDamage -= 1;
-            Debug.Log("Left leg healed" + LeftLegDamage);
-        }
-        if (Rightlegisbroken && collision.gameObject.tag == "healing")
-        {
-            Rightlegisbroken = false;
-            RightLegDamage -= 1;
-            Debug.Log("Right leg healed" + RightLegDamage);
-        }
-        if (Leftarmisbroken && collision.gameObject.tag == "healing")
-        {
-            Leftarmisbroken = false;
-            RightArmDamage -= 1;
-            Debug.Log("Left arm healed" + LeftArmDamage);
-        }
-        if (Rightarmisbroken && collision.gameObject.tag =="healing")
-        {
-            Rightarmisbroken = false;
-            RightArmDamage -= 1;
-            Debug.Log("Right arm healed" + RightArmDamage);
+            if (Leftlegisbroken)
+            {
+                Leftlegisbroken = false;
+                LeftLegDamage = Mathf.Max(0, LeftLegDamage - 1);
+                Debug.Log("Left leg healed " + LeftLegDamage);
+            }
+
+            if (Rightlegisbroken)
+            {
+                Rightlegisbroken = false;
+                RightLegDamage = Mathf.Max(0, RightLegDamage - 1);
+                Debug.Log("Right leg healed " + RightLegDamage);
+            }
+
+            if (Leftarmisbroken)
+            {
+                Leftarmisbroken = false;
+                LeftArmDamage = Mathf.Max(0, LeftArmDamage - 1);
+                Debug.Log("Left arm healed " + LeftArmDamage);
+            }
+
+            if (Rightarmisbroken)
+            {
+                Rightarmisbroken = false;
+                RightArmDamage = Mathf.Max(0, RightArmDamage - 1);
+                Debug.Log("Right arm healed " + RightArmDamage);
+            }
+
+            
         }
     }
 }

@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class DamageBase : MonoBehaviour
 {
-    protected float RightLegDamage = 0;
-    protected float LeftLegDamage = 0;
-    protected float LeftArmDamage = 0;
-    protected float RightArmDamage = 0;
-    protected float Health = 0;
-    protected bool Leftlegisbroken = false;
-    protected bool Rightlegisbroken = false;
-    protected bool Leftarmisbroken = false;
-    protected bool Rightarmisbroken = false;
+    protected static float RightLegDamage = 0;
+    protected static float LeftLegDamage = 0;
+    protected static float LeftArmDamage = 0;
+    protected static float RightArmDamage = 0;
+    protected static float Health = 0;
+
+    protected static bool Leftlegisbroken = false;
+    protected static bool Rightlegisbroken = false;
+    protected static bool Leftarmisbroken = false;
+    protected static bool Rightarmisbroken = false;
 }

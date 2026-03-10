@@ -7,7 +7,7 @@ public class LeftLegDamage : DamageBase
     void Start()
     {
         Debug.Log("LeftLegDamage active");
-        LeftLegDamage = 0.0f;
+        LeftLegDamage = 0f;
         Health = 100.0f;
 
     }

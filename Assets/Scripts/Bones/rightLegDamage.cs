@@ -48,4 +48,3 @@ public class RightLegDamage : DamageBase
         Debug.Log("Right leg healed, movement speed restored");
     }
 }
-
