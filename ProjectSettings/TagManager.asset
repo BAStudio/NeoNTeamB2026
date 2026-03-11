@@ -4,8 +4,7 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - damage
-  - healing
+  - ClimableObject
   layers:
   - Default
   - TransparentFX
@@ -13,7 +12,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
