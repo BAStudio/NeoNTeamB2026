@@ -80,8 +80,10 @@ public class EnemyMovingController : MonoBehaviour
                 {
                     heardplayer = true;
                     lastheardposition = Player.transform.position;
-
-                    Debug.Log("Heard player. Mic level: " + level);
+                }
+                else
+                {
+                    heardplayer = false;
                 }
             }
             //        heardplayer = true;
@@ -138,13 +140,8 @@ public class EnemyMovingController : MonoBehaviour
                 {
                     indistance = false;
                 }
+                
             }
-            else
-            {
-                indistance = false;
-            }
-
-
             if (indistance == true)
             {
             }

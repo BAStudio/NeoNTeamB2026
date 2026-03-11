@@ -1015,6 +1015,14 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6814650463043460577, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814650463043460577, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.45
@@ -1068,12 +1076,24 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8898557312452289731, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
+      propertyPath: micThreshold
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898557312452289731, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
+      propertyPath: sampleWindow
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898557312452289731, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: wanderingtimer
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8898557312452289731, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
+      propertyPath: abletoseeplayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898557312452289731, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: canusemicrohpone
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
