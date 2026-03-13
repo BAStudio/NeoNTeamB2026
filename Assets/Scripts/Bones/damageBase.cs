@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class damageBase : MonoBehaviour
+public class DamageBase : MonoBehaviour
 {
     protected float LimbDamage = 0;
     protected float Health = 0;
