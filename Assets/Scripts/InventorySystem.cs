@@ -83,10 +83,17 @@ public class InventorySystem : MonoBehaviour
         if (slots[currentSlot] == null) return;
 
         GameObject item = slots[currentSlot];
+        handItemHandler.HideItem(item);
         itemDropHandler.Drop(item);
         slots[currentSlot] = null;
 
         OnInventoryChanged?.Invoke();
+
+        InventoryQuickaccess quickAccess = FindObjectOfType<InventoryQuickaccess>();
+        if (quickAccess != null)
+        {
+            quickAccess.ClearDroppedItems();
+        }
 
         Debug.Log("Dropped: " + item.name);
     }

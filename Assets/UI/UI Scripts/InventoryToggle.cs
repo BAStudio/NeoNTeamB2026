@@ -7,7 +7,7 @@ public class InventoryToggle : MonoBehaviour
     public static bool IsOpen { get; private set; }
     [SerializeField] private Image inventoryBorder;
     [SerializeField] private GameObject[] slots;
-    [SerializeField] private GameObject arrow;
+
 
     void Start()
     {
@@ -39,7 +39,6 @@ public class InventoryToggle : MonoBehaviour
                     slot.SetActive(IsOpen);
             }
 
-            arrow.SetActive(IsOpen);
         }
     }
 }
