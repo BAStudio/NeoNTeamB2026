@@ -1,13 +1,34 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CustomCursor : MonoBehaviour
 {
-    private void Awake()
+    [SerializeField] private Image cursorImage;
+
+    private ItemData heldItem;
+
+    void Update()
     {
         transform.position = Input.mousePosition;
     }
-    private void Update()
+
+    public void SetCursor(ItemData item)
     {
-        transform.position = Input.mousePosition;
+        heldItem = item;
+        cursorImage.sprite = item.icon;
+        cursorImage.enabled = true;
+    }
+
+    public ItemData GetHeldItem()
+    {
+        return heldItem;
+    }
+
+    public void ClearCursor()
+    {
+        heldItem = null;
+        cursorImage.enabled = false;
     }
 }
+
+

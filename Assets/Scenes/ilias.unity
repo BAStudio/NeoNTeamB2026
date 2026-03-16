@@ -169,8 +169,8 @@ CanvasGroup:
   m_GameObject: {fileID: 165553635}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &165553638
 MonoBehaviour:
@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061910f8cca18bc4a98698ffb730b72b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorImage: {fileID: 1688642898}
 --- !u!114 &165553639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,9 +336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134c9109e4dca4c42bb0fdffc45e513d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: 
   item: {fileID: 0}
-  index: 0
+  icon: {fileID: 0}
 --- !u!1 &338418638
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +444,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &425379803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1142692599195142584, guid: 2a8051d586d1b8946836a7846d2769a5, type: 3}
+  m_PrefabInstance: {fileID: 72547992979246252}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &446767239
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +505,6 @@ GameObject:
   - component: {fileID: 453496004}
   - component: {fileID: 453496003}
   - component: {fileID: 453496005}
-  - component: {fileID: 453496006}
   m_Layer: 5
   m_Name: Slot 3
   m_TagString: Untagged
@@ -577,43 +581,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134c9109e4dca4c42bb0fdffc45e513d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: 
-  item: {fileID: 0}
-  index: 2
---- !u!114 &453496006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 453496001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 820404184}
-          m_TargetAssemblyTypeName: CraftingManager, Assembly-CSharp
-          m_MethodName: OnClickSlot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 453496005}
-            m_ObjectArgumentAssemblyTypeName: Slot, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  item: {fileID: 11400000, guid: 198d4cf3b05fff14099f8277ae50343f, type: 2}
+  icon: {fileID: 457997195}
 --- !u!224 &457997192 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5909802236722181202, guid: 2a8051d586d1b8946836a7846d2769a5, type: 3}
   m_PrefabInstance: {fileID: 72547992979246252}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &457997195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1194925520914140362, guid: 2a8051d586d1b8946836a7846d2769a5, type: 3}
+  m_PrefabInstance: {fileID: 72547992979246252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425379803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &457997197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425379803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8058f41150031b145b1a6aee973b3261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &457997199
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425379803}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &519163392
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +879,6 @@ GameObject:
   - component: {fileID: 630938422}
   - component: {fileID: 630938421}
   - component: {fileID: 630938423}
-  - component: {fileID: 630938424}
   m_Layer: 5
   m_Name: SLot 1
   m_TagString: Untagged
@@ -947,38 +955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134c9109e4dca4c42bb0fdffc45e513d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: 
-  item: {fileID: 0}
-  index: 0
---- !u!114 &630938424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630938419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 820404184}
-          m_TargetAssemblyTypeName: CraftingManager, Assembly-CSharp
-          m_MethodName: OnClickSlot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 630938423}
-            m_ObjectArgumentAssemblyTypeName: Slot, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  item: {fileID: 11400000, guid: 198d4cf3b05fff14099f8277ae50343f, type: 2}
+  icon: {fileID: 457997195}
 --- !u!1 &671212229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,22 +1058,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22938720a73c0544db2a7389d8856c1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: 
-  _customCursor: {fileID: 1688642898}
   craftingSlots:
   - {fileID: 630938423}
   - {fileID: 1005901637}
   - {fileID: 453496005}
-  itemList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   recipes:
-  - MetalGunPowderMetal
-  recipeResults:
-  - {fileID: 640750099500059708, guid: 2ea5d4b38af48f940bfea36b76fbf52e, type: 3}
-  slotsResults:
-  - {fileID: 194417281}
+  - {fileID: 11400000, guid: 3bc1d46c9c36ee14e899b076f918454a, type: 2}
 --- !u!4 &820404185
 Transform:
   m_ObjectHideFlags: 0
@@ -1123,7 +1091,6 @@ GameObject:
   - component: {fileID: 1005901636}
   - component: {fileID: 1005901635}
   - component: {fileID: 1005901637}
-  - component: {fileID: 1005901638}
   m_Layer: 5
   m_Name: Slot 2
   m_TagString: Untagged
@@ -1200,38 +1167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134c9109e4dca4c42bb0fdffc45e513d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: 
-  item: {fileID: 0}
-  index: 1
---- !u!114 &1005901638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1005901633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 820404184}
-          m_TargetAssemblyTypeName: CraftingManager, Assembly-CSharp
-          m_MethodName: OnClickSlot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1005901637}
-            m_ObjectArgumentAssemblyTypeName: Slot, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  item: {fileID: 11400000, guid: 0d19c6f05dfc4e145a39ab23967301c0, type: 2}
+  icon: {fileID: 1677601561}
 --- !u!1 &1063618262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1462,6 +1399,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &1259403927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 182194363576317382, guid: 890d84e5e2004044db6cf2e394437bbb, type: 3}
+  m_PrefabInstance: {fileID: 7215930981750239397}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1337929530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,6 +1758,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 582353064}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1677601561 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6875249926579692928, guid: 890d84e5e2004044db6cf2e394437bbb, type: 3}
+  m_PrefabInstance: {fileID: 7215930981750239397}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259403927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1677601564
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259403927}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1688642897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1991,10 +1956,18 @@ PrefabInstance:
       propertyPath: ItemName
       value: Metal
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4340953340230492945, guid: 2a8051d586d1b8946836a7846d2769a5, type: 3}
+    - {fileID: 9188724133275447372, guid: 2a8051d586d1b8946836a7846d2769a5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1142692599195142584, guid: 2a8051d586d1b8946836a7846d2769a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 457997197}
+    - targetCorrespondingSourceObject: {fileID: 1142692599195142584, guid: 2a8051d586d1b8946836a7846d2769a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 457997199}
   m_SourcePrefab: {fileID: 100100000, guid: 2a8051d586d1b8946836a7846d2769a5, type: 3}
 --- !u!1001 &7215930981750239397
 PrefabInstance:
@@ -2008,6 +1981,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunPowder
       objectReference: {fileID: 0}
+    - target: {fileID: 2899620341559312121, guid: 890d84e5e2004044db6cf2e394437bbb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d19c6f05dfc4e145a39ab23967301c0, type: 2}
     - target: {fileID: 3818351831318047904, guid: 890d84e5e2004044db6cf2e394437bbb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2058,15 +2035,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3818351831318047904, guid: 890d84e5e2004044db6cf2e394437bbb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3818351831318047904, guid: 890d84e5e2004044db6cf2e394437bbb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3818351831318047904, guid: 890d84e5e2004044db6cf2e394437bbb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3818351831318047904, guid: 890d84e5e2004044db6cf2e394437bbb, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2092,10 +2069,14 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 820404184}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7710233065117881562, guid: 890d84e5e2004044db6cf2e394437bbb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 182194363576317382, guid: 890d84e5e2004044db6cf2e394437bbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1677601564}
   m_SourcePrefab: {fileID: 100100000, guid: 890d84e5e2004044db6cf2e394437bbb, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
