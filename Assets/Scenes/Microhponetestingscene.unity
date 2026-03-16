@@ -274,8 +274,16 @@ PrefabInstance:
       value: PlayerNew
       objectReference: {fileID: 0}
     - target: {fileID: 2705358773822893746, guid: 93b7e32b871486b428c40db73ee9fb1f, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705358773822893746, guid: 93b7e32b871486b428c40db73ee9fb1f, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896004766435526240, guid: 93b7e32b871486b428c40db73ee9fb1f, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 5373947038919972834, guid: 93b7e32b871486b428c40db73ee9fb1f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -317,6 +325,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6075394302190404417, guid: 93b7e32b871486b428c40db73ee9fb1f, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307377199889560831, guid: 93b7e32b871486b428c40db73ee9fb1f, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 8071716827981901662, guid: 93b7e32b871486b428c40db73ee9fb1f, type: 3}
       propertyPath: playerCam
       value: 
@@ -325,6 +341,10 @@ PrefabInstance:
       propertyPath: cameraHolder
       value: 
       objectReference: {fileID: 1208259148}
+    - target: {fileID: 8071716827981901662, guid: 93b7e32b871486b428c40db73ee9fb1f, type: 3}
+      propertyPath: footstepAudioSource
+      value: 
+      objectReference: {fileID: 530590280}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -355,7 +375,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530590272}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 121f4a1dfcbbb794e924915c019f4aa6, type: 3}
@@ -1501,7 +1521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6814650463043460577, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_StoppingDistance
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalPosition.x

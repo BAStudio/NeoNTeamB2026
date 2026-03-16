@@ -44,12 +44,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float mountHeight = 1f;
     [SerializeField] private float mountDuration = 0.5f;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioSource footstepAudioSource;
+
     float horizontalInput;
     float verticalInput;
 
     Vector3 moveDirection;
 
     Rigidbody rb;
+
+    // New: Expose if the player is moving based on Rigidbody velocity
+    public bool IsMoving { get; private set; }
 
     private void Start()
     {
@@ -77,6 +83,16 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         SpeedControl();
         HandleCrouch();
+
+        // Detect if moving based on Rigidbody velocity (XZ plane)
+        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        IsMoving = flatVel.magnitude > 0.1f; // 0.1f is a small threshold to ignore jitter
+
+        if (IsMoving)
+        {
+            //Debug.Log("He hears me!");
+            footstepAudioSource.Play();
+        }
 
         if (grounded)
             rb.linearDamping = groundDrag;
