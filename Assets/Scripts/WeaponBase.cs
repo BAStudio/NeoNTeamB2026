@@ -6,11 +6,31 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected int currentAmmo = 12;
     [SerializeField] protected float shootCooldown = 0.5f;
     [SerializeField] protected float reloadTime = 1.5f;
+    [SerializeField] protected float accuracy = 0.5f;
+    [SerializeField] protected GameObject bulletHolePrefab;
+    [SerializeField] protected ParticleSystem bulletSmoke;
+    public float Accuracy => accuracy;
+    protected float OriginalAccuracy;
     protected float lastShootTime = 0f;
     protected bool isReloading = false;
     protected float reloadCooldown = 0f;
+
+    protected virtual void Start()
+    {
+        OriginalAccuracy = accuracy;
+    }
+
     protected virtual void Update()
     {
+        if (Input.GetMouseButton(1))
+        {
+            accuracy = Mathf.Lerp(accuracy, 1f, Time.deltaTime * 5f);
+        }
+        else
+        {
+            accuracy = Mathf.Lerp(accuracy, OriginalAccuracy, Time.deltaTime * 5f);
+        }
+
         if (Input.GetMouseButtonDown(0) && Time.time >= lastShootTime && !isReloading && currentAmmo > 0)
         {
             lastShootTime = Time.time + shootCooldown;
@@ -29,6 +49,30 @@ public abstract class WeaponBase : MonoBehaviour
             }
         }
     }
+
+    protected Vector3 GetAccuracyDirection()
+    {
+        Camera cam = Camera.main;
+        Ray centerRay = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+        Vector3 aimPoint;
+        if (Physics.Raycast(centerRay, out RaycastHit hit, 1000f))
+        {
+            aimPoint = hit.point;
+        }
+        else
+        {
+            aimPoint = centerRay.GetPoint(1000f);
+        }
+
+        Vector3 direction = (aimPoint - transform.position).normalized;
+
+        float spread = 1 - accuracy;
+        Vector2 randomCircle = UnityEngine.Random.insideUnitCircle * spread;
+        direction += cam.transform.right * randomCircle.x + cam.transform.up * randomCircle.y;
+        return direction.normalized;
+    }
+
     protected abstract void Shoot();
     protected virtual void StartReload()
     {
@@ -40,10 +84,5 @@ public abstract class WeaponBase : MonoBehaviour
     {
         currentAmmo = maxAmmo;
         isReloading = false;
-    }
-    protected virtual void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.forward * 10f);
     }
 }
