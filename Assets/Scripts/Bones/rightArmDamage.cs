@@ -6,8 +6,7 @@ public class RightArmDamage : DamageBase
     [SerializeField] private AudioSource Aud;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-        Debug.Log("rightArmDamage active");
+    { 
         RightArmDamage = 0.0f;
         Health = 100.0f;
 
@@ -46,14 +45,14 @@ public class RightArmDamage : DamageBase
     }
     private void damageDebuff()
     {
-        Debug.Log("Right arm damaged, movement speed reduced");
+        Debug.Log("Right arm broken, can't use heavy weapons");
         //playerMovement.ApplySpeedMultiplier(0.75f); // debuff
         Aud.Play();
     }
 
     private void healing()
     {
-        Debug.Log("Right arm healed, movement speed restored");
+        Debug.Log("Right arm healed, heavy weapon usage restored");
         playerMovement.ResetSpeed(); // healing
     }
 

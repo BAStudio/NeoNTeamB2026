@@ -43,13 +43,13 @@ public class LeftArmDamage : DamageBase
     }
     private void damageDebuff()
     {
-        Debug.Log("Left arm damaged, movement speed reduced");
+        Debug.Log("Left arm broken, can't use heavy weapons.");
         //playerMovement.ApplySpeedMultiplier(0.75f);
         Aud.Play();
     }
 
     private void healing()
     {
-        Debug.Log("Left arm healed, movement speed restored");
+        Debug.Log("Left arm healed, Use of heavy weapons possible");
     }
 }
