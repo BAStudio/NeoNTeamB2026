@@ -6,6 +6,12 @@ public class boneHealing : DamageBase
     {
         if (collision.gameObject.tag == "healing")
         {
+            Debug.Log("boneHealing: OnCollisionEnter with: " + collision.gameObject.name);
+            if (!collision.gameObject.CompareTag("healing"))
+                return;
+
+            Debug.Log("boneHealing: found healing tag on " + collision.gameObject.name);
+
             if (Leftlegisbroken)
             {
                 Leftlegisbroken = false;

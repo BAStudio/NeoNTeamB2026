@@ -13,6 +13,11 @@ public class RightArmDamage : DamageBase
 
     }
 
+    protected virtual void Awake()
+    {
+        if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -29,9 +34,10 @@ public class RightArmDamage : DamageBase
             return;
         }
     }
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "damage")
+        if (other.gameObject.tag == "damage")
         {
             Debug.Log("Right Arm damaged" + RightArmDamage);
             RightArmDamage += 1;
@@ -41,12 +47,16 @@ public class RightArmDamage : DamageBase
     private void damageDebuff()
     {
         Debug.Log("Right arm damaged, movement speed reduced");
+        //playerMovement.ApplySpeedMultiplier(0.75f); // debuff
         Aud.Play();
     }
 
     private void healing()
     {
         Debug.Log("Right arm healed, movement speed restored");
+        playerMovement.ResetSpeed(); // healing
     }
+
+
 }
 

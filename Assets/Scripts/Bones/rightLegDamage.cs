@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class RightLegDamage : DamageBase
 {
@@ -10,6 +11,10 @@ public class RightLegDamage : DamageBase
         RightLegDamage = 0.0f;
         Health = 100.0f;
 
+    }
+    protected virtual void Awake()
+    {
+        if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -28,9 +33,10 @@ public class RightLegDamage : DamageBase
             return;
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "damage")
+        Debug.Log("Collision detected with " + other.gameObject.tag);
+        if (other.gameObject.tag == "damage")
         {
             Debug.Log("Right leg damaged" + RightLegDamage);
             RightLegDamage += 1;
@@ -40,6 +46,7 @@ public class RightLegDamage : DamageBase
     private void damageDebuff()
     {
         Debug.Log("Right leg damaged, movement speed reduced");
+        playerMovement.ApplySpeedMultiplier(0.75f);
         Aud.Play();
     }
 

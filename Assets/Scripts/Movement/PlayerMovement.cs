@@ -50,13 +50,24 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+    [SerializeField] private float moveSpeedMultiplier = 10f;
 
+    public void ApplySpeedMultiplier(float multiplier)
+    {
+        moveSpeedMultiplier *= multiplier;
+    }
+
+    public void ResetSpeed()
+    {
+        moveSpeedMultiplier *= 1.25f;
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
         initialSpeed = moveSpeed;
+        moveSpeedMultiplier = 10f;
 
         originalHeight = transform.localScale.y;
         targetHeight = originalHeight;
@@ -155,7 +166,7 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         if (grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * moveSpeedMultiplier, ForceMode.Force);
         else
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
     }

@@ -11,6 +11,10 @@ public class LeftLegDamage : DamageBase
         Health = 100.0f;
 
     }
+    protected virtual void Awake()
+    {
+        if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -29,9 +33,10 @@ public class LeftLegDamage : DamageBase
         }
 
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "damage")
+        Debug.Log("Collision detected with " + other.gameObject.tag);
+        if (other.gameObject.tag == "damage")
         {
             Debug.Log("Left leg damaged" + RightArmDamage);
             LeftLegDamage += 1;
@@ -41,6 +46,7 @@ public class LeftLegDamage : DamageBase
     private void damageDebuff()
     {
         Debug.Log("Left leg damaged, movement speed reduced");
+        playerMovement.ApplySpeedMultiplier(0.75f);
         Aud.Play();
     }
 
