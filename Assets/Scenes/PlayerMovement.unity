@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 57886050}
   - component: {fileID: 57886049}
   - component: {fileID: 57886048}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Climb
   m_TagString: ClimableObject
   m_Icon: {fileID: 0}
@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 256998732}
   - component: {fileID: 256998731}
   - component: {fileID: 256998730}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 356897332}
   - component: {fileID: 356897331}
   - component: {fileID: 356897330}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Climb
   m_TagString: ClimableObject
   m_Icon: {fileID: 0}
@@ -1425,7 +1425,7 @@ GameObject:
   - component: {fileID: 774083266}
   - component: {fileID: 774083265}
   - component: {fileID: 774083264}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
