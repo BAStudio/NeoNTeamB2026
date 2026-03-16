@@ -6,6 +6,8 @@ TagManager:
   tags:
   - damage
   - ClimableObject
+  - Item
+  - Screwdriver
   layers:
   - Default
   - TransparentFX

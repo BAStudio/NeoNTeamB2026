@@ -37,27 +37,16 @@ public class ItemPickup : MonoBehaviour
                 GameObject item = hit.transform.gameObject;
 
                 Rigidbody rb = item.GetComponent<Rigidbody>();
+
                 if (rb != null)
                 {
                     rb.isKinematic = true;
-                    rb.detectCollisions = false;
+                    rb.detectCollisions = true;
+                    rb.linearVelocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
                 }
 
-                bool added = InventorySystem.Instance.AddItem(item);
-
-                if (added)
-                {
-                    Debug.Log("Picked up: " + item.name);
-                }
-                else
-                {
-                    // inventory vol → physics terugzetten
-                    if (rb != null)
-                    {
-                        rb.isKinematic = false;
-                        rb.detectCollisions = true;
-                    }
-                }
+                InventorySystem.Instance.AddItem(item);
             }
         }
     }

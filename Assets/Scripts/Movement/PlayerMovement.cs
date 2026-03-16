@@ -110,10 +110,12 @@ public class PlayerMovement : MonoBehaviour
             moveSpeed = initialSpeed;
 
         if (Input.GetKeyDown(KeyCode.LeftControl))
-            StartCrouch();
-
-        if (Input.GetKeyUp(KeyCode.LeftControl))
-            StopCrouch();
+        {
+            if (isCrouching)
+                StopCrouch();
+            else
+                StartCrouch();
+        }
     }
 
     private void HandleCrouch()
