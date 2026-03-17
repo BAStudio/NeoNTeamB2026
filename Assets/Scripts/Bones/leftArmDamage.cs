@@ -6,11 +6,11 @@ public class LeftArmDamage : DamageBase
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("leftArmDamage active");
         LeftArmDamage = 0.0f;
         Health = 100.0f;
 
     }
+    [System.Obsolete]
     protected virtual void Awake()
     {
         if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>();

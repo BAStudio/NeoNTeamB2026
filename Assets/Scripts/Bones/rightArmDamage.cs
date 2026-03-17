@@ -12,6 +12,7 @@ public class RightArmDamage : DamageBase
 
     }
 
+    [System.Obsolete]
     protected virtual void Awake()
     {
         if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>();

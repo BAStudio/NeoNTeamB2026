@@ -6,11 +6,12 @@ public class LeftLegDamage : DamageBase
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("LeftLegDamage active");
         LeftLegDamage = 0f;
         Health = 100.0f;
 
     }
+
+    [System.Obsolete]
     protected virtual void Awake()
     {
         if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>();
@@ -46,7 +47,7 @@ public class LeftLegDamage : DamageBase
     private void damageDebuff()
     {
         Debug.Log("Left leg damaged, movement speed reduced");
-        playerMovement.ApplySpeedMultiplier(0.75f);
+        playerMovement.ApplySpeedMultiplier(0.6f);
         Aud.Play();
     }
 
