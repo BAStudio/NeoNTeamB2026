@@ -8,7 +8,7 @@ public class LeftLegDamage : DamageBase
     {
         LeftLegDamage = 0f;
         Health = 100.0f;
-
+        Mathf.Clamp(RightLegDamage, 0.0f, 3.0f);
     }
 
     [System.Obsolete]

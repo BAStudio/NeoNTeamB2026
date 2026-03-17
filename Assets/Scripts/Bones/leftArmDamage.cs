@@ -8,7 +8,7 @@ public class LeftArmDamage : DamageBase
     {
         LeftArmDamage = 0.0f;
         Health = 100.0f;
-
+        Mathf.Clamp(LeftArmDamage, 0.0f, 3.0f);
     }
     [System.Obsolete]
     protected virtual void Awake()

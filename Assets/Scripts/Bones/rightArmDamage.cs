@@ -9,7 +9,7 @@ public class RightArmDamage : DamageBase
     { 
         RightArmDamage = 0.0f;
         Health = 100.0f;
-
+        Mathf.Clamp(RightArmDamage, 0.0f, 3.0f);
     }
 
     [System.Obsolete]
