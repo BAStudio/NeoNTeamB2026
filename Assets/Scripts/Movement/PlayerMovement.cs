@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveSpeedMultiplier = 1f;
     }
-    // New: Expose if the player is moving based on Rigidbody velocity
+
     public bool IsMoving { get; private set; }
 
     private void Start()
