@@ -2,8 +2,11 @@
 
 public class ItemPickup : MonoBehaviour
 {
+    [Header("Item Identification")]
+    public string itemID; 
     public float pickupRange = 3f;
     private Camera playerCamera;
+
 
     void Start()
     {
@@ -23,14 +26,13 @@ public class ItemPickup : MonoBehaviour
         }
     }
 
+
+
     void TryPickup()
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(playerCamera.transform.position,
-                            playerCamera.transform.forward,
-                            out hit,
-                            pickupRange))
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit,pickupRange))
         {
             if (hit.transform.CompareTag("Item"))
             {
