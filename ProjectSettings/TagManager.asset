@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ClimableObject
   - SoundObject
+  - Ground
   layers:
   - Default
   - TransparentFX
