@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - damage
   - ClimableObject
+  - SoundObject
   layers:
   - Default
   - TransparentFX
@@ -36,8 +38,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Walls
+  - EnemyFindSounds
   m_SortingLayers:
   - name: Default
     uniqueID: 0
