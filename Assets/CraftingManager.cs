@@ -6,20 +6,25 @@ using UnityEngine.UI;
 public class CraftingManager : MonoBehaviour
 {
     [SerializeField] private Slot[] craftingSlots;
+    [SerializeField] private Slot resultSlot;
     [SerializeField] private RecipeData[] recipes;
 
-    private int currentSlot = 0;
-
-    public void AddItem(ItemData item)
+    public void TryCraft()
     {
-        if (currentSlot >= craftingSlots.Length)
-            return;
+        ItemData result = CheckRecipe();
 
-        craftingSlots[currentSlot].SetItem(item);
-        currentSlot++;
+        if (result != null)
+        {
+            resultSlot.SetItem(result);
+
+            foreach (Slot slot in craftingSlots)
+            {
+                slot.Clear();
+            }
+        }
     }
 
-    public ItemData CheckRecipe()
+    private ItemData CheckRecipe()
     {
         List<ItemData> playerItems = new List<ItemData>();
 
@@ -34,6 +39,7 @@ public class CraftingManager : MonoBehaviour
         foreach (RecipeData recipe in recipes)
         {
             List<ItemData> recipeItems = new List<ItemData>(recipe.ingredients);
+
             recipeItems.Sort((a, b) => a.itemName.CompareTo(b.itemName));
 
             if (recipeItems.Count != playerItems.Count)

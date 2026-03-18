@@ -1,12 +1,17 @@
+using System.Threading;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public ItemData itemData;
+
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
+    private Vector3 startPosition;
 
-    private void Awake()
+    void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
@@ -14,24 +19,17 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = false;
+        startPosition = transform.position;
+        canvasGroup.blocksRaycasts  = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.position = Input.mousePosition;
+        rectTransform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = true;
-        Debug.Log("Stopped dragging");
-        Vector2 ray = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-        RaycastHit2D hit = Physics2D.Raycast(ray, ray);
-        if (hit.collider != null)
-        {
-            Debug.Log("Mouse raycast hit: " + hit.collider.gameObject.name);
-        }
     }
-
 }
