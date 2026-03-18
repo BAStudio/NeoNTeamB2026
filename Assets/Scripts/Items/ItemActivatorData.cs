@@ -4,12 +4,12 @@ using UnityEngine;
 public class ItemActivatorData : ScriptableObject
 {
     [Header("Requirements & Rewards")]
-    public string itemName;            // The ID string to check for
-    public GameObject RewardItem;      // The prefab to spawn
+    public string itemName;            
+    public GameObject RewardItem;      
 
     [Header("Effects")]
-    public GameObject itemActivatorEffect; // Particle prefab
-    public AudioClip interactionSound;     // Use AudioClip, not AudioSource
+    public GameObject itemActivatorEffect;
+    public AudioClip interactionSound;     
 
     [Header("UI & Settings")]
     public string uiMessage = "Press E to Open";

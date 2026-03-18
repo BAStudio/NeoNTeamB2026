@@ -17,4 +17,4 @@ MonoBehaviour:
   itemActivatorEffect: {fileID: 0}
   interactionSound: {fileID: 0}
   uiMessage: Press E to Open
-  UIRange: 3
+  UIRange: 32

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
+    [Header("Chest Settings")]
     [SerializeField] private ItemActivatorData itemActivatorData;
     [SerializeField] private string interactTag = "Player";
     [SerializeField] private KeyCode interactKey = KeyCode.E;
@@ -31,6 +32,26 @@ public class Chest : MonoBehaviour
 
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if the object entering the trigger has the "Player" tag
+        if (other.CompareTag(interactTag))
+        {
+            playerInRange = true;
+            Debug.Log("Player in rang ePress " + interactKey + " to open.");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // Reset when the player leaves the area
+        if (other.CompareTag(interactTag))
+        { 
+            playerInRange = false;
+        }
+    }
+
 
     private void OpenChest()
     {
