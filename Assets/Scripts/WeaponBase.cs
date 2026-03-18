@@ -7,8 +7,10 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected float shootCooldown = 0.5f;
     [SerializeField] protected float reloadTime = 1.5f;
     [SerializeField] protected float accuracy = 0.5f;
+    [SerializeField] protected float aimAccuracy = 1f;
     [SerializeField] protected GameObject bulletHolePrefab;
-    [SerializeField] protected ParticleSystem bulletSmoke;
+    [SerializeField] protected GameObject muzzleFlashPrefab;
+    [SerializeField] protected bool shootUseMouseButtonDown = true;
     public float Accuracy => accuracy;
     protected float OriginalAccuracy;
     protected float lastShootTime = 0f;
@@ -24,14 +26,15 @@ public abstract class WeaponBase : MonoBehaviour
     {
         if (Input.GetMouseButton(1))
         {
-            accuracy = Mathf.Lerp(accuracy, 1f, Time.deltaTime * 5f);
+            accuracy = Mathf.Lerp(accuracy, aimAccuracy, Time.deltaTime * 5f);
         }
         else
         {
             accuracy = Mathf.Lerp(accuracy, OriginalAccuracy, Time.deltaTime * 5f);
         }
 
-        if (Input.GetMouseButtonDown(0) && Time.time >= lastShootTime && !isReloading && currentAmmo > 0)
+        bool shootInput = shootUseMouseButtonDown ? Input.GetMouseButtonDown(0) : Input.GetMouseButton(0);
+        if (shootInput && Time.time >= lastShootTime && !isReloading && currentAmmo > 0)
         {
             lastShootTime = Time.time + shootCooldown;
             Shoot();
