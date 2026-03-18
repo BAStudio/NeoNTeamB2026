@@ -68,7 +68,7 @@ public abstract class WeaponBase : MonoBehaviour
             aimPoint = centerRay.GetPoint(1000f);
         }
 
-        Vector3 direction = (aimPoint - transform.position).normalized;
+        Vector3 direction = (aimPoint - cam.transform.position).normalized;
 
         float spread = 1 - accuracy;
         Vector2 randomCircle = UnityEngine.Random.insideUnitCircle * spread;
