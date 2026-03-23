@@ -53,8 +53,18 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+    [SerializeField] private float moveSpeedMultiplier = 1f;
 
-    // New: Expose if the player is moving based on Rigidbody velocity
+    public void ApplySpeedMultiplier(float multiplier)
+    {
+        moveSpeedMultiplier *= Mathf.Clamp(multiplier, 0.1f, 2f);
+    }
+
+    public void ResetSpeed()
+    {
+        moveSpeedMultiplier = 1f;
+    }
+
     public bool IsMoving { get; private set; }
 
     private void Start()
@@ -63,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
 
         initialSpeed = moveSpeed;
+        moveSpeedMultiplier = 1f;
 
         originalHeight = transform.localScale.y;
         targetHeight = originalHeight;
@@ -168,21 +179,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        float effectiveSpeed = moveSpeed * moveSpeedMultiplier;
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         if (grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * effectiveSpeed * 10f, ForceMode.Force);
         else
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * effectiveSpeed * 10f * airMultiplier, ForceMode.Force);
     }
 
     private void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
-        if (flatVel.magnitude > moveSpeed)
+        float effectiveSpeed = moveSpeed * moveSpeedMultiplier;
+        if (flatVel.magnitude > effectiveSpeed)
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            Vector3 limitedVel = flatVel.normalized * effectiveSpeed;
             rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
         }
     }
