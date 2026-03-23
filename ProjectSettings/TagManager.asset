@@ -4,6 +4,7 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - Item
   - ClimableObject
   - SoundObject
   - Ground
@@ -14,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
   - 
+  - Ground
   - 
   - 
   - 
