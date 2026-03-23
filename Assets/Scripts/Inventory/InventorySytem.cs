@@ -7,7 +7,7 @@ public class InventorySystem : MonoBehaviour
     public int CurrentSlot => currentSlot;
     public Transform handTransform;
 
-    private GameObject[] slots = new GameObject[5];
+    private GameObject[] slots = new GameObject[4];
     public int currentSlot = 0;
 
     void Awake()
@@ -79,13 +79,29 @@ public class InventorySystem : MonoBehaviour
 
     public void ChangeSlot(int newSlot)
     {
+        if (newSlot < 0 || newSlot >= slots.Length)
+        {
+            Debug.LogWarning("Slot bestaat niet: " + newSlot);
+            return;
+        }
+
         if (newSlot == currentSlot) return;
 
-        // Huidige item verbergen
         if (slots[currentSlot] != null)
             slots[currentSlot].SetActive(false);
 
         currentSlot = newSlot;
+
+        if (slots[currentSlot] != null)
+        {
+            GameObject item = slots[currentSlot];
+            item.SetActive(true);
+            item.transform.SetParent(handTransform);
+            item.transform.localPosition = Vector3.zero;
+            item.transform.localRotation = Quaternion.identity;
+        }
+
+        OnInventoryChanged?.Invoke();
 
         // Nieuwe item tonen
         if (slots[currentSlot] != null)

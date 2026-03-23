@@ -276,8 +276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bb76519d198cc4fbbd61372de31030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemID: 
   pickupRange: 3
-  playerCamera: {fileID: 0}
 --- !u!54 &758416592
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -434,8 +434,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bb76519d198cc4fbbd61372de31030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemID: 
   pickupRange: 3
-  playerCamera: {fileID: 0}
 --- !u!54 &960799820
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -829,8 +829,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bb76519d198cc4fbbd61372de31030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemID: 
   pickupRange: 3
-  playerCamera: {fileID: 0}
 --- !u!54 &1472029560
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1055,8 +1055,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bb76519d198cc4fbbd61372de31030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemID: 
   pickupRange: 3
-  playerCamera: {fileID: 0}
 --- !u!1001 &1497695481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1127,6 +1127,7 @@ GameObject:
   - component: {fileID: 1518925383}
   - component: {fileID: 1518925382}
   - component: {fileID: 1518925381}
+  - component: {fileID: 1518925384}
   m_Layer: 0
   m_Name: InventorySystem
   m_TagString: Untagged
@@ -1146,21 +1147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa14f97a79cfd444996c981602b00ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handTransform: {fileID: 1799705325}
-  slots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  currentSlot: 0
 --- !u!4 &1518925380
 Transform:
   m_ObjectHideFlags: 0
@@ -1214,6 +1200,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handTransform: {fileID: 1518925380}
+--- !u!114 &1518925384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518925378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b0957df45d52c47a9b56bc2a785529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handTransform: {fileID: 0}
+  currentSlot: 0
 --- !u!1001 &1679640468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1413,8 +1413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bb76519d198cc4fbbd61372de31030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemID: 
   pickupRange: 3
-  playerCamera: {fileID: 0}
 --- !u!54 &1791390380
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1442,11 +1442,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!4 &1799705325 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8362628530201800991, guid: 67d95a29058dcca4281bf56c23a67dc3, type: 3}
-  m_PrefabInstance: {fileID: 1679640468}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1949698033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,8 +1566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bb76519d198cc4fbbd61372de31030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemID: 
   pickupRange: 3
-  playerCamera: {fileID: 0}
 --- !u!54 &1949698039
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1648,8 +1643,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bb76519d198cc4fbbd61372de31030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemID: 
   pickupRange: 3
-  playerCamera: {fileID: 0}
 --- !u!54 &2052404270
 Rigidbody:
   m_ObjectHideFlags: 0
