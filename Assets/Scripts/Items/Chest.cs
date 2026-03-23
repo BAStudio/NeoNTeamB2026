@@ -28,9 +28,6 @@ public class Chest : MonoBehaviour
                 Debug.Log("You need the " + itemActivatorData.itemName + " to open this!");
             }
         }
-
-
-
     }
 
     private void OnTriggerEnter(Collider other)
