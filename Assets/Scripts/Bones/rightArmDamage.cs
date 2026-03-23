@@ -21,6 +21,7 @@ public class RightArmDamage : DamageBase
     // Update is called once per frame
     void Update()
     {
+        Aud.Play();
         if (!Rightarmisbroken && RightArmDamage >= 3f)
         {
             damageDebuff();
@@ -33,6 +34,7 @@ public class RightArmDamage : DamageBase
             healing();
             return;
         }
+        
     }
 
     private void OnTriggerEnter(Collider other)
