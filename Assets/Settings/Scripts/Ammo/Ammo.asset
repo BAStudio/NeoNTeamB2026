@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Ammo
   m_EditorClassIdentifier: 
   itemName: Ammo
-  icoon: {fileID: 21300000, guid: e7c1e051307d87840ba17b0630335844, type: 3}
+  icon: {fileID: 21300000, guid: e7c1e051307d87840ba17b0630335844, type: 3}
