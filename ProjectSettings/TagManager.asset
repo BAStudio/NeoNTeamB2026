@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - damage
+  - Item
   - ClimableObject
   - SoundObject
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
   - 
+  - Ground
   - 
   - 
   - 

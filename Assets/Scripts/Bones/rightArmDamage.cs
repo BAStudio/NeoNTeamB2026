@@ -1,42 +1,62 @@
+using System;
 using UnityEngine;
 
 public class RightArmDamage : DamageBase
 {
     [SerializeField] private AudioSource Aud;
-    private bool isDebuffed = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-        Debug.Log("rightArmDamage active");
-        LimbDamage = 0.0f;
+    { 
+        RightArmDamage = 0.0f;
         Health = 100.0f;
+        Mathf.Clamp(RightArmDamage, 0.0f, 3.0f);
+    }
 
+    [System.Obsolete]
+    protected virtual void Awake()
+    {
+        if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isDebuffed && LimbDamage >= 3f)
+        if (!Rightarmisbroken && RightArmDamage >= 3f)
         {
             damageDebuff();
-            isDebuffed = true;
+            Rightarmisbroken = true;
+            return;
+        }
+        if (Rightarmisbroken && RightArmDamage < 3f)
+        {
+            Rightarmisbroken = false;
+            healing();
             return;
         }
     }
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "damage")
+        if (other.gameObject.tag == "damage")
         {
-            Debug.Log("Right Arm damaged" + LimbDamage);
-            LimbDamage += 1;
+            Debug.Log("Right Arm damaged" + RightArmDamage);
+            RightArmDamage += 1;
             Health -= 10;
         }
     }
     private void damageDebuff()
     {
-        Debug.Log("Right arm damaged, movement speed reduced");
+        Debug.Log("Right arm broken, can't use heavy weapons");
+        //playerMovement.ApplySpeedMultiplier(0.75f); // debuff
         Aud.Play();
     }
 
-    private void healing() { }
+    private void healing()
+    {
+        Debug.Log("Right arm healed, heavy weapon usage restored");
+        playerMovement.ResetSpeed(); // healing
+    }
+
+
 }
+
