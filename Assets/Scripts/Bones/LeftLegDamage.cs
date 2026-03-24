@@ -40,7 +40,7 @@ public class LeftLegDamage : DamageBase
         if (other.gameObject.tag == "damage")
         {
             Debug.Log("Left leg damaged" + RightArmDamage);
-            LeftLegDamage += 1;
+            LeftLegDamage = Mathf.Clamp(LeftLegDamage + 1f, 0f, 3f);
             Health -= 10;
         }
     }

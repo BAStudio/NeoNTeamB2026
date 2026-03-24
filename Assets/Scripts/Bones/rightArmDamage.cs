@@ -42,7 +42,7 @@ public class RightArmDamage : DamageBase
         if (other.gameObject.tag == "damage")
         {
             Debug.Log("Right Arm damaged" + RightArmDamage);
-            RightArmDamage += 1;
+            RightArmDamage = Mathf.Clamp(RightArmDamage + 1f, 0f, 3f);
             Health -= 10;
         }
     }
