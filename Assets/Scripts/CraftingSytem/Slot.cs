@@ -8,6 +8,7 @@ public class Slot : MonoBehaviour, IDropHandler
     public ItemData item;
     [SerializeField] private Image icon;
     [SerializeField] private bool IsResultSlot;
+    [SerializeField] private GameObject itemPrefab;
 
     private CraftingManager craftingManager;
 
