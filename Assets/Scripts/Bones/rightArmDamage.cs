@@ -21,20 +21,14 @@ public class RightArmDamage : DamageBase
     // Update is called once per frame
     void Update()
     {
-        Aud.Play();
+
         if (!Rightarmisbroken && RightArmDamage >= 3f)
         {
             damageDebuff();
+            Aud.Play();
             Rightarmisbroken = true;
             return;
-        }
-        if (Rightarmisbroken && RightArmDamage < 3f)
-        {
-            Rightarmisbroken = false;
-            healing();
-            return;
-        }
-        
+        } 
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,10 +47,12 @@ public class RightArmDamage : DamageBase
         Aud.Play();
     }
 
-    private void healing()
+    public void RightArmHealing()
     {
         Debug.Log("Right arm healed, heavy weapon usage restored");
-        playerMovement.ResetSpeed(); // healing
+        // Mark arm as healed and decrease damage, clamped between 0 and 3
+        Rightarmisbroken = false;
+        RightArmDamage = Mathf.Clamp(RightArmDamage - 1f, 0f, 3f);
     }
 
 

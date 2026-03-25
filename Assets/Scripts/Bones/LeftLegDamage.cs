@@ -26,12 +26,6 @@ public class LeftLegDamage : DamageBase
             Leftlegisbroken = true;
             return;
         }
-        if (Leftlegisbroken && LeftLegDamage < 3f)
-        {
-            Leftlegisbroken = false;
-            healing();
-            return;
-        }
 
     }
     private void OnTriggerEnter(Collider other)
@@ -51,9 +45,12 @@ public class LeftLegDamage : DamageBase
         Aud.Play();
     }
 
-    private void healing()
+    public void HealLeftLeg()
     {
         Debug.Log("Left leg healed, movement speed restored");
+        Leftlegisbroken = false;
+        LeftLegDamage = Mathf.Clamp(LeftLegDamage - 1f, 0f, 3f);
+        playerMovement.ResetSpeed();
     }
 }
 
