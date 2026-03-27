@@ -20,7 +20,7 @@ public class DoorSystem : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
 
 
-     private DoorLocked doorLocked;
+    [SerializeField] private DoorLocked doorLocked;
 
    
 

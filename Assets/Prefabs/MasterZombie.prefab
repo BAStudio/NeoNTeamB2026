@@ -70,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ba3f38ce32361d842ae6e290af8fd9b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,8 +135,24 @@ MonoBehaviour:
   wanderingtimer: 3
   fieldofview: 60
   rotatespeed: 45
+  hearingrange: 10
+  hearingfieldofview: 360
+  hearingrotatespeed: 60
+  micSensitivity: 100
+  micThreshold: 0.05
+  sampleWindow: 128
+  nonmichearingrange: 25
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  audioCheckInterval: 0.5
+  soundSourceMask:
+    serializedVersion: 2
+    m_Bits: 0
+  nonsoundingplayerhearingfieldofview: 120
   abletoseeplayer: 1
   canusemicrohpone: 0
+  canhearobjects: 0
 --- !u!195 &6814650463043460577
 NavMeshAgent:
   m_ObjectHideFlags: 0
