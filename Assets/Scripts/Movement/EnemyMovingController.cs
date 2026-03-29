@@ -4,6 +4,17 @@ using System.Collections;
 using Unity.AI.Navigation;
 using UnityEngine.Audio;
 
+// stupidmonkeylord made this, dont ask why its so bad, i just wanted to make a sound detecting enemy and it turned into this mess, enjoy :D
+
+// selection of script (BasicEnemyControlsAndAutomation)
+
+// Script is responsible for movement and audiocontroll for the enemy
+
+// Multipe Breakpoints are known, these being:
+// NavMesh Not being baked
+
+
+
 public class EnemyMovingController : MonoBehaviour
 {
     public GameObject Player;
@@ -47,10 +58,37 @@ public class EnemyMovingController : MonoBehaviour
     [SerializeField] private bool abletoseeplayer;
     [SerializeField] private bool canusemicrohpone;
     [SerializeField] private bool canhearobjects;
+    [SerializeField] private bool develpmentmode;
 
 
     private void Start()
     {
+        //debugsystem
+        //if a system is not working how its supposed to, this will log that and you will find where the issue is where its noted
+
+        if (develpmentmode == true)
+        {
+            Debug.Log("Development mode enabled: Debug lines and logs will be shown.");
+            Debug.Log("Enemy initialized at position: " + transform.position);
+            Debug.Log("Player found: " + (Player != null ? Player.name : "No player found with tag 'Player'"));
+            Debug.Log("Microphone enabled: " + canusemicrohpone);
+            Debug.Log("Object sound detection enabled: " + canhearobjects);
+            Debug.Log("Field of view: " + fieldofview);
+            Debug.Log("Hearing range: " + hearingrange);
+            Debug.Log("Non-microphone hearing range: " + nonmichearingrange);
+            Debug.Log("Microphone sensitivity: " + micSensitivity);
+            Debug.Log("Microphone threshold: " + micThreshold);
+            Debug.Log("Audio check interval: " + audioCheckInterval);
+            Debug.Log(RandomNavSphere(transform.position, wanderingradius));
+            Debug.Log("NavMeshAgent component found: " + (agent != null ? "Yes" : "No"));
+            Debug.Log("Obstacle mask: " + obstacleMask);
+            Debug.Log("Sound source mask: " + soundSourceMask);
+            Debug.Log(NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 1f, NavMesh.AllAreas) ? "NavMesh is baked and valid" : "NavMesh is not baked or invalid at enemy position");
+            Debug.Log(CompareTag("Enemy") ? "Enemy tag is correctly set" : "Enemy tag is not set to 'Enemy'");
+        }
+
+
+
         //animator = GetComponent<Animator>();
         Player = GameObject.FindGameObjectWithTag("Player");
         //animator.SetBool("IsWalking", true);
@@ -229,7 +267,6 @@ public class EnemyMovingController : MonoBehaviour
                             heardobjectsound = true;
                             lastheardobjectposition = source.transform.position;
                             agent.SetDestination(lastheardobjectposition);
-                            //Debug.Log("Enemy heard object sound at: " + source.transform.position);
                         }
                     }
                 }
@@ -254,18 +291,9 @@ public class EnemyMovingController : MonoBehaviour
             }
         }
     }
-    
     private void OnAnimatorMove()
     {
         
     }
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.collider.gameObject == Player)
-    //    {
-    //        animator.SetBool("attac", true);
-    //        Debug.Log($"doe het pls");
-    //    }
-    //}
 
 }
