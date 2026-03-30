@@ -7,6 +7,7 @@ public class GameOverDead : DamageBase
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Time.timeScale = 1f;
         FullyBodyHealth = 100f;
         GameOverUI.SetActive(false);
     }
@@ -29,13 +30,17 @@ public class GameOverDead : DamageBase
     private void GameOver()
     {
         Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void RestartGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void GoToMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
     public void QuitGame()

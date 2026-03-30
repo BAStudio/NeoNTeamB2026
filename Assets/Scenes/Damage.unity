@@ -1469,7 +1469,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1636537193}
         m_TargetAssemblyTypeName: GameOverDead, Assembly-CSharp
-        m_MethodName: RestartGame
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5958,7 +5958,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1636537193}
         m_TargetAssemblyTypeName: GameOverDead, Assembly-CSharp
-        m_MethodName: RestartGame
+        m_MethodName: GoToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
