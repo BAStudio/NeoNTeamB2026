@@ -7,7 +7,6 @@ public class LeftArmDamage : DamageBase
     void Start()
     {
         LeftArmDamage = 0.0f;
-        Health = 100.0f;
         Mathf.Clamp(LeftArmDamage, 0.0f, 3.0f);
     }
     [System.Obsolete]
@@ -33,13 +32,12 @@ public class LeftArmDamage : DamageBase
         {
             Debug.Log("Left arm damaged" + RightArmDamage);
             LeftArmDamage = Mathf.Clamp(LeftArmDamage + 1f, 0f, 3f);
-            Health -= 10;
+            FullyBodyHealth -= 10;
         }
     }
     private void damageDebuff()
     {
         Debug.Log("Left arm broken, can't use heavy weapons.");
-        //playerMovement.ApplySpeedMultiplier(0.75f);
         Aud.Play();
     }
 

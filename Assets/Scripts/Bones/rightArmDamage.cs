@@ -8,7 +8,6 @@ public class RightArmDamage : DamageBase
     void Start()
     { 
         RightArmDamage = 0.0f;
-        Health = 100.0f;
         Mathf.Clamp(RightArmDamage, 0.0f, 3.0f);
     }
 
@@ -37,20 +36,18 @@ public class RightArmDamage : DamageBase
         {
             Debug.Log("Right Arm damaged" + RightArmDamage);
             RightArmDamage = Mathf.Clamp(RightArmDamage + 1f, 0f, 3f);
-            Health -= 10;
+            FullyBodyHealth -= 10;
         }
     }
     private void damageDebuff()
     {
         Debug.Log("Right arm broken, can't use heavy weapons");
-        //playerMovement.ApplySpeedMultiplier(0.75f); // debuff
         Aud.Play();
     }
 
     public void RightArmHealing()
     {
         Debug.Log("Right arm healed, heavy weapon usage restored");
-        // Mark arm as healed and decrease damage, clamped between 0 and 3
         Rightarmisbroken = false;
         RightArmDamage = Mathf.Clamp(RightArmDamage - 1f, 0f, 3f);
     }

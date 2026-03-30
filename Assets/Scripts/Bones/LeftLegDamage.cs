@@ -7,8 +7,7 @@ public class LeftLegDamage : DamageBase
     void Start()
     {
         LeftLegDamage = 0f;
-        Health = 100.0f;
-        Mathf.Clamp(RightLegDamage, 0.0f, 3.0f);
+        Mathf.Clamp(LeftLegDamage, 0.0f, 3.0f);
     }
 
     [System.Obsolete]
@@ -35,7 +34,7 @@ public class LeftLegDamage : DamageBase
         {
             Debug.Log("Left leg damaged" + RightArmDamage);
             LeftLegDamage = Mathf.Clamp(LeftLegDamage + 1f, 0f, 3f);
-            Health -= 10;
+            FullyBodyHealth -= 10;
         }
     }
     private void damageDebuff()
