@@ -217,6 +217,10 @@ Preset:
     value: 3.4028233e+38
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: m_XDrive.useAcceleration
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: m_YDrive.positionSpring
     value: 4000
     objectReference: {fileID: 0}
@@ -229,6 +233,10 @@ Preset:
     value: 3.4028233e+38
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: m_YDrive.useAcceleration
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: m_ZDrive.positionSpring
     value: 4000
     objectReference: {fileID: 0}
@@ -239,6 +247,10 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_ZDrive.maximumForce
     value: 3.4028233e+38
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ZDrive.useAcceleration
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_TargetRotation.x
@@ -285,6 +297,10 @@ Preset:
     value: 3.4028233e+38
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: m_AngularXDrive.useAcceleration
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: m_AngularYZDrive.positionSpring
     value: 10
     objectReference: {fileID: 0}
@@ -297,6 +313,10 @@ Preset:
     value: 3.4028233e+38
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: m_AngularYZDrive.useAcceleration
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: m_SlerpDrive.positionSpring
     value: 0
     objectReference: {fileID: 0}
@@ -307,6 +327,10 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_SlerpDrive.maximumForce
     value: 3.4028233e+38
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_SlerpDrive.useAcceleration
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_ProjectionMode
@@ -346,10 +370,15 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_MassScale
-    value: 1
+    value: 0.1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_ConnectedMassScale
     value: 1
     objectReference: {fileID: 0}
   m_ExcludedProperties: []
+  m_CoupledType:
+    m_NativeTypeID: 0
+    m_ManagedTypePPtr: {fileID: 0}
+    m_ManagedTypeFallback: 
+  m_CoupledProperties: []
