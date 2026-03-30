@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122da1b514df98c4a9d04138ce481f74, type: 3}
   m_Name: Metal
   m_EditorClassIdentifier: 
+  prefab: {fileID: 5535497014955412346, guid: ac8ccd421f13301448001b2e712a16f4, type: 3}
   itemName: Metal
   icon: {fileID: 21300000, guid: 46353c73deb9d7b4fba909d1cd5c86e2, type: 3}

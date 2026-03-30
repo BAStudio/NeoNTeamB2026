@@ -770,9 +770,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
-  icon: {fileID: 198106146}
   IsResultSlot: 0
-  itemPrefab: {fileID: 0}
+  icon: {fileID: 198106146}
+  itemUIPrefab: {fileID: 5533814321626775743, guid: fa9718886b36a6f43966c79cde87737e, type: 3}
 --- !u!1 &203463174 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1142692599195142584, guid: 2a8051d586d1b8946836a7846d2769a5, type: 3}
@@ -2868,9 +2868,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
-  icon: {fileID: 645792175}
   IsResultSlot: 0
-  itemPrefab: {fileID: 0}
+  icon: {fileID: 645792175}
+  itemUIPrefab: {fileID: 5533814321626775743, guid: fa9718886b36a6f43966c79cde87737e, type: 3}
 --- !u!1 &672541764 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 182194363576317382, guid: 890d84e5e2004044db6cf2e394437bbb, type: 3}
@@ -3056,6 +3056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: TestKey
   pickupRange: 3
+  itemData: {fileID: 0}
 --- !u!54 &758416592
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4290,6 +4291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e14abd9e1cf774b97391ef71d86744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryToggle: {fileID: 1730774953}
   craftingUI: {fileID: 1070660371}
   playerMovement: {fileID: 2011974568}
 --- !u!1 &1257331959
@@ -4743,6 +4745,10 @@ PrefabInstance:
     - target: {fileID: 8552661369681247154, guid: 07f014d140a1c5746ad9f5b15094afa5, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 194.4433
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927611588341701337, guid: 07f014d140a1c5746ad9f5b15094afa5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9026203685048399184, guid: 07f014d140a1c5746ad9f5b15094afa5, type: 3}
       propertyPath: m_IsActive
@@ -5682,6 +5688,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4659526972740810131, guid: 07f014d140a1c5746ad9f5b15094afa5, type: 3}
   m_PrefabInstance: {fileID: 1270764122}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1730774953 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9033536607273930382, guid: 07f014d140a1c5746ad9f5b15094afa5, type: 3}
+  m_PrefabInstance: {fileID: 1270764122}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986eff86285fbcc4ca3837b7edab2521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1736054678
 GameObject:
   m_ObjectHideFlags: 0
@@ -6257,6 +6274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 
   pickupRange: 3
+  itemData: {fileID: 0}
 --- !u!54 &1791390380
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6321,9 +6339,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
-  icon: {fileID: 1908816284}
   IsResultSlot: 1
-  itemPrefab: {fileID: 0}
+  icon: {fileID: 1908816284}
+  itemUIPrefab: {fileID: 5533814321626775743, guid: fa9718886b36a6f43966c79cde87737e, type: 3}
 --- !u!114 &1908816284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6654,6 +6672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 
   pickupRange: 3
+  itemData: {fileID: 0}
 --- !u!54 &1949698039
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6770,9 +6789,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
-  icon: {fileID: 1958224930}
   IsResultSlot: 0
-  itemPrefab: {fileID: 0}
+  icon: {fileID: 1958224930}
+  itemUIPrefab: {fileID: 5533814321626775743, guid: fa9718886b36a6f43966c79cde87737e, type: 3}
 --- !u!1 &1984324473
 GameObject:
   m_ObjectHideFlags: 0
@@ -7209,6 +7228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 
   pickupRange: 3
+  itemData: {fileID: 0}
 --- !u!54 &2052404270
 Rigidbody:
   m_ObjectHideFlags: 0

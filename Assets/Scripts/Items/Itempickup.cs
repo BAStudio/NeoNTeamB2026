@@ -6,6 +6,7 @@ public class ItemPickup : MonoBehaviour
     public string itemID; 
     public float pickupRange = 3f;
     private Camera playerCamera;
+    public ItemData itemData;
 
 
     void Start()

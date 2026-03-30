@@ -11,16 +11,24 @@ public class CraftingManager : MonoBehaviour
 
     public void TryCraft()
     {
+       
         ItemData result = CheckRecipe();
 
         if (result != null)
         {
             resultSlot.SetItem(result);
-
-            foreach (Slot slot in craftingSlots)
-            {
-                slot.Clear();
-            }
+        }
+        else
+        {
+            resultSlot.Clear(); //  DIT MIS JE
+        }
+         Debug.Log("TryCraft called");
+    }
+    public void ConsumeIngredients()
+    {
+        foreach (Slot slot in craftingSlots)
+        {
+            slot.Clear();
         }
     }
 

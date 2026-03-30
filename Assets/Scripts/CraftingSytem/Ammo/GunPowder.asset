@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122da1b514df98c4a9d04138ce481f74, type: 3}
   m_Name: GunPowder
   m_EditorClassIdentifier: 
+  prefab: {fileID: 7155651713518436349, guid: 73f393d149e122a46a0cef9994dfca70, type: 3}
   itemName: GunPowder
   icon: {fileID: 21300000, guid: 423ca54c3bbeace47a44a3bba346fa4c, type: 3}

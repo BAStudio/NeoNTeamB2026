@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Craftable : MonoBehaviour
 {
+    [SerializeField] private InventoryToggle inventoryToggle;
     [SerializeField] GameObject craftingUI;
     [SerializeField] MonoBehaviour playerMovement; // sleep je movement script hier
 
@@ -25,6 +26,7 @@ public class Craftable : MonoBehaviour
                 Cursor.visible = true;
 
                 playerMovement.enabled = false;
+                inventoryToggle.OpenInventory();
             }
             else
             {
@@ -33,6 +35,7 @@ public class Craftable : MonoBehaviour
                 Cursor.visible = false;
 
                 playerMovement.enabled = true;
+                inventoryToggle.CloseInventory();
             }
         }
     }

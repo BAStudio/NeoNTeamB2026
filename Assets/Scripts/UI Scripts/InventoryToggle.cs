@@ -41,4 +41,25 @@ public class InventoryToggle : MonoBehaviour
 
         }
     }
+    public void OpenInventory()
+    {
+        if (!inventoryBorder.enabled)
+        {
+            ToggleInventory();
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+
+    public void CloseInventory()
+    {
+        if (inventoryBorder.enabled)
+        {
+            ToggleInventory();
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
 }
