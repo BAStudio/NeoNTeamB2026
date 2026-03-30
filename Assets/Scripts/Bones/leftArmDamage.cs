@@ -21,14 +21,9 @@ public class LeftArmDamage : DamageBase
     {
         if (!Leftarmisbroken && LeftArmDamage >= 3f)
         {
+            Aud.Play();
             damageDebuff();
             Leftarmisbroken = true;
-            return;
-        }
-        if (Leftarmisbroken && LeftArmDamage < 3f)
-        {
-            Leftarmisbroken = false;
-            healing();
             return;
         }
     }
@@ -37,7 +32,7 @@ public class LeftArmDamage : DamageBase
         if (other.gameObject.tag == "damage")
         {
             Debug.Log("Left arm damaged" + RightArmDamage);
-            LeftArmDamage += 1;
+            LeftArmDamage = Mathf.Clamp(LeftArmDamage + 1f, 0f, 3f);
             Health -= 10;
         }
     }
@@ -48,8 +43,10 @@ public class LeftArmDamage : DamageBase
         Aud.Play();
     }
 
-    private void healing()
+    public void LeftArmHealing()
     {
+        Leftarmisbroken = false;
+        LeftArmDamage =- 1f;
         Debug.Log("Left arm healed, Use of heavy weapons possible");
     }
 }

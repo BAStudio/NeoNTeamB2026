@@ -2,44 +2,55 @@ using UnityEngine;
 
 public class BoneHealing : DamageBase
 {
-    private void OnCollisionEnter(Collision collision)
+    // References to limb damage components used for manual healing via key presses
+    [SerializeField] private RightArmDamage rightArmDamage;
+    [SerializeField] private LeftArmDamage leftArmDamage;
+    [SerializeField] private RightLegDamage rightLegDamage;
+    [SerializeField] private LeftLegDamage leftLegDamage;
+
+    private void Start()
     {
-        if (collision.gameObject.tag == "healing")
+        if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>();
+        if (rightArmDamage == null) rightArmDamage = FindObjectOfType<RightArmDamage>();
+        if (leftArmDamage == null) leftArmDamage = FindObjectOfType<LeftArmDamage>();
+        if (rightLegDamage == null) rightLegDamage = FindObjectOfType<RightLegDamage>();
+        if (leftLegDamage == null) leftLegDamage = FindObjectOfType<LeftLegDamage>();
+
+
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Y))
         {
-            if (!collision.gameObject.CompareTag("healing"))
-                return;
-
-            Debug.Log("boneHealing: found healing tag on " + collision.gameObject.name);
-
-            if (Leftlegisbroken)
+            // Heal right arm when pressing Y
+            if (rightArmDamage != null)
             {
-                Leftlegisbroken = false;
-                LeftLegDamage = Mathf.Max(0, LeftLegDamage - 1);
-                Debug.Log("Left leg healed " + LeftLegDamage);
+                rightArmDamage.RightArmHealing();
             }
-
-            if (Rightlegisbroken)
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            // Heal left arm when pressing U
+            if (leftArmDamage != null)
             {
-                Rightlegisbroken = false;
-                RightLegDamage = Mathf.Max(0, RightLegDamage - 1);
-                Debug.Log("Right leg healed " + RightLegDamage);
+                leftArmDamage.LeftArmHealing();
             }
-
-            if (Leftarmisbroken)
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            // Heal right leg when pressing H
+            if (rightLegDamage != null)
             {
-                Leftarmisbroken = false;
-                LeftArmDamage = Mathf.Max(0, LeftArmDamage - 1);
-                Debug.Log("Left arm healed " + LeftArmDamage);
+                rightLegDamage.RightLegHealed();
             }
-
-            if (Rightarmisbroken)
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            // Heal left leg when pressing J
+            if (leftLegDamage != null)
             {
-                Rightarmisbroken = false;
-                RightArmDamage = Mathf.Max(0, RightArmDamage - 1);
-                Debug.Log("Right arm healed " + RightArmDamage);
+                leftLegDamage.HealLeftLeg();
             }
-
-
         }
     }
 }
