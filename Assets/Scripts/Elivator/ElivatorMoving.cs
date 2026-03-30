@@ -7,6 +7,7 @@ public class ElevatorMoving : MonoBehaviour
     [Header("Elevator")]
     [SerializeField] private Transform elevator;
     [SerializeField] private Transform Player;
+    [SerializeField] private GameObject brokenparticleeffects;
 
     [Header("Settings")]
     [SerializeField] private float elevatorSpeed = 2f;
@@ -20,7 +21,10 @@ public class ElevatorMoving : MonoBehaviour
 
     private void Update()
     {
-        
+        if (elevatorIsBroken == true)
+        {
+            brokenparticleeffects.SetActive(true);
+        }
     }
     void Start()
     {

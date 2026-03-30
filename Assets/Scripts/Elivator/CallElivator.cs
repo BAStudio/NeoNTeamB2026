@@ -46,6 +46,7 @@ public class CallElivator : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && !elevatorCalled)
             {
                 StartCoroutine(CallElevator());
+                doorsclosed = false;
             }
         }
         if (distanceToPlayer < 2f && doorsclosed == true)
