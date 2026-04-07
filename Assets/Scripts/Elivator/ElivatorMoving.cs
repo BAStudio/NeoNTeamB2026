@@ -23,6 +23,7 @@ public class ElevatorMoving : MonoBehaviour
     {
         if (elevatorIsBroken == true)
         {
+            gameObject.BroadcastMessage("StartEncounter");
             brokenparticleeffects.SetActive(true);
         }
     }
