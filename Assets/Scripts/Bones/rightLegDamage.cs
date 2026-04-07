@@ -9,7 +9,6 @@ public class RightLegDamage : DamageBase
     {
         RightLegDamage = 0.0f;
         Health = 100.0f;
-        Mathf.Clamp(RightLegDamage, 0.0f, 3.0f);
 
     }
     [System.Obsolete]
@@ -27,12 +26,6 @@ public class RightLegDamage : DamageBase
             Rightlegisbroken = true;
             return;
         }
-        if (Rightlegisbroken && RightLegDamage < 3f)
-        {
-            Rightlegisbroken = false;
-            healedLimb();
-            return;
-        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -40,7 +33,7 @@ public class RightLegDamage : DamageBase
         if (other.gameObject.tag == "damage")
         {
             Debug.Log("Right leg damaged" + RightLegDamage);
-            RightLegDamage += 1;
+            RightLegDamage = Mathf.Clamp(RightLegDamage + 1f, 0f, 3f);
             Health -= 10;
         }
     }
@@ -51,8 +44,11 @@ public class RightLegDamage : DamageBase
         Aud.Play();
     }
 
-    private void healedLimb()
+    public void RightLegHealed()
     {
         Debug.Log("Right leg healed, movement speed restored");
+        Rightlegisbroken = false;
+        RightLegDamage = Mathf.Clamp(RightLegDamage - 1f, 0f, 3f);
+        playerMovement.ResetSpeed();
     }
 }
