@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b9f49728482b26542b8d83afc93e2617, type: 2}
     - target: {fileID: -8679921383154817045, guid: 99286a31fe10bfb478ec7b1292fbfa89, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.9
+      value: 8.72157
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 99286a31fe10bfb478ec7b1292fbfa89, type: 3}
       propertyPath: m_LocalPosition.y
@@ -64,6 +64,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.754
       objectReference: {fileID: 0}
+    - target: {fileID: -8075175428134835065, guid: 99286a31fe10bfb478ec7b1292fbfa89, type: 3}
+      propertyPath: m_Name
+      value: PF_Brick5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4754366662571164535, guid: 99286a31fe10bfb478ec7b1292fbfa89, type: 3}
+      propertyPath: m_Name
+      value: PF_Balk2
+      objectReference: {fileID: 0}
     - target: {fileID: -4654003025419822312, guid: 99286a31fe10bfb478ec7b1292fbfa89, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -76,6 +84,22 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b9f49728482b26542b8d83afc93e2617, type: 2}
+    - target: {fileID: -3450305643960425402, guid: 99286a31fe10bfb478ec7b1292fbfa89, type: 3}
+      propertyPath: m_Name
+      value: BF_Brick
+      objectReference: {fileID: 0}
+    - target: {fileID: -3176857714411145467, guid: 99286a31fe10bfb478ec7b1292fbfa89, type: 3}
+      propertyPath: m_Name
+      value: PF_Brick3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1205884918959305513, guid: 99286a31fe10bfb478ec7b1292fbfa89, type: 3}
+      propertyPath: m_Name
+      value: PF_Balk
+      objectReference: {fileID: 0}
+    - target: {fileID: 387284464379886263, guid: 99286a31fe10bfb478ec7b1292fbfa89, type: 3}
+      propertyPath: m_Name
+      value: PF_Brick2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 99286a31fe10bfb478ec7b1292fbfa89, type: 3}
       propertyPath: m_Name
       value: PF_Rubble_Pack_tj4mcccla_Low
@@ -103,6 +127,10 @@ PrefabInstance:
     - target: {fileID: 6237801272647578409, guid: 99286a31fe10bfb478ec7b1292fbfa89, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.941
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742003180302522934, guid: 99286a31fe10bfb478ec7b1292fbfa89, type: 3}
+      propertyPath: m_Name
+      value: PF_Brick4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
