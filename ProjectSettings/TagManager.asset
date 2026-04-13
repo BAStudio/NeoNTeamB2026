@@ -8,6 +8,8 @@ TagManager:
   - ClimableObject
   - SoundObject
   - Ground
+  - damage
+  - ElevatorButton
   layers:
   - Default
   - TransparentFX
