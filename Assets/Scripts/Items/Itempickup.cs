@@ -7,7 +7,6 @@ public class ItemPickup : MonoBehaviour
     public float pickupRange = 3f;
     private Camera playerCamera;
 
-
     void Start()
     {
         playerCamera = Camera.main;
