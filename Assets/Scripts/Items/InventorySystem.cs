@@ -130,6 +130,22 @@ public class InventorySystem : MonoBehaviour
         PrintInventory();
     }
 
+    public bool HasItem(string idToFind)
+    {
+        foreach (GameObject itemObj in slots)
+        {
+            if (itemObj != null)
+            {
+                ItemPickup details = itemObj.GetComponent<ItemPickup>();
+                if (details != null && details.itemID == idToFind)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     void PrintInventory()
     {
         Debug.Log("=== INVENTORY ===");
