@@ -49,7 +49,7 @@ public class ItemPickup : MonoBehaviour
                 heldItem = hit.transform.gameObject;
 
                 // Zet het item in de hand
-                heldItem.transform.SetParent(handAttachPoint);
+                heldItem.transform.position = handAttachPoint.position;
 
                 // Fysica uitzetten zodat hij niet valt
                 Rigidbody rb = heldItem.GetComponent<Rigidbody>();
