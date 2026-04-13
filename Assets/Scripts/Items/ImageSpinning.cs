@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ImageSpinning : MonoBehaviour
 {
-    private int rotationSpeed = 100;
+    [SerializeField] private int rotationSpeed = 100;
 
     [SerializeField] private Image spinImage;
 
