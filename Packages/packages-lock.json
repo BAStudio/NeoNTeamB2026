@@ -269,12 +269,12 @@
       }
     },
     "com.unity.visualeffectgraph": {
-      "version": "17.0.3",
+      "version": "17.3.0",
       "depth": 0,
       "source": "builtin",
       "dependencies": {
-        "com.unity.shadergraph": "17.0.3",
-        "com.unity.render-pipelines.core": "17.0.3"
+        "com.unity.shadergraph": "17.3.0",
+        "com.unity.render-pipelines.core": "17.3.0"
       }
     },
     "com.unity.visualscripting": {

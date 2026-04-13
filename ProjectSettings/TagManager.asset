@@ -10,7 +10,7 @@ TagManager:
   - Ground
   - damage
   - ElevatorButton
-  tags: []
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -44,7 +44,6 @@ TagManager:
   - 
   - 
   - Walls
-  - EnemyFindSounds
   m_SortingLayers:
   - name: Default
     uniqueID: 0

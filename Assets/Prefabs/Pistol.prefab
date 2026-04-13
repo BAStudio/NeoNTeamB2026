@@ -29,10 +29,11 @@ Transform:
   m_GameObject: {fileID: 6613589659487413286}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.49, y: 0.712, z: -2.574}
+  m_LocalPosition: {x: 1.01, y: 0.712, z: -2.574}
   m_LocalScale: {x: 0.24136865, y: 0.24136865, z: 0.48698542}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4765427708697103508}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &795042112366365509
@@ -63,6 +64,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -84,9 +87,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &2169111874019623844
 BoxCollider:
@@ -125,6 +130,40 @@ MonoBehaviour:
   currentAmmo: 12
   shootCooldown: 0.5
   reloadTime: 3
-  accuracy: 0.5
-  bulletHolePrefab: {fileID: 0}
-  bulletSmoke: {fileID: 0}
+  accuracy: 0.92
+  aimAccuracy: 0.98
+  bulletHolePrefab: {fileID: 875456917748703595, guid: d8e15778d66faef468032541382e5c5a, type: 3}
+  muzzleFlashPrefab: {fileID: 0}
+  shootUseMouseButtonDown: 1
+  pistolTip: {fileID: 6698438584036120521}
+--- !u!1 &6698438584036120521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4765427708697103508}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4765427708697103508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6698438584036120521}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.774}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 724399054269512260}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
