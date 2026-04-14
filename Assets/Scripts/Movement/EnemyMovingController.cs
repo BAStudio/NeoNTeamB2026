@@ -18,6 +18,7 @@ using UnityEngine.Audio;
 public class EnemyMovingController : MonoBehaviour
 {
     public GameObject Player;
+    public float health = 100f;
     float speed = 1f;
     private float timer;
     [SerializeField] private Animator animator;

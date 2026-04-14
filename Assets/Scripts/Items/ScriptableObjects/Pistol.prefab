@@ -132,11 +132,10 @@ MonoBehaviour:
   reloadTime: 3
   accuracy: 0.92
   aimAccuracy: 0.98
-  bulletHolePrefab: {fileID: 875456917748703595, guid: d8e15778d66faef468032541382e5c5a, type: 3}
   muzzleFlashPrefab: {fileID: 7565191135433506558, guid: 573fc5399aed0534493a4dd6fb9745f8, type: 3}
   shootUseMouseButtonDown: 1
   pistolTip: {fileID: 6698438584036120521}
-  bloodVFXPrefab: {fileID: 3213941586362988697, guid: 3cd87e1b0394401429137792d0b953ab, type: 3}
+  damage: 50
 --- !u!1 &6698438584036120521
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected float reloadTime = 1.5f;
     [SerializeField] protected float accuracy = 0.5f;
     [SerializeField] protected float aimAccuracy = 1f;
-    [SerializeField] protected GameObject bulletHolePrefab;
+    //[SerializeField] protected GameObject bulletHolePrefab;
     [SerializeField] protected GameObject muzzleFlashPrefab;
     [SerializeField] protected bool shootUseMouseButtonDown = true;
     public float Accuracy => accuracy;
