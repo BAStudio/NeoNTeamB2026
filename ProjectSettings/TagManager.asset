@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Item
+  - damage
   - ClimableObject
-  - SoundObject
-  - Ground
+  - Item
+  - Screwdriver
   layers:
   - Default
   - TransparentFX
@@ -15,8 +15,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
   - Ground
+  - Wire
+  - Plug
   - 
   - 
   - 
@@ -39,8 +40,7 @@ TagManager:
   - 
   - 
   - 
-  - Walls
-  - EnemyFindSounds
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
