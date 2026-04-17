@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 public class PlugController : MonoBehaviour
 {
     public bool isConected = false;
@@ -16,15 +15,24 @@ public class PlugController : MonoBehaviour
     public Rigidbody endAnchorRB;
     [HideInInspector]
     public WireController wireController;
+
+    public ParticleSystem particles; // <-- dit miste dus
+
     public void OnPlugged()
     {
+        // stop particles netjes
+        if (particles != null)
+        {
+            particles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        }
+
         OnWirePlugged.Invoke();
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.name);
+
         if (other.gameObject == endAnchor.gameObject)
         {
             isConected = true;
@@ -32,19 +40,23 @@ public class PlugController : MonoBehaviour
             endAnchor.transform.position = plugPosition.position;
             endAnchor.transform.rotation = transform.rotation;
 
-
             OnPlugged();
         }
     }
 
     private void Update()
     {
-
         if (isConected)
         {
             endAnchorRB.isKinematic = true;
             endAnchor.transform.position = plugPosition.position;
-            Vector3 eulerRotation = new Vector3(this.transform.eulerAngles.x + 90, this.transform.eulerAngles.y, this.transform.eulerAngles.z);
+
+            Vector3 eulerRotation = new Vector3(
+                this.transform.eulerAngles.x + 90,
+                this.transform.eulerAngles.y,
+                this.transform.eulerAngles.z
+            );
+
             endAnchor.transform.rotation = Quaternion.Euler(eulerRotation);
         }
     }
