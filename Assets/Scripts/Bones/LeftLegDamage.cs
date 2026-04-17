@@ -3,40 +3,54 @@ using UnityEngine;
 public class LeftLegDamage : DamageBase
 {
     [SerializeField] private AudioSource Aud;
-    private bool isDebuffed = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("LeftLegDamage active");
-        LimbDamage = 0.0f;
+        LeftLegDamage = 0f;
         Health = 100.0f;
+        Mathf.Clamp(RightLegDamage, 0.0f, 3.0f);
+    }
 
+    [System.Obsolete]
+    protected virtual void Awake()
+    {
+        if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isDebuffed && LimbDamage >= 3f)
+        if (!Leftlegisbroken && LeftLegDamage >= 3f)
         {
             damageDebuff();
-            isDebuffed = true;
+            Leftlegisbroken = true;
             return;
         }
+
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "damage")
+        Debug.Log("Collision detected with " + other.gameObject.tag);
+        if (other.gameObject.tag == "damage")
         {
-            Debug.Log("Left leg damaged" + LimbDamage);
-            LimbDamage += 1;
+            Debug.Log("Left leg damaged" + RightArmDamage);
+            LeftLegDamage = Mathf.Clamp(LeftLegDamage + 1f, 0f, 3f);
             Health -= 10;
         }
     }
     private void damageDebuff()
     {
         Debug.Log("Left leg damaged, movement speed reduced");
+        playerMovement.ApplySpeedMultiplier(0.6f);
         Aud.Play();
     }
 
-    private void healing() { }
+    public void HealLeftLeg()
+    {
+        Debug.Log("Left leg healed, movement speed restored");
+        Leftlegisbroken = false;
+        LeftLegDamage = Mathf.Clamp(LeftLegDamage - 1f, 0f, 3f);
+        playerMovement.ResetSpeed();
+    }
 }
+

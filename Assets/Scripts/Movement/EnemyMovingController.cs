@@ -31,8 +31,22 @@ public class EnemyMovingController : MonoBehaviour
     private bool heardplayer;
     private Vector3 lastheardposition;
 
+    [Header("Object Sound Detection")]
+    [SerializeField] private float nonmichearingrange = 25f;
+    private bool heardobjectsound;
+    private Vector3 lastheardobjectposition;
+
+    [SerializeField] private LayerMask obstacleMask;
+    [SerializeField] private float audioCheckInterval = 0.5f;
+    [SerializeField] private LayerMask soundSourceMask;
+    [SerializeField] private float nonsoundingplayerhearingfieldofview = 240f;
+
+    private float audioTimer;
+
+    [Header("Activation Settings")]
     [SerializeField] private bool abletoseeplayer;
     [SerializeField] private bool canusemicrohpone;
+    [SerializeField] private bool canhearobjects;
 
 
     private void Start()
@@ -40,11 +54,14 @@ public class EnemyMovingController : MonoBehaviour
         //animator = GetComponent<Animator>();
         Player = GameObject.FindGameObjectWithTag("Player");
         //animator.SetBool("IsWalking", true);
-        if (Microphone.devices.Length > 0)
+        if (canusemicrohpone == true)
         {
-            micDevice = Microphone.devices[0];
-            micclip = Microphone.Start(micDevice, true, 10, 44100);
-            Debug.Log("Microphone found: " + micDevice);
+            if (Microphone.devices.Length > 0)
+            {
+                micDevice = Microphone.devices[0];
+                micclip = Microphone.Start(micDevice, true, 10, 44100);
+                Debug.Log("Microphone found: " + micDevice);
+            }
         }
     }
     private Vector3 RandomNavSphere(Vector3 origin, float distance)
@@ -140,7 +157,39 @@ public class EnemyMovingController : MonoBehaviour
                 {
                     indistance = false;
                 }
-                
+
+            }
+            if (canhearobjects == true)
+            {
+                audioTimer += Time.deltaTime;
+                if (audioTimer >= audioCheckInterval)
+                {
+                    audioTimer = 0f;
+                    checkforaudiosources();
+                }
+            }
+            if (heardobjectsound == true)
+            {
+
+                Vector3 directionToLastHeardObject = (lastheardobjectposition - transform.position).normalized;
+                Quaternion targetRot = Quaternion.LookRotation(directionToLastHeardObject, Vector3.up);
+                RaycastHit objectHit;
+
+                if (Vector3.Angle(transform.forward, directionToLastHeardObject) < nonsoundingplayerhearingfieldofview)
+                {
+                    if (Physics.Raycast(transform.position, directionToLastHeardObject, out objectHit, Vector3.Distance(transform.position, lastheardobjectposition)))
+                    {
+                        if (objectHit.collider.CompareTag("Player"))
+                        {
+                            agent.SetDestination(lastheardobjectposition);
+                            transform.rotation = Quaternion.Slerp(
+                                transform.rotation,
+                                targetRot,
+                                hearingrotatespeed * Time.deltaTime
+                                );
+                        }
+                    }
+                }
             }
             if (indistance == true)
             {
@@ -159,17 +208,64 @@ public class EnemyMovingController : MonoBehaviour
 
     }
 
+    private void checkforaudiosources()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, nonmichearingrange, soundSourceMask);
+        foreach (Collider hit in hits)
+        {
+
+            AudioSource[] audioSources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+
+            foreach (AudioSource source in audioSources)
+            {
+                if (source.isPlaying)
+                {
+                    float dist = Vector3.Distance(transform.position, source.transform.position);
+                    if (dist <= nonmichearingrange)
+                    {
+                        Vector3 dir = (source.transform.position - transform.position).normalized;
+                        if (!Physics.Raycast(transform.position, dir, dist, obstacleMask))
+                        {
+                            heardobjectsound = true;
+                            lastheardobjectposition = source.transform.position;
+                            agent.SetDestination(lastheardobjectposition);
+                            //Debug.Log("Enemy heard object sound at: " + source.transform.position);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void HearObjectSound(Vector3 soundPosition)
+    {
+        if (!canhearobjects) return;
+
+        float dist = Vector3.Distance(transform.position, soundPosition);
+
+        if (dist <= hearingrange)
+        {
+            Vector3 dir = (soundPosition - transform.position).normalized;
+
+            if (!Physics.Raycast(transform.position, dir, dist))
+            {
+                heardobjectsound = true;
+                lastheardobjectposition = soundPosition;
+            }
+        }
+    }
+    
     private void OnAnimatorMove()
     {
         
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        //if (collision.collider.gameObject == Player)
-        {
-            animator.SetBool("attac", true);
-            Debug.Log($"doe het pls");
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.collider.gameObject == Player)
+    //    {
+    //        animator.SetBool("attac", true);
+    //        Debug.Log($"doe het pls");
+    //    }
+    //}
 
 }
