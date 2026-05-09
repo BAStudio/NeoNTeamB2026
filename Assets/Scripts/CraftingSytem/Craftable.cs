@@ -4,38 +4,42 @@ using UnityEngine;
 
 public class Craftable : MonoBehaviour
 {
-    [SerializeField] private InventoryToggle inventoryToggle;
-    [SerializeField] GameObject craftingUI;
-    [SerializeField] MonoBehaviour playerMovement; // sleep je movement script hier
+    [SerializeField] private InventoryToggle inventoryToggle; // Object/script waarmee je inventory opent
+    [SerializeField] private GameObject craftingUI; // Sleep hier CraftMenu in, niet Canvas
+    [SerializeField] private MonoBehaviour playerMovement; // Sleep hier je movement script van Player in
 
-    private bool isPlayerInRange = false;
-    private bool isOpen = false;
+    private bool isPlayerInRange = false; // Checkt of speler bij tafel staat
+    private bool isOpen = false; // Checkt of menu open is
 
     private void Update()
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            isOpen = !isOpen;
+            isOpen = !isOpen; // Wisselt open/dicht
 
-            craftingUI.SetActive(isOpen);
+            craftingUI.SetActive(isOpen); // Zet CraftMenu aan of uit
 
             if (isOpen)
             {
-                // UI open  cursor vrij + player uit
-                Cursor.lockState = CursorLockMode.None;//je kan de muis vrij bewgen
-                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None; // Maakt muis vrij
+                Cursor.visible = true; // Maakt muis zichtbaar
 
-                playerMovement.enabled = false;
-                inventoryToggle.OpenInventory();
+                if (playerMovement != null)
+                    playerMovement.enabled = false; // Zet spelerbeweging uit
+
+                if (inventoryToggle != null)
+                    inventoryToggle.OpenInventory(); // Opent inventory
             }
             else
             {
-                // UI dicht  cursor lock + player aan
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked; // Zet muis weer vast
+                Cursor.visible = false; // Verbergt muis
 
-                playerMovement.enabled = true;
-                inventoryToggle.CloseInventory();
+                if (playerMovement != null)
+                    playerMovement.enabled = true; // Zet spelerbeweging aan
+
+                if (inventoryToggle != null)
+                    inventoryToggle.CloseInventory(); // Sluit inventory
             }
         }
     }
@@ -44,7 +48,7 @@ public class Craftable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerInRange = true;
+            isPlayerInRange = true; // Speler staat dichtbij tafel
         }
     }
 
@@ -52,14 +56,19 @@ public class Craftable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerInRange = false;
+            isPlayerInRange = false; // Speler is weg van tafel
+            isOpen = false; // Menu-status resetten
 
-            craftingUI.SetActive(false);
+            craftingUI.SetActive(false); // CraftMenu sluiten
 
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked; // Cursor vastzetten
+            Cursor.visible = false; // Cursor verbergen
 
-            playerMovement.enabled = true;
+            if (playerMovement != null)
+                playerMovement.enabled = true; // Movement weer aan
+
+            if (inventoryToggle != null)
+                inventoryToggle.CloseInventory(); // Inventory sluiten
         }
     }
 }
