@@ -3,184 +3,262 @@ using UnityEngine;
 public class InventorySystem : MonoBehaviour
 {
     public static InventorySystem Instance;
-    // Hiermee kunnen andere scripts jouw inventory vinden via InventorySystem.Instance
 
     public System.Action OnInventoryChanged;
-    // Wordt aangeroepen als er iets in de inventory verandert
-
-    public int CurrentSlot => currentSlot;
-    // Geeft de actieve hotbar slot terug
-
     public Transform handTransform;
-    // Hier sleep je in Unity je hand/hold transform van je Player in
+    public int CurrentSlot => currentSlot;//// Hiermee kunnen andere scripts lezen welke hotbar slot actief is
+
+    [SerializeField] private InventoryDropzone[] inventorySlotsUI;
+    // Hier sleep je Slot1 t/m Slot12 in, zodat de UI zichtbaar wordt bijgewerkt
 
     private GameObject[] slots = new GameObject[17];
-    // 17 totale plekken:
-    // index 0 t/m 4 = Hotbar
-    // index 5 t/m 16 = Inventory
+    // 0 t/m 4 = hotbar
+    // 5 t/m 16 = inventory
 
     public int currentSlot = 0;
-    // Je actieve hotbar slot begint bij slot 1, maar in code is dat index 0
 
     private const int hotbarSlotCount = 5;
-    // Je hebt 5 hotbar slots
-
     private const int inventorySlotCount = 12;
-    // Je hebt 12 inventory slots
 
     void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-            // Zet dit object als centrale InventorySystem
-        }
         else
-        {
             Destroy(gameObject);
-            // Voorkomt dubbele InventorySystems
-        }
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) ChangeSlot(0);
-        // Toets 1 selecteert hotbar slot 1
-
         if (Input.GetKeyDown(KeyCode.Alpha2)) ChangeSlot(1);
-        // Toets 2 selecteert hotbar slot 2
-
         if (Input.GetKeyDown(KeyCode.Alpha3)) ChangeSlot(2);
-        // Toets 3 selecteert hotbar slot 3
-
         if (Input.GetKeyDown(KeyCode.Alpha4)) ChangeSlot(3);
-        // Toets 4 selecteert hotbar slot 4
-
         if (Input.GetKeyDown(KeyCode.Alpha5)) ChangeSlot(4);
-        // Toets 5 selecteert hotbar slot 5
 
         if (Input.GetKeyDown(KeyCode.Q)) DropCurrentItem();
-        // Met Q drop je het item uit je actieve hotbar slot
     }
 
-    public int GetCurrentSlotIndex()
+    public bool AddItemToInventory(GameObject item)
     {
-        return currentSlot;
-        // Geeft de actieve hotbar slot index terug
-    }
+        ItemPickup pickup = item.GetComponent<ItemPickup>();
 
-    public bool AddItem(GameObject item)
-    {
-        for (int i = 0; i < slots.Length; i++)
+        if (pickup == null || pickup.itemData == null)
         {
-            // Zoekt de eerste lege plek in hotbar + inventory
+            Debug.LogError("Item mist ItemPickup of ItemData.");
+            return false;
+        }
 
-            if (slots[i] == null)
+        for (int i = 0; i < inventorySlotCount; i++)
+        {
+            int realIndex = i + hotbarSlotCount;
+
+            if (slots[realIndex] == null)
             {
-                return AddItemToSlot(i, item);
-                // Voegt item toe aan eerste lege plek
+                bool added = AddItemToInventorySlot(i, item);
+
+                if (added && inventorySlotsUI != null && i < inventorySlotsUI.Length)
+                {
+                    inventorySlotsUI[i].SetItem(pickup.itemData);
+                    // Dit maakt het item zichtbaar én dragbaar in je inventory
+                }
+
+                return added;
             }
         }
 
-        Debug.Log("Inventory is vol!");
-        // Geen lege plek gevonden
-
+        Debug.Log("Inventory is vol.");
         return false;
-        // Item kon niet worden toegevoegd
-    }
-
-    public bool AddItemToHotbarSlot(int hotbarSlotIndex, GameObject item)
-    {
-        if (hotbarSlotIndex < 0 || hotbarSlotIndex >= hotbarSlotCount)
-        {
-            Debug.LogWarning("Hotbar slot bestaat niet: " + hotbarSlotIndex);
-            return false;
-            // Stop als hotbar index ongeldig is
-        }
-
-        return AddItemToSlot(hotbarSlotIndex, item);
-        // Hotbar gebruikt index 0 t/m 4
     }
 
     public bool AddItemToInventorySlot(int inventorySlotIndex, GameObject item)
     {
-        if (inventorySlotIndex < 0 || inventorySlotIndex >= inventorySlotCount)
-        {
-            Debug.LogWarning("Inventory slot bestaat niet: " + inventorySlotIndex);
-            return false;
-            // Stop als inventory index ongeldig is
-        }
-
         int realSlotIndex = inventorySlotIndex + hotbarSlotCount;
-        // InventorySlot 1 heeft slotIndex 0, maar wordt echte index 5
-        // InventorySlot 2 wordt index 6
-        // InventorySlot 12 wordt index 16
-        // Daardoor komt het item NIET in de hotbar
-
         return AddItemToSlot(realSlotIndex, item);
-        // Voegt item toe aan echte inventory plek
     }
 
     public bool AddItemToSlot(int slotIndex, GameObject item)
     {
-        if (item == null)
-        {
-            Debug.LogWarning("Item is null.");
-            return false;
-            // Stop als er geen item is meegegeven
-        }
+        if (item == null) return false;
 
         if (slotIndex < 0 || slotIndex >= slots.Length)
         {
             Debug.LogWarning("Slot bestaat niet: " + slotIndex);
             return false;
-            // Stop als de slot index buiten de array valt
         }
 
         if (slots[slotIndex] != null)
         {
-            Debug.Log("Slot " + (slotIndex + 1) + " is al bezet.");
+            Debug.Log("Slot is al bezet: " + slotIndex);
             return false;
-            // Stop als er al een item in deze slot zit
         }
 
         slots[slotIndex] = item;
-        // Slaat het item echt op in de inventory-array
 
         if (slotIndex == currentSlot)
         {
             item.SetActive(true);
-            // Alleen zichtbaar als het item in je actieve hotbar slot zit
 
             if (handTransform != null)
             {
                 item.transform.SetParent(handTransform);
-                // Zet het item in de hand van de speler
-
                 item.transform.localPosition = Vector3.zero;
-                // Reset positie
-
                 item.transform.localRotation = Quaternion.identity;
-                // Reset rotatie
             }
         }
         else
         {
-            item.SetActive(false);
-            // Items buiten de actieve hotbar slot worden verborgen
+            item.SetActive(false); // Inventory items zijn verborgen in de wereld
         }
 
         OnInventoryChanged?.Invoke();
-        // Laat andere scripts weten dat de inventory veranderd is
 
         Debug.Log("Item toegevoegd aan echte slot index: " + slotIndex);
-        // Laat zien in welke echte index hij zit
-
-        PrintInventory();
-        // Print overzicht in Console
-
         return true;
-        // Item is toegevoegd
+    }
+
+    public void RemoveInventorySlot(int inventorySlotIndex)
+    {
+        int realSlotIndex = inventorySlotIndex + hotbarSlotCount;
+
+        if (realSlotIndex < 0 || realSlotIndex >= slots.Length) return;
+
+        slots[realSlotIndex] = null;
+
+        if (inventorySlotsUI != null && inventorySlotIndex < inventorySlotsUI.Length)
+        {
+            inventorySlotsUI[inventorySlotIndex].ClearSlot();
+        }
+
+        OnInventoryChanged?.Invoke();
+    }
+
+    public void ChangeSlot(int newSlot)
+    {
+        if (newSlot < 0 || newSlot >= hotbarSlotCount) return;
+
+        if (slots[currentSlot] != null)
+            slots[currentSlot].SetActive(false);
+
+        currentSlot = newSlot;
+
+        if (slots[currentSlot] != null)
+        {
+            GameObject item = slots[currentSlot];
+            item.SetActive(true);
+
+            if (handTransform != null)
+            {
+                item.transform.SetParent(handTransform);
+                item.transform.localPosition = Vector3.zero;
+                item.transform.localRotation = Quaternion.identity;
+            }
+        }
+
+        OnInventoryChanged?.Invoke();
+    }
+
+    public void DropCurrentItem()
+    {
+        if (slots[currentSlot] == null) return;
+
+        GameObject item = slots[currentSlot];
+
+        item.transform.SetParent(null);
+        item.SetActive(true);
+
+        Rigidbody rb = item.GetComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+            rb.detectCollisions = true;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+
+            if (Camera.main != null)
+                rb.AddForce(Camera.main.transform.forward * 5f, ForceMode.Impulse);
+        }
+
+        slots[currentSlot] = null;
+        OnInventoryChanged?.Invoke();
+    }
+    public GameObject GetItemInInventorySlot(int inventorySlotIndex)
+    {
+        int realIndex = inventorySlotIndex + hotbarSlotCount;
+        // Inventory Slot1 = echte index 5
+
+        if (realIndex >= 0 && realIndex < slots.Length)
+        {
+            return slots[realIndex];
+            // Geeft het item uit de inventory terug
+        }
+
+        return null;
+        // Geeft niks terug als index fout is
+    }
+    public bool MoveInventoryItemToHotbar(int inventorySlotIndex)
+    {
+        int realInventoryIndex = inventorySlotIndex + hotbarSlotCount;
+        // Zet inventory index om naar echte array index
+
+        if (realInventoryIndex < hotbarSlotCount || realInventoryIndex >= slots.Length)
+        {
+            Debug.LogWarning("Inventory slot bestaat niet.");
+            return false;
+        }
+
+        GameObject item = slots[realInventoryIndex];
+
+        if (item == null)
+        {
+            Debug.Log("Geen item om te verplaatsen.");
+            return false;
+        }
+
+        for (int i = 0; i < hotbarSlotCount; i++)
+        {
+            if (slots[i] == null)
+            {
+                slots[i] = item;
+                // Zet item in eerste lege hotbar slot
+
+                slots[realInventoryIndex] = null;
+                // Maakt inventory slot leeg
+
+                if (i == currentSlot)
+                {
+                    item.SetActive(true);
+
+                    if (handTransform != null)
+                    {
+                        item.transform.SetParent(handTransform);
+                        item.transform.localPosition = Vector3.zero;
+                        item.transform.localRotation = Quaternion.identity;
+                    }
+                }
+                else
+                {
+                    item.SetActive(false);
+                }
+
+                OnInventoryChanged?.Invoke();
+
+                Debug.Log("Item verplaatst naar hotbar slot " + (i + 1));
+                return true;
+            }
+        }
+
+        Debug.Log("Hotbar is vol.");
+        return false;
+    }
+    public int GetCurrentSlotIndex()
+    {
+        return currentSlot;
+        // Geeft terug welke hotbar slot actief is
+        // 0 = hotbar slot 1
+        // 1 = hotbar slot 2
+        // enzovoort
     }
 
     public GameObject GetItemInSlot(int index)
@@ -188,159 +266,40 @@ public class InventorySystem : MonoBehaviour
         if (index >= 0 && index < slots.Length)
         {
             return slots[index];
-            // Geeft item terug als index klopt
+            // Geeft het item terug dat in deze slot zit
         }
 
         return null;
-        // Geeft niks terug als index ongeldig is
+        // Als de index niet bestaat, geef niks terug
     }
-
-    public void ChangeSlot(int newSlot)
-    {
-        if (newSlot < 0 || newSlot >= hotbarSlotCount)
-        {
-            Debug.LogWarning("Hotbar slot bestaat niet: " + newSlot);
-            return;
-            // Je mag alleen wisselen tussen hotbar slot 0 t/m 4
-        }
-
-        if (newSlot == currentSlot) return;
-        // Als je al op deze slot zit, doe niks
-
-        if (slots[currentSlot] != null)
-        {
-            slots[currentSlot].SetActive(false);
-            // Verberg item uit oude hotbar slot
-        }
-
-        currentSlot = newSlot;
-        // Zet nieuwe hotbar slot actief
-
-        if (slots[currentSlot] != null)
-        {
-            GameObject item = slots[currentSlot];
-            // Pakt item uit nieuwe hotbar slot
-
-            item.SetActive(true);
-            // Maakt item zichtbaar
-
-            if (handTransform != null)
-            {
-                item.transform.SetParent(handTransform);
-                // Zet item in de hand
-
-                item.transform.localPosition = Vector3.zero;
-                // Reset positie
-
-                item.transform.localRotation = Quaternion.identity;
-                // Reset rotatie
-            }
-        }
-
-        OnInventoryChanged?.Invoke();
-        // Laat weten dat actieve slot veranderd is
-
-        Debug.Log("Gewisseld naar hotbar slot " + (currentSlot + 1));
-        // Console melding
-
-        PrintInventory();
-        // Print inventory overzicht
-    }
-
-    public void DropCurrentItem()
-    {
-        if (slots[currentSlot] == null)
-        {
-            Debug.Log("Geen item om te droppen.");
-            return;
-            // Stop als actieve hotbar slot leeg is
-        }
-
-        GameObject item = slots[currentSlot];
-        // Pakt item uit actieve hotbar slot
-
-        item.transform.SetParent(null);
-        // Haalt item uit de hand
-
-        item.SetActive(true);
-        // Maakt item zichtbaar in de wereld
-
-        Rigidbody rb = item.GetComponent<Rigidbody>();
-        // Pakt Rigidbody als die bestaat
-
-        if (rb != null)
-        {
-            rb.isKinematic = false;
-            // Zet physics aan
-
-            rb.detectCollisions = true;
-            // Zet collisions aan
-
-            rb.linearVelocity = Vector3.zero;
-            // Reset snelheid
-
-            rb.angularVelocity = Vector3.zero;
-            // Reset draaiing
-
-            if (Camera.main != null)
-            {
-                rb.AddForce(Camera.main.transform.forward * 5f, ForceMode.Impulse);
-                // Gooit item naar voren
-            }
-        }
-
-        slots[currentSlot] = null;
-        // Maakt actieve hotbar slot leeg
-
-        OnInventoryChanged?.Invoke();
-        // Laat weten dat inventory veranderd is
-
-        Debug.Log("Gedropt: " + item.name);
-        // Console melding
-
-        PrintInventory();
-        // Print inventory overzicht
-    }
-
     public bool HasItem(string idToFind)
     {
-        foreach (GameObject itemObj in slots)
+        for (int i = 0; i < slots.Length; i++)
         {
-            if (itemObj != null)
-            {
-                ItemPickup details = itemObj.GetComponent<ItemPickup>();
-                // Pakt ItemPickup info
+            // Loopt door alle slots heen: hotbar + inventory
 
-                if (details != null && details.itemID == idToFind)
+            if (slots[i] != null)
+            {
+                // Checkt alleen slots waar echt een item in zit
+
+                ItemPickup itemPickup = slots[i].GetComponent<ItemPickup>();
+                // Pakt het ItemPickup script van het item
+
+                if (itemPickup != null && itemPickup.itemID == idToFind)
                 {
                     return true;
                     // Item gevonden
+                }
+
+                if (itemPickup != null && itemPickup.itemData != null && itemPickup.itemData.itemName == idToFind)
+                {
+                    return true;
+                    // Extra check via ItemData naam
                 }
             }
         }
 
         return false;
         // Item niet gevonden
-    }
-
-    void PrintInventory()
-    {
-        Debug.Log("=== HOTBAR ===");
-
-        for (int i = 0; i < hotbarSlotCount; i++)
-        {
-            string itemName = slots[i] != null ? slots[i].name : "Empty";
-            Debug.Log("Hotbar Slot " + (i + 1) + ": " + itemName);
-            // Print hotbar slots 1 t/m 5
-        }
-
-        Debug.Log("=== INVENTORY ===");
-
-        for (int i = hotbarSlotCount; i < slots.Length; i++)
-        {
-            string itemName = slots[i] != null ? slots[i].name : "Empty";
-            Debug.Log("Inventory Slot " + (i - hotbarSlotCount + 1) + ": " + itemName);
-            // Print inventory slots 1 t/m 12
-        }
     }
 }

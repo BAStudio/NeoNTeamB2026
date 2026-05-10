@@ -2998,6 +2998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf4cd131bbb3ae4ea9f7f12a99d012c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraPosition: {fileID: 0}
+  playerCam: {fileID: 0}
 --- !u!114 &617182934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3010,6 +3012,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b213f22cd392664baed589daa2151c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sensX: 0
+  sensY: 0
+  orientation: {fileID: 0}
+  bobbingSpeed: 10
+  bobbingAmount: 0.2
+  horizontalBobbingAmount: 0.02
+  midpoint: {x: 0, y: 0, z: 0}
+  playerRigidbody: {fileID: 0}
+  tiltAmount: 5
+  tiltSmoothSpeed: 8
+  sprintTiltMultiplier: 1.5
+  sprintFovIncrease: 20
+  fovSmoothSpeed: 8
+  mountKickTilt: 8
+  mountKickUp: 0.12
+  mountDuration: 0.35
 --- !u!114 &617182935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3519,9 +3537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bb76519d198cc4fbbd61372de31030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: TestKey
-  pickupRange: 3
-  itemData: {fileID: 0}
 --- !u!54 &758416592
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3925,6 +3940,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5373947038919972834, guid: 93b7e32b871486b428c40db73ee9fb1f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071716827981901662, guid: 93b7e32b871486b428c40db73ee9fb1f, type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 617182934}
+    - target: {fileID: 8071716827981901662, guid: 93b7e32b871486b428c40db73ee9fb1f, type: 3}
+      propertyPath: cameraHolder
+      value: 
+      objectReference: {fileID: 1194887472}
+    - target: {fileID: 8071716827981901662, guid: 93b7e32b871486b428c40db73ee9fb1f, type: 3}
+      propertyPath: whatIsGround.m_Bits
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7422,9 +7449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bb76519d198cc4fbbd61372de31030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 
-  pickupRange: 3
-  itemData: {fileID: 0}
 --- !u!54 &1791390380
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7899,9 +7923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bb76519d198cc4fbbd61372de31030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 
-  pickupRange: 3
-  itemData: {fileID: 0}
 --- !u!54 &1949698039
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8450,9 +8471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bb76519d198cc4fbbd61372de31030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 
-  pickupRange: 3
-  itemData: {fileID: 0}
 --- !u!54 &2052404270
 Rigidbody:
   m_ObjectHideFlags: 0
