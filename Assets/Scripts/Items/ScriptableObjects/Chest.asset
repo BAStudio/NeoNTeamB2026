@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chest
   m_EditorClassIdentifier: 
   itemName: TestKey
-  RewardItem: {fileID: 7776942525136104175, guid: c5554ee5d9143da47b539a9fd0e6bfc0, type: 3}
+  RewardItem: {fileID: 6613589659487413286, guid: e01bc247812f4ec45826fae81014fdfd, type: 3}
   itemActivatorEffect: {fileID: 0}
   interactionSound: {fileID: 0}
   uiMessage: Press E to Open
