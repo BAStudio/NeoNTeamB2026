@@ -16,10 +16,11 @@ public class OutlineRayCast : MonoBehaviour
             if (hit.transform.TryGetComponent(out HighLightonLook outline))
             {
                 if (this.outline != outline)
-                {
+                {                 
                     this.outline?.Outline(false);
                 }
 
+                Debug.Log("[OUTLINE] Hit: " + hit.transform.name);
                 this.outline = outline;
                 outline.Outline(true);
             }
