@@ -1,11 +1,14 @@
 using UnityEngine;
 using TMPro;
+using NUnit.Framework;
+using System;
 
 public class InteractLift : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] Camera camera;
     [SerializeField] Transform text;
+    [SerializeField] private int[] elevatorButtons;
 
     void Start()
     {
