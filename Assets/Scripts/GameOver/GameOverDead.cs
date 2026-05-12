@@ -11,7 +11,6 @@ public class GameOverDead : DamageBase
         FullyBodyHealth = 100f;
         GameOverUI.SetActive(false);
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -20,13 +19,7 @@ public class GameOverDead : DamageBase
             GameOver();
             GameOverUI.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            FullyBodyHealth -= 50f;
-            Debug.Log("Players health: " + FullyBodyHealth);
-        }
     }
-
     private void GameOver()
     {
         Time.timeScale = 0f;
