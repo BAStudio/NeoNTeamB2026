@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 122da1b514df98c4a9d04138ce481f74, type: 3}
-  m_Name: GunPowder
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 7155651713518436349, guid: 73f393d149e122a46a0cef9994dfca70, type: 3}
-  itemName: GunPowder
-  icon: {fileID: 21300000, guid: 423ca54c3bbeace47a44a3bba346fa4c, type: 3}
+  m_Name: Wood
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  prefab: {fileID: 6840545515993541536, guid: 8dd4d9d8b557b4c4fb6304a5330a4ccd, type: 3}
+  itemName: Metal
+  icon: {fileID: 21300000, guid: d0b609d83ff784343b34525215de64dc, type: 3}

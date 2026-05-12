@@ -413,4 +413,73 @@ public class InventorySystem : MonoBehaviour
 
         return false;
     }
+    public bool MoveInventoryItemToSpecificHotbarSlot(int inventorySlotIndex, int hotbarIndex)
+    {
+        if (inventorySlotIndex < 0 || inventorySlotIndex >= inventorySlotCount)
+        {
+            Debug.LogWarning("Inventory slot bestaat niet: " + inventorySlotIndex);
+            return false;
+        }
+
+        if (hotbarIndex < 0 || hotbarIndex >= hotbarSlotCount)
+        {
+            Debug.LogWarning("Hotbar slot bestaat niet: " + hotbarIndex);
+            return false;
+        }
+
+        int realInventoryIndex = inventorySlotIndex + hotbarSlotCount;
+        // Inventory Slot1 = echte index 5
+
+        GameObject item = slots[realInventoryIndex];
+        // Pakt het item uit de inventory
+
+        if (item == null)
+        {
+            Debug.Log("Geen item in inventory slot " + (inventorySlotIndex + 1));
+            return false;
+        }
+
+        if (slots[hotbarIndex] != null)
+        {
+            Debug.Log("Hotbar slot " + (hotbarIndex + 1) + " is al bezet.");
+            return false;
+        }
+
+        slots[hotbarIndex] = item;
+        // Zet item in hotbar
+
+        slots[realInventoryIndex] = null;
+        // Maakt inventory data leeg
+
+        if (inventorySlotsUI != null &&
+            inventorySlotIndex < inventorySlotsUI.Length &&
+            inventorySlotsUI[inventorySlotIndex] != null)
+        {
+            inventorySlotsUI[inventorySlotIndex].ClearSlot();
+            // Maakt ook het inventory-vakje leeg
+        }
+
+        if (hotbarIndex == currentSlot)
+        {
+            item.SetActive(true);
+
+            if (handTransform != null)
+            {
+                item.transform.SetParent(handTransform);
+                item.transform.localPosition = Vector3.zero;
+                item.transform.localRotation = Quaternion.identity;
+            }
+        }
+        else
+        {
+            item.SetActive(false);
+        }
+
+        OnInventoryChanged?.Invoke();
+        // Update hotbar UI
+
+        Debug.Log("Item van inventory slot " + (inventorySlotIndex + 1) + " naar hotbar slot " + (hotbarIndex + 1));
+
+        return true;
+    }
 }
