@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Item
+  - damage
   - ClimableObject
+  - Item
+  - Screwdriver
   layers:
   - Default
   - TransparentFX
@@ -13,9 +15,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
   - Ground
-  - 
+  - Wire
+  - Plug
   - 
   - 
   - 
