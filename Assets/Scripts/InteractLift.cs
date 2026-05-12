@@ -9,8 +9,12 @@ public class InteractLift : MonoBehaviour
     [SerializeField] private GameObject textObject;
     [SerializeField] private TMP_Text notificationText;
 
+    [Header("Settings")]
+    [SerializeField] private float raycastDistance = 5f;
+
     [Header("Notifications")]
     [SerializeField] private NotificationData[] notifications;
+
 
     [Serializable]
     public class NotificationData
@@ -27,7 +31,7 @@ public class InteractLift : MonoBehaviour
             playerCamera.transform.position,
             playerCamera.transform.forward,
             out hit,
-            Mathf.Infinity))
+            raycastDistance))
         {
             bool foundNotification = false;
 

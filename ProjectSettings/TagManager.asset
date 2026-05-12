@@ -11,6 +11,7 @@ TagManager:
   - damage
   - ElevatorButton
   - Enemy
+  - Chest
   layers:
   - Default
   - TransparentFX
