@@ -4,11 +4,12 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Item
+  - damage
   - ClimableObject
+  - Item
+  - Screwdriver
   - SoundObject
   - Ground
-  - damage
   - ElevatorButton
   - Enemy
   - Chest
@@ -19,8 +20,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
   - Ground
+  - Wire
+  - Plug
   - Attack
   - outline
   - 
