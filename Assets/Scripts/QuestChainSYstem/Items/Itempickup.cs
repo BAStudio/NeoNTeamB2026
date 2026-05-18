@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using UnityEngine; 
 
 public class ItemPickup : MonoBehaviour
 {
+    [Header("Item Identification")]
+    public string itemID; 
     public float pickupRange = 3f;
     public Transform handAttachPoint;
 
     private Camera cam;
     private GameObject heldItem;
+
 
     void Start()
     {
@@ -35,6 +38,8 @@ public class ItemPickup : MonoBehaviour
             heldItem.transform.rotation = handAttachPoint.rotation;
         }
     }
+
+
 
     void TryPickup()
     {
