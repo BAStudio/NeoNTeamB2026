@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Item
   - ClimableObject
+  - SoundObject
+  - Ground
+  - damage
+  - ElevatorButton
+  - Enemy
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -15,6 +21,8 @@ TagManager:
   - UI
   - 
   - Ground
+  - Attack
+  - outline
   - 
   - 
   - 
@@ -36,9 +44,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Walls
   m_SortingLayers:
   - name: Default
     uniqueID: 0
