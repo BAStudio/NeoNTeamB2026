@@ -6,10 +6,8 @@ public class Chest : MonoBehaviour
     [SerializeField] private ItemActivatorData itemActivatorData;
     [SerializeField] private string interactTag = "Player";
     [SerializeField] private KeyCode interactKey = KeyCode.E;
-    [SerializeField] private GameObject RequiredItem;
 
     private bool playerInRange;
-    private GameObject promptInstance;
 
     void Update()
     {
@@ -36,7 +34,7 @@ public class Chest : MonoBehaviour
         if (other.CompareTag(interactTag))
         {
             playerInRange = true;
-            Debug.Log("Player in rang ePress " + interactKey + " to open.");
+            Debug.Log("Player in range. Press " + interactKey + " to open.");
         }
     }
 
