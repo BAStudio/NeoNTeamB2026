@@ -32,15 +32,15 @@ public class InventorySystem : MonoBehaviour
         return currentSlot;
     }
 
-    public bool AddItem(GameObject item)
+    public bool AddItem(GameObject Item)
     {
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i] == null)
             {
-                slots[i] = item;
+                slots[i] = Item;
 
-                handItemHandler.HideItem(item);
+                handItemHandler.HideItem(Item);
 
                 OnInventoryChanged?.Invoke();
 
