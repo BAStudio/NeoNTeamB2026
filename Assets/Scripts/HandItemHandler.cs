@@ -6,6 +6,11 @@ public class HandItemHandler : MonoBehaviour
 
     public void ShowItem(GameObject item)
     {
+        if (handTransform == null)
+        {
+            Debug.LogWarning("HandItemHandler: handTransform is not assigned.");
+            return;
+        }
         item.SetActive(true);
         item.transform.SetParent(handTransform);
         item.transform.localPosition = Vector3.zero;
