@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System;
+using System.Collections;
 
 public class InteractLift : MonoBehaviour
 {
@@ -11,15 +12,19 @@ public class InteractLift : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private float raycastDistance = 5f;
+    [SerializeField] private float textSpeed = 0.05f;
 
     [Header("Notifications")]
     [SerializeField] private NotificationData[] notifications;
 
+    private string lastActiveTag = "";
+    private Coroutine typingCoroutine;
 
     [Serializable]
     public class NotificationData
     {
         public string tagName;
+        [TextArea(3, 10)]
         public string message;
     }
 
@@ -39,21 +44,48 @@ public class InteractLift : MonoBehaviour
             {
                 if (hit.transform.CompareTag(data.tagName))
                 {
-                    textObject.SetActive(true);
-                    notificationText.text = data.message;
-
                     foundNotification = true;
+
+                    if (lastActiveTag != data.tagName)
+                    {
+                        lastActiveTag = data.tagName;
+                        textObject.SetActive(true);
+
+                        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+                        typingCoroutine = StartCoroutine(TypeLine(data.message));
+                    }
                     break;
                 }
             }
 
             if (!foundNotification)
             {
-                textObject.SetActive(false);
+                ClearNotification();
             }
         }
         else
         {
+            ClearNotification();
+        }
+    }
+
+    IEnumerator TypeLine(string message)
+    {
+        notificationText.text = string.Empty;
+        foreach (char c in message.ToCharArray())
+        {
+            notificationText.text += c;
+            yield return new WaitForSeconds(textSpeed);
+        }
+    }
+
+    void ClearNotification()
+    {
+        if (lastActiveTag != "")
+        {
+            lastActiveTag = "";
+            if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+            notificationText.text = string.Empty;
             textObject.SetActive(false);
         }
     }
