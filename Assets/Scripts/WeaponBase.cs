@@ -12,6 +12,8 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected GameObject muzzleFlashPrefab;
     [SerializeField] protected bool shootUseMouseButtonDown = true;
     public float Accuracy => accuracy;
+    public int CurrentAmmo => currentAmmo;
+    public int MaxAmmo => maxAmmo;
     protected float OriginalAccuracy;
     protected float lastShootTime = 0f;
     protected bool isReloading = false;
