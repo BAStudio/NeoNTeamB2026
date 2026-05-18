@@ -1,39 +1,73 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.EventSystems;
 
 public class InventoryGrid : MonoBehaviour
-{
-    UICharInfo[] gridSlots;
-    UICharInfo[] inventorySlots;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+{ 
+    [SerializeField] private RectTransform[] slots;
+    [SerializeField] private int columns = 3;
+    private int currentIndex = 0;
+
+    private void Start()
     {
-        gridSlots = GetComponentsInChildren<UICharInfo>();
-       if (InventorySystem.Instance != null)
+        SelectSlot(0);
+    }
+
+    private void Update()
+    {
+        if (!InventoryToggle.IsOpen)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            Move(1, 0);
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            Move(-1, 0);
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+            Move(0, 1);
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            Move(0, -1);
+
+        if (Input.GetKeyDown(KeyCode.Return))
+            EquipSelected();
+
+
+        Debug.Log("Current Index: " + currentIndex);
+    }
+    
+    void Move(int x, int y) 
+    {
+        int row = currentIndex / columns;
+        int col = currentIndex % columns;
+
+        col += x;
+        row += y;
+
+        int newIndex = row * columns + col;
+
+        if (newIndex >= 0 && newIndex < slots.Length && col >= 0 && col < columns)
         {
-            InventorySystem.Instance.OnInventoryChanged += UpdateGrid;
-            UpdateGrid();
+            SelectSlot(newIndex);
         }
 
-
     }
 
-    // Update is called once per frame
-    void Update()
+    void SelectSlot(int index)
     {
-        
+        currentIndex = index;
+        EventSystem.current.SetSelectedGameObject(slots[currentIndex].gameObject);
+
+        if (InventorySystem.Instance != null)
+            InventorySystem.Instance.ChangeSlot(currentIndex);
     }
 
-    private void Onclick()
+    void EquipSelected()
     {
-       
+        if (InventorySystem.Instance == null) return;
 
-
-    }
-
-    private void UpdateGrid()
-    {
-     
+        GameObject item = InventorySystem.Instance.GetItemInSlot(currentIndex);
+        if (item != null)
+        {
+            InventorySystem.Instance.ChangeSlot(currentIndex);
+            Debug.Log("Equipped item from slot " + (currentIndex + 1));
+        }
     }
 }
