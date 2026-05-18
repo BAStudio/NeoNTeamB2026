@@ -14,7 +14,7 @@ public class ImageSpinning : MonoBehaviour
 
         foreach (Transform child in spinImage.transform)
         {
-            child.rotation = Quaternion.identity;
+            child.localRotation = Quaternion.identity;
         }
     }
 }
