@@ -4,10 +4,14 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - damage
-  - ClimableObject
   - Item
-  - Screwdriver
+  - ClimableObject
+  - SoundObject
+  - Ground
+  - damage
+  - ElevatorButton
+  - Enemy
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -15,9 +19,10 @@ TagManager:
   - 
   - Water
   - UI
+  - 
   - Ground
-  - Wire
-  - Plug
+  - Attack
+  - outline
   - 
   - 
   - 
@@ -39,8 +44,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Walls
   m_SortingLayers:
   - name: Default
     uniqueID: 0

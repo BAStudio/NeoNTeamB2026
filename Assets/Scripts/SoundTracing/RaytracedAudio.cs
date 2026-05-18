@@ -37,5 +37,6 @@ public class RaytracedAudio : MonoBehaviour
             // If there are no obstacles, set the volume to full
             audioSourceComponent.volume = 1f;
         }
+
     }
 }
