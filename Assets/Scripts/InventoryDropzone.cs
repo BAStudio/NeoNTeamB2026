@@ -72,15 +72,53 @@ public class InventoryDropzone : MonoBehaviour, IDropHandler
 
         ItemData itemData = draggedItem.itemData;
 
+        
+        // HOTBAR  INVENTORY
+        
+        if (draggedItem.OriginHotbarSlot != null)
+        {
+            int hotbarIndex = draggedItem.OriginHotbarSlot.HotbarIndex;
+            // Dit is de hotbar-slot waar het item vandaan komt
+
+            bool moved = InventorySystem.Instance.MoveHotbarItemToInventorySlot(hotbarIndex, slotIndex);
+            // Verplaatst het bestaande item van hotbar naar inventory
+            // Dus GEEN nieuwe prefab maken
+
+            if (moved)
+            {
+                SetItem(itemData);
+                // Zet het item zichtbaar in deze inventory-slot
+
+                draggedItem.OriginHotbarSlot.ClearSlot();
+                // Maakt de hotbar-slot visueel leeg
+
+                draggedItem.MarkDropped();
+                // Zegt tegen Item.cs dat de drop gelukt is
+
+                Destroy(draggedItem.gameObject);
+                // Verwijdert alleen het gesleepte UI-plaatje, niet het echte item
+
+                Debug.Log(itemData.itemName + " verplaatst van hotbar naar inventory slot " + (slotIndex + 1));
+            }
+
+            return;
+            // Heel belangrijk: stop hier, anders maakt hij hieronder een kopie aan
+        }
+
+         
+        // CRAFTING RESULT INVENTORY
+        
         if (itemData.prefab == null)
         {
             Debug.LogError("Geen prefab gekoppeld aan item: " + itemData.itemName);
             return;
         }
 
-        GameObject newItem = Instantiate(itemData.prefab); // Maakt echt inventory-item aan
+        GameObject newItem = Instantiate(itemData.prefab);
+        // Alleen bij crafting/result mag hij een nieuw item maken
 
         ItemPickup pickup = newItem.GetComponent<ItemPickup>();
+
         if (pickup != null)
         {
             pickup.itemData = itemData;
@@ -91,15 +129,18 @@ public class InventoryDropzone : MonoBehaviour, IDropHandler
 
         if (added)
         {
-            SetItem(itemData); // Laat item zichtbaar én dragbaar in deze inventory slot worden
+            SetItem(itemData);
 
             Slot parentSlot = draggedItem.OriginSlot;
 
             if (parentSlot != null && parentSlot.IsResultSlot)
             {
                 CraftingManager cm = FindFirstObjectByType<CraftingManager>();
+
                 if (cm != null)
-                    cm.ConsumeIngredients(); // Verbruikt crafting ingredients
+                {
+                    cm.ConsumeIngredients();
+                }
             }
 
             draggedItem.MarkDropped();
@@ -112,4 +153,5 @@ public class InventoryDropzone : MonoBehaviour, IDropHandler
             Destroy(newItem);
         }
     }
+
 }

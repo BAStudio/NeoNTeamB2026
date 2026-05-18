@@ -482,4 +482,120 @@ public class InventorySystem : MonoBehaviour
 
         return true;
     }
+
+    public bool RemoveOneItemByName(string itemName)
+    {
+        // itemName = de naam van het item dat je wilt verwijderen
+        // Bijvoorbeeld: "Ammo"
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            // Loopt door alle slots heen:
+            // index 0 t/m 4 = hotbar
+            // index 5 t/m 16 = inventory
+
+            if (slots[i] != null)
+            {
+                // Checkt alleen slots waar echt een item in zit
+
+                ItemPickup pickup = slots[i].GetComponent<ItemPickup>();
+                // Pakt het ItemPickup script van het item
+
+                if (pickup != null &&
+                    pickup.itemData != null &&
+                    pickup.itemData.itemName == itemName)
+                {
+                    // Checkt of dit item dezelfde naam heeft als itemName
+                    // Bijvoorbeeld: itemData.itemName == "Ammo"
+
+                    Destroy(slots[i]);
+                    // Verwijdert het echte GameObject van het item
+
+                    slots[i] = null;
+                    // Maakt deze slot leeg in de inventory-data
+
+                    int inventoryIndex = i - hotbarSlotCount;
+                    // Zet echte index om naar inventory UI index
+                    // Voorbeeld:
+                    // echte index 5 = inventoryIndex 0 = Slot1
+                    // echte index 6 = inventoryIndex 1 = Slot2
+
+                    if (inventoryIndex >= 0 &&
+                        inventoryIndex < inventorySlotCount &&
+                        inventorySlotsUI != null &&
+                        inventoryIndex < inventorySlotsUI.Length &&
+                        inventorySlotsUI[inventoryIndex] != null)
+                    {
+                        inventorySlotsUI[inventoryIndex].ClearSlot();
+                        // Maakt ook het plaatje uit de inventory UI leeg
+                    }
+
+                    OnInventoryChanged?.Invoke();
+                    // Laat andere scripts weten dat de inventory veranderd is
+
+                    Debug.Log("Verbruikt item: " + itemName);
+                    // Laat in de Console zien welk item is verwijderd
+
+                    return true;
+                    // Item is gevonden en verwijderd
+                }
+            }
+        }
+
+        Debug.Log("Geen item gevonden met naam: " + itemName);
+        // Er is geen Ammo/item gevonden in hotbar of inventory
+
+        return false;
+        // Item kon niet verwijderd worden
+    }
+    public bool MoveHotbarItemToInventorySlot(int hotbarIndex, int inventorySlotIndex)
+    {
+        // hotbarIndex = welke hotbar slot
+        // inventorySlotIndex = welke inventory slot
+
+        if (hotbarIndex < 0 || hotbarIndex >= hotbarSlotCount)
+        {
+            Debug.LogWarning("Hotbar slot bestaat niet: " + hotbarIndex);
+            return false;
+        }
+
+        if (inventorySlotIndex < 0 || inventorySlotIndex >= inventorySlotCount)
+        {
+            Debug.LogWarning("Inventory slot bestaat niet: " + inventorySlotIndex);
+            return false;
+        }
+
+        int realInventoryIndex = inventorySlotIndex + hotbarSlotCount;
+        // Inventory slot 1 = echte index 5
+
+        if (slots[hotbarIndex] == null)
+        {
+            Debug.Log("Geen item in hotbar slot " + (hotbarIndex + 1));
+            return false;
+        }
+
+        if (slots[realInventoryIndex] != null)
+        {
+            Debug.Log("Inventory slot " + (inventorySlotIndex + 1) + " is al bezet.");
+            return false;
+        }
+
+        GameObject item = slots[hotbarIndex];
+        // Pakt item uit hotbar
+
+        slots[realInventoryIndex] = item;
+        // Zet item in inventory data
+
+        slots[hotbarIndex] = null;
+        // Maakt hotbar data leeg
+
+        item.SetActive(false);
+        // Item zit nu in inventory, dus niet zichtbaar in hand/wereld
+
+        OnInventoryChanged?.Invoke();
+
+        Debug.Log("Item van hotbar slot " + (hotbarIndex + 1) + " naar inventory slot " + (inventorySlotIndex + 1));
+
+        return true;
+    }
 }

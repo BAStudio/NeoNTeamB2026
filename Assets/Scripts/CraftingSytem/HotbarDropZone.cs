@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HotbarDropZone : MonoBehaviour, IDropHandler
+public class HotbarDropzone : MonoBehaviour, IDropHandler
 {
     [SerializeField] private int hotbarIndex;
     // Hotbar Slot 1 = 0
@@ -10,39 +10,105 @@ public class HotbarDropZone : MonoBehaviour, IDropHandler
     // Hotbar Slot 4 = 3
     // Hotbar Slot 5 = 4
 
+    [SerializeField] private GameObject itemUIPrefab;
+    // Hier sleep je jouw ItemUI prefab in
+
+    private GameObject currentItemUI;
+    // Dit is het zichtbare dragbare item in deze hotbar slot
+
+    private ItemData currentItemData;
+    // Dit onthoudt welk item in deze hotbar slot zit
+
+    public int HotbarIndex => hotbarIndex;
+    // Hiermee kan Item.cs weten uit welke hotbar slot het item komt
+
+    public void SetItem(ItemData itemData)
+    {
+        currentItemData = itemData;
+        // Slaat de ItemData op
+
+        if (currentItemUI != null)
+        {
+            Destroy(currentItemUI);
+            // Verwijdert oud hotbar UI item
+        }
+
+        currentItemUI = Instantiate(itemUIPrefab, transform);
+        // Maakt zichtbaar item in deze hotbar slot
+
+        currentItemUI.transform.SetAsLastSibling();
+        // Zet item bovenop de slot
+
+        Item itemScript = currentItemUI.GetComponent<Item>();
+
+        if (itemScript != null)
+        {
+            itemScript.Setup(itemData);
+            // Geeft juiste ItemData mee
+
+            itemScript.SetOriginHotbarSlot(this);
+            // Zegt tegen Item.cs: dit item komt uit de hotbar
+        }
+
+        RectTransform rt = currentItemUI.GetComponent<RectTransform>();
+
+        if (rt != null)
+        {
+            rt.anchorMin = Vector2.zero;
+            rt.anchorMax = Vector2.one;
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
+            rt.anchoredPosition = Vector2.zero;
+            rt.localScale = Vector3.one;
+            // Zorgt dat het item netjes in de slot past
+        }
+    }
+
+    public void ClearSlot()
+    {
+        currentItemData = null;
+        // Leegt de data
+
+        if (currentItemUI != null)
+        {
+            Destroy(currentItemUI);
+            currentItemUI = null;
+            // Verwijdert het zichtbare UI item
+        }
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag == null) return;
-        // Stop als er niks wordt gesleept
 
         Item draggedItem = eventData.pointerDrag.GetComponent<Item>();
-        // Pakt het gesleepte Item script
 
-        if (draggedItem == null) return;
-        // Stop als het geen item is
+        if (draggedItem == null || draggedItem.itemData == null) return;
 
         if (draggedItem.OriginInventorySlot == null)
         {
             Debug.Log("Dit item komt niet uit de inventory.");
             return;
-            // We verplaatsen alleen items vanuit inventory naar hotbar
         }
 
         int inventoryIndex = draggedItem.OriginInventorySlot.SlotIndex;
-        // Kijkt uit welke inventory slot het item komt
+        // Uit welke inventory slot komt het item?
 
         bool moved = InventorySystem.Instance.MoveInventoryItemToSpecificHotbarSlot(inventoryIndex, hotbarIndex);
-        // Verplaatst item naar deze specifieke hotbar slot
+        // Verplaatst item in de data van inventory naar hotbar
 
         if (moved)
         {
+            SetItem(draggedItem.itemData);
+            // Maakt item zichtbaar in hotbar UI
+
             draggedItem.MarkDropped();
-            // Zegt dat de drag/drop gelukt is
+            // Drop is gelukt
 
             Destroy(draggedItem.gameObject);
-            // Verwijdert het UI item dat je sleepte
+            // Verwijdert het oude inventory UI item
 
-            Debug.Log("Item verplaatst naar hotbar slot " + (hotbarIndex + 1));
+            Debug.Log("Item naar hotbar slot " + (hotbarIndex + 1));
         }
     }
 }
