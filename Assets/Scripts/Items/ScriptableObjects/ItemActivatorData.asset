@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ItemActivatorData
   m_EditorClassIdentifier: 
   itemName: 
-  itemActivatorPrefab: {fileID: 0}
-  Keyitem: {fileID: 0}
-  itemActivatorSound: {fileID: 0}
-  itemActivatorUI: {fileID: 0}
-  OpenItem: {fileID: 0}
+  itemActivatorEffect: {fileID: 0}
+  RewardItem: {fileID: 0}
+  interactionSound: {fileID: 0}
+  uiMessage: {fileID: 0}
+  UIRange: 0

@@ -10,7 +10,6 @@ public class ItemPickup : MonoBehaviour
     private Camera cam;
     private GameObject heldItem;
 
-
     void Start()
     {
         cam = Camera.main;

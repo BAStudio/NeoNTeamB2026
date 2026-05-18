@@ -8,6 +8,11 @@ TagManager:
   - ClimableObject
   - Item
   - Screwdriver
+  - SoundObject
+  - Ground
+  - ElevatorButton
+  - Enemy
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -18,6 +23,8 @@ TagManager:
   - Ground
   - Wire
   - Plug
+  - Attack
+  - outline
   - 
   - 
   - 
@@ -39,8 +46,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Walls
   m_SortingLayers:
   - name: Default
     uniqueID: 0

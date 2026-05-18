@@ -61,6 +61,7 @@ public class LocalLighting : MonoBehaviour
         {
             breakslightsource.PlayDelayed(0.2f);
             Instantiate(brokenlight, transform.position, transform.rotation);
+            brokenlight.GetComponent<Collider>().enabled = false;
             Destroy(gameObject);
         }
     }
