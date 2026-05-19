@@ -15,5 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Liftintro2zodatgeenconflicts.unity
     guid: 5b797498714817e4a9c905faa7384037
   m_configObjects:
+    com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: c2b8240f7ffb0634c92c275ba43cd57e, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 9c7067e5a349e4148927b011022be3d6, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: d678ffcac9a7cad4388ecf96dcaac3f5, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
