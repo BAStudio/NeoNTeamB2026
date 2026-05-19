@@ -46,6 +46,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private AudioSource footstepAudioSource;
+    [SerializeField] private float footstepDelay = 0.45f;
+
+    private float footstepTimer;
 
     float horizontalInput;
     float verticalInput;
@@ -53,7 +56,10 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+
     [SerializeField] private float moveSpeedMultiplier = 1f;
+
+    public bool IsMoving { get; private set; }
 
     public void ApplySpeedMultiplier(float multiplier)
     {
@@ -64,8 +70,6 @@ public class PlayerMovement : MonoBehaviour
     {
         moveSpeedMultiplier = 1f;
     }
-
-    public bool IsMoving { get; private set; }
 
     private void Start()
     {
@@ -79,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         targetHeight = originalHeight;
 
         originalCameraPos = cameraHolder.localPosition;
+
         crouchCameraPos = new Vector3(
             originalCameraPos.x,
             originalCameraPos.y - 0.6f,
@@ -88,22 +93,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down,
-            playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(
+            transform.position,
+            Vector3.down,
+            playerHeight * 0.5f + 0.2f,
+            whatIsGround
+        );
 
         MyInput();
         SpeedControl();
         HandleCrouch();
+        HandleFootsteps();
 
-        // Detect if moving based on Rigidbody velocity (XZ plane)
-        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        IsMoving = flatVel.magnitude > 0.1f; // 0.1f is a small threshold to ignore jitter
+        Vector3 flatVel = new Vector3(
+            rb.linearVelocity.x,
+            0f,
+            rb.linearVelocity.z
+        );
 
-        if (IsMoving)
-        {
-            //Debug.Log("He hears me!");
-            footstepAudioSource.Play();
-        }
+        IsMoving = flatVel.magnitude > 0.1f;
 
         if (grounded)
             rb.linearDamping = groundDrag;
@@ -125,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
         {
             readyToJump = false;
             Jump();
+
             Invoke(nameof(ResetJump), jumpCoolDown);
         }
 
@@ -145,10 +154,40 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void HandleFootsteps()
+    {
+        if (IsMoving && grounded)
+        {
+            footstepTimer -= Time.deltaTime;
+
+            if (footstepTimer <= 0f)
+            {
+                footstepAudioSource.PlayOneShot(footstepAudioSource.clip);
+
+                // Faster footsteps while sprinting
+                if (Input.GetKey(KeyCode.LeftShift))
+                    footstepTimer = footstepDelay * 0.65f;
+                else if (isCrouching)
+                    footstepTimer = footstepDelay * 1.4f;
+                else
+                    footstepTimer = footstepDelay;
+            }
+        }
+        else
+        {
+            footstepTimer = 0f;
+        }
+    }
+
     private void HandleCrouch()
     {
         float currentHeight = transform.localScale.y;
-        float newHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * crouchSmoothSpeed);
+
+        float newHeight = Mathf.Lerp(
+            currentHeight,
+            targetHeight,
+            Time.deltaTime * crouchSmoothSpeed
+        );
 
         transform.localScale = new Vector3(
             transform.localScale.x,
@@ -156,7 +195,8 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale.z
         );
 
-        Vector3 targetCamPos = isCrouching ? crouchCameraPos : originalCameraPos;
+        Vector3 targetCamPos =
+            isCrouching ? crouchCameraPos : originalCameraPos;
 
         cameraHolder.localPosition = Vector3.Lerp(
             cameraHolder.localPosition,
@@ -168,43 +208,75 @@ public class PlayerMovement : MonoBehaviour
     private void StartCrouch()
     {
         isCrouching = true;
+
         targetHeight = crouchHeight;
+
         moveSpeed = initialSpeed * crouchSpeedMultiplier;
     }
 
     private void StopCrouch()
     {
         isCrouching = false;
+
         targetHeight = originalHeight;
+
         moveSpeed = initialSpeed;
     }
 
     private void MovePlayer()
     {
         float effectiveSpeed = moveSpeed * moveSpeedMultiplier;
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+
+        moveDirection =
+            orientation.forward * verticalInput +
+            orientation.right * horizontalInput;
 
         if (grounded)
-            rb.AddForce(moveDirection.normalized * effectiveSpeed * 10f, ForceMode.Force);
+        {
+            rb.AddForce(
+                moveDirection.normalized * effectiveSpeed * 10f,
+                ForceMode.Force
+            );
+        }
         else
-            rb.AddForce(moveDirection.normalized * effectiveSpeed * 10f * airMultiplier, ForceMode.Force);
+        {
+            rb.AddForce(
+                moveDirection.normalized * effectiveSpeed * 10f * airMultiplier,
+                ForceMode.Force
+            );
+        }
     }
 
     private void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        Vector3 flatVel = new Vector3(
+            rb.linearVelocity.x,
+            0f,
+            rb.linearVelocity.z
+        );
 
         float effectiveSpeed = moveSpeed * moveSpeedMultiplier;
+
         if (flatVel.magnitude > effectiveSpeed)
         {
             Vector3 limitedVel = flatVel.normalized * effectiveSpeed;
-            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+
+            rb.linearVelocity = new Vector3(
+                limitedVel.x,
+                rb.linearVelocity.y,
+                limitedVel.z
+            );
         }
     }
 
     private void Jump()
     {
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        rb.linearVelocity = new Vector3(
+            rb.linearVelocity.x,
+            0f,
+            rb.linearVelocity.z
+        );
+
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 
@@ -217,33 +289,53 @@ public class PlayerMovement : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(climbCheckTransform.position,
-            climbCheckTransform.forward, out hit, mountDistance))
+        if (
+            Physics.Raycast(
+                climbCheckTransform.position,
+                climbCheckTransform.forward,
+                out hit,
+                mountDistance
+            )
+        )
         {
             if (hit.transform.CompareTag("ClimableObject"))
             {
                 Vector3 forwardMove = orientation.forward * mountDistance;
                 Vector3 upwardMove = Vector3.up * mountHeight;
 
-                Vector3 targetPosition = transform.position + forwardMove + upwardMove;
+                Vector3 targetPosition =
+                    transform.position +
+                    forwardMove +
+                    upwardMove;
 
                 playerCam.TriggerMountKick();
-                StartCoroutine(SmoothClimb(targetPosition, mountDuration));
+
+                StartCoroutine(
+                    SmoothClimb(targetPosition, mountDuration)
+                );
             }
         }
     }
 
-    System.Collections.IEnumerator SmoothClimb(Vector3 targetPosition, float duration)
+    System.Collections.IEnumerator SmoothClimb(
+        Vector3 targetPosition,
+        float duration
+    )
     {
         Vector3 startPosition = transform.position;
+
         float elapsed = 0f;
 
         while (elapsed < duration)
         {
-            transform.position =
-                Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
+            transform.position = Vector3.Lerp(
+                startPosition,
+                targetPosition,
+                elapsed / duration
+            );
 
             elapsed += Time.deltaTime;
+
             yield return null;
         }
 
