@@ -8,8 +8,11 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Damage.unity
+    guid: a7fb3c6a7c30192428b5edd56da6b99e
   - enabled: 0
-    path: Assets/Scenes/LiftIntro.unity
+    path: Assets/Scenes/HighLight.unity
     guid: 99559fe20686f67429cd3faa051ead03
   - enabled: 1
     path: Assets/Scenes/Liftintro2zodatgeenconflicts.unity

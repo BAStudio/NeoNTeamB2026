@@ -7,8 +7,11 @@ public class InventorySystem : MonoBehaviour
     public int CurrentSlot => currentSlot;
     public Transform handTransform;
 
-    private GameObject[] slots = new GameObject[5];
+    private GameObject[] slots = new GameObject[12];
     public int currentSlot = 0;
+
+    private HandItemHandler handItemHandler;
+    private ItemDropHandler itemDropHandler;
 
     void Awake()
     {
@@ -16,52 +19,32 @@ public class InventorySystem : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+
+        handItemHandler = GetComponent<HandItemHandler>();
+        itemDropHandler = GetComponent<ItemDropHandler>();
+
+        if (handItemHandler != null)
+            handItemHandler.handTransform = handTransform;
     }
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        // Slot wisselen 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) ChangeSlot(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) ChangeSlot(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) ChangeSlot(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) ChangeSlot(3);
-        if (Input.GetKeyDown(KeyCode.Alpha5)) ChangeSlot(4);
-    }
     public int GetCurrentSlotIndex()
     {
         return currentSlot;
     }
 
-    public bool AddItem(GameObject item)
+    public bool AddItem(GameObject Item)
     {
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i] == null)
             {
-                slots[i] = item;
+                slots[i] = Item;
 
-                if (i == currentSlot)
-                {
-                    item.SetActive(true);
-                    item.transform.SetParent(handTransform);
-                    item.transform.localPosition = Vector3.zero;
-                    item.transform.localRotation = Quaternion.identity;
-                }
-                else
-                {
-                    item.SetActive(false);
-                }
+                handItemHandler.HideItem(Item);
 
-                
                 OnInventoryChanged?.Invoke();
 
                 Debug.Log("Item added to slot " + (i + 1));
-                PrintInventory();
                 return true;
             }
         }
@@ -79,28 +62,20 @@ public class InventorySystem : MonoBehaviour
 
     public void ChangeSlot(int newSlot)
     {
+        if (newSlot < 0 || newSlot >= slots.Length) return;
         if (newSlot == currentSlot) return;
 
-        // Huidige item verbergen
         if (slots[currentSlot] != null)
-            slots[currentSlot].SetActive(false);
+            handItemHandler.HideItem(slots[currentSlot]);
 
         currentSlot = newSlot;
 
-        // Nieuwe item tonen
         if (slots[currentSlot] != null)
-        {
-            GameObject item = slots[currentSlot];
-            item.SetActive(true);
-            item.transform.SetParent(handTransform);
-            item.transform.localPosition = Vector3.zero;
-            item.transform.localRotation = Quaternion.identity;
-        }
+            handItemHandler.ShowItem(slots[currentSlot]);
 
         OnInventoryChanged?.Invoke();
 
         Debug.Log("Switched to slot " + (currentSlot + 1));
-        PrintInventory();
     }
 
     public void DropCurrentItem()
@@ -108,26 +83,19 @@ public class InventorySystem : MonoBehaviour
         if (slots[currentSlot] == null) return;
 
         GameObject item = slots[currentSlot];
-        item.transform.SetParent(null);
-        item.SetActive(true);
+        handItemHandler.HideItem(item);
+        itemDropHandler.Drop(item);
+        slots[currentSlot] = null;
 
-        Rigidbody rb = item.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.isKinematic = false;
-            rb.detectCollisions = true;
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            rb.AddForce(Camera.main.transform.forward * 5f, ForceMode.Impulse);
-        }
-
-        slots[currentSlot] = null; 
-
-        
         OnInventoryChanged?.Invoke();
 
+        InventoryQuickaccess quickAccess = FindObjectOfType<InventoryQuickaccess>();
+        if (quickAccess != null)
+        {
+            quickAccess.ClearDroppedItems();
+        }
+
         Debug.Log("Dropped: " + item.name);
-        PrintInventory();
     }
 
     public bool HasItem(string idToFind)
@@ -144,15 +112,5 @@ public class InventorySystem : MonoBehaviour
             }
         }
         return false;
-    }
-
-    void PrintInventory()
-    {
-        Debug.Log("=== INVENTORY ===");
-        for (int i = 0; i < slots.Length; i++)
-        {
-            string itemName = slots[i] != null ? slots[i].name : "Empty";
-            Debug.Log("Slot " + (i + 1) + ": " + itemName);
-        }
     }
 }
