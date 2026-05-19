@@ -33372,6 +33372,7 @@ MonoBehaviour:
   textObject: {fileID: 1983837363}
   notificationText: {fileID: 1492550707}
   raycastDistance: 5
+  textSpeed: 0.05
   notifications:
   - tagName: ElevatorButton
     message: Press E to open
@@ -35505,8 +35506,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 8
+  m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
