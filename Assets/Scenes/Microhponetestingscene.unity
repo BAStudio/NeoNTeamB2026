@@ -1509,7 +1509,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1678484096}
   clip: {fileID: 8300000, guid: 121f4a1dfcbbb794e924915c019f4aa6, type: 3}
-  intervalSeconds: 3
 --- !u!4 &2074808767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4725198317535609224, guid: 93b7e32b871486b428c40db73ee9fb1f, type: 3}
