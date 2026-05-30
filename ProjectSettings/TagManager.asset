@@ -4,13 +4,15 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Item
+  - damage
   - ClimableObject
+  - Item
+  - Screwdriver
   - SoundObject
   - Ground
-  - damage
   - ElevatorButton
   - Enemy
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -18,10 +20,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
   - Ground
+  - Wire
+  - Plug
   - Attack
   - Pickup
+  - outline
   - 
   - 
   - 
