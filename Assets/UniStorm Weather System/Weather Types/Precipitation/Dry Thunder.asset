@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Dry Thunder
   m_EditorClassIdentifier: 
   WeatherTypeName: Dry Thunder
-  CloudProfileComponent: {fileID: 11400000, guid: 8af8e06821542df46bd3ee0b1093a6ff,
-    type: 2}
-  SunIntensity: 0.6
-  CloudShadowIntensity: 0
-  MoonIntensity: 0.5
-  UseAuroras: 1
-  AuroraIntensity: 0.4
+  CloudProfileComponent: {fileID: 11400000, guid: 7e8387c2188e50d419e234536db79b27, type: 2}
+  SunIntensity: 0.115
+  CloudShadowIntensity: 1.578
+  MoonIntensity: 1.154
+  UseAuroras: 0
+  AuroraIntensity: 0.667
   AuroraOuterColor: {r: 0, g: 1, b: 1, a: 1}
   AuroraInnerColor: {r: 0, g: 1, b: 0, a: 1}
   MinimumFogLevel: 300
@@ -27,9 +26,9 @@ MonoBehaviour:
   FogDensity: 0.005
   FogLightFalloff: 0.1
   FogHeight: 0.85
-  CameraFogHeight: 0.85
-  OverrideFogColor: 1
-  OverrideCameraFogHeight: 1
+  CameraFogHeight: 0.862
+  OverrideFogColor: 0
+  OverrideCameraFogHeight: 0
   FogColor:
     serializedVersion: 2
     key0: {r: 0.07542719, g: 0.119482026, b: 0.14150941, a: 1}
@@ -57,32 +56,31 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 8
     m_NumAlphaKeys: 2
   WindSpeedLevel: 0.85
   WindBendingLevel: 0.2
   WindIntensity: 1
-  WeatherEffect: {fileID: 198882807848139052, guid: 516fd25c12e04ba46bce3ce4bab8f8e1,
-    type: 3}
-  ParticleEffectAmount: 2000
+  WeatherEffect: {fileID: 198882807848139052, guid: 516fd25c12e04ba46bce3ce4bab8f8e1, type: 3}
+  ParticleEffectAmount: 5
   ParticleEffectVector: {x: 0, y: 28, z: 20}
-  AdditionalWeatherEffect: {fileID: 198814685187613174, guid: 041ba628b590a1c47a1643f108529d32,
-    type: 3}
+  AdditionalWeatherEffect: {fileID: 198814685187613174, guid: 041ba628b590a1c47a1643f108529d32, type: 3}
   AdditionalParticleEffectAmount: 50
   AdditionalParticleEffectVector: {x: 0, y: 0, z: 0}
   WeatherVolume: 1
   WeatherSound: {fileID: 8300000, guid: 928aedda4ed94e44d8aa3f91703465b0, type: 3}
-  PrecipitationWeatherType: 1
+  PrecipitationWeatherType: 0
   UseWeatherSound: 1
-  UseWeatherEffect: 1
-  UseAdditionalWeatherEffect: 1
-  SpecialWeatherType: 1
+  UseWeatherEffect: 0
+  UseAdditionalWeatherEffect: 0
+  SpecialWeatherType: 0
   Season: 2
   CloudHeight: 650
-  CloudLevel: 3
+  CloudLevel: 4
   TemperatureType: 1
-  ShaderControl: 2
-  OverrideCloudColor: 1
+  ShaderControl: 1
+  OverrideCloudColor: 0
   CloudColor:
     serializedVersion: 2
     key0: {r: 0.080945194, g: 0.13200873, b: 0.16037738, a: 1}
@@ -110,9 +108,10 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 8
     m_NumAlphaKeys: 2
   UseLightning: 0
   CustomizeWeatherIcon: 0
-  WaitForCloudLevel: 1
+  WaitForCloudLevel: 0
   WeatherIcon: {fileID: 2800000, guid: d5cd2010397d1b3478354f72bd2fffbe, type: 3}
