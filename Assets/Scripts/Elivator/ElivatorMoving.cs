@@ -8,8 +8,6 @@ public class ElevatorMoving : MonoBehaviour
     [SerializeField] private Transform elevator;
     [SerializeField] private Transform Player;
     [SerializeField] private GameObject brokenparticleeffects;
-    [SerializeField] private GameObject AbovebunkerLightingAtmosphere;
-
 
     [Header("Settings")]
     [SerializeField] private float elevatorSpeed = 2f;
@@ -25,7 +23,6 @@ public class ElevatorMoving : MonoBehaviour
     {
         if (elevatorIsBroken == true)
         {
-            AbovebunkerLightingAtmosphere.SetActive(false);
             gameObject.BroadcastMessage("StartEncounter");
             brokenparticleeffects.SetActive(true);
         }
