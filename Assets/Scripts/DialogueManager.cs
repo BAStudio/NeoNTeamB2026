@@ -65,6 +65,22 @@ public class DialogueManager : MonoBehaviour
 
     void HandleAction(string actionID)
     {
+        if (dialogueText == null)
+        {
+            Debug.LogError($"{nameof(DialogueManager)} is missing a reference to {nameof(dialogueText)}.", this);
+            return;
+        }
+
+        StopAllCoroutines();
+        dialogueText.text = string.Empty;
+        NextIndicator?.SetActive(false);
+
+        if (dialogues == null)
+        {
+            currentLines = null;
+            return;
+        }
+
         foreach (DialogueEntry dialogue in dialogues)
         {
             if (dialogue.actionID == actionID)
@@ -72,12 +88,12 @@ public class DialogueManager : MonoBehaviour
                 currentLines = dialogue.lines;
                 index = 0;
 
-                dialogueText.text = "";
                 StartCoroutine(TypeLine());
-
                 return;
             }
         }
+
+        currentLines = null;
     }
 
     IEnumerator TypeLine()
