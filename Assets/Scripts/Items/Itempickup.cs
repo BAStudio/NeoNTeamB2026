@@ -51,7 +51,10 @@ public class ItemPickup : MonoBehaviour
                 {
                     Debug.Log("Picked up: " + item.name);
 
-                    GameEvents.OnDialogueStart?.Invoke(itemID);
+                    if (!string.IsNullOrEmpty(itemID))
+                    {
+                        GameEvents.OnDialogueStart?.Invoke(itemID);
+                    }
                 }
                 else
                 {
