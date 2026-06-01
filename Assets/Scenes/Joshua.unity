@@ -167,14 +167,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  Door: {fileID: 1412444649}
-  TurningPoint: {fileID: 153196331}
+  door: {fileID: 1412444649}
+  turningPoint: {fileID: 153196331}
+  openSpeed: 2
   OpenDoorKey: 323
-  OpenSpeed: 2
-  DoorSound: {fileID: 8300000, guid: 5e577e6efd90c704f9969afca9559233, type: 3}
-  _audioSource: {fileID: 153196334}
-  LockKey: 102
-  UnlockKey: 101
+  lockKey: 102
+  unlockKey: 101
+  doorSound: {fileID: 8300000, guid: 5e577e6efd90c704f9969afca9559233, type: 3}
+  audioSource: {fileID: 153196334}
 --- !u!82 &153196334
 AudioSource:
   m_ObjectHideFlags: 0
@@ -284,9 +284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32be1880974b65a4dbd147efb67aa0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isLocked: 1
-  _lockedSound: {fileID: 8300000, guid: 47b1f8529b60c134ba0e20fb0a249f7c, type: 3}
-  _audioSource: {fileID: 153196334}
+  isLocked: 1
+  lockedSound: {fileID: 8300000, guid: 47b1f8529b60c134ba0e20fb0a249f7c, type: 3}
+  audioSource: {fileID: 153196334}
 --- !u!1 &1412444649
 GameObject:
   m_ObjectHideFlags: 0

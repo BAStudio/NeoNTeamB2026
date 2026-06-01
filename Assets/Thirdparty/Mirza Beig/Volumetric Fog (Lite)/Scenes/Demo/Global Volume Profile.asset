@@ -56,6 +56,9 @@ MonoBehaviour:
   highQualityFiltering:
     m_OverrideState: 1
     m_Value: 0
+  filter:
+    m_OverrideState: 1
+    m_Value: 0
   downscale:
     m_OverrideState: 1
     m_Value: 0
@@ -458,10 +461,10 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: -1.2
+    m_Value: 1
   contrast:
     m_OverrideState: 1
-    m_Value: 35
+    m_Value: 40
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 0.83296555, b: 0.8, a: 1}

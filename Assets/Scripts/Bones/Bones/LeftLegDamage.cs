@@ -30,7 +30,7 @@ public class LeftLegDamage : DamageBase
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision detected with " + other.gameObject.tag);
-        if (other.gameObject.tag == "damage")
+        if (other.gameObject.tag == "Enemy")
         {
             Debug.Log("Left leg damaged" + RightArmDamage);
             LeftLegDamage = Mathf.Clamp(LeftLegDamage + 1f, 0f, 3f);
