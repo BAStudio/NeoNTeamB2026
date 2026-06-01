@@ -1,7 +1,6 @@
 using System;
-using UnityEngine;
 
-public class GameEvents : MonoBehaviour
+public static class GameEvents
 {
-public static Action<string> OnDialogueStart;
+    public static Action<string> OnDialogueStart;
 }
