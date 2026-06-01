@@ -1,35 +1,60 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class InteractLift : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField] Camera camera;
-    [SerializeField] Transform text;
+    [Header("References")]
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private GameObject textObject;
+    [SerializeField] private TMP_Text notificationText;
 
-    void Start()
+    [Header("Settings")]
+    [SerializeField] private float raycastDistance = 5f;
+
+    [Header("Notifications")]
+    [SerializeField] private NotificationData[] notifications;
+
+
+    [Serializable]
+    public class NotificationData
     {
-        
+        public string tagName;
+        public string message;
     }
 
-    // Update is called once per frame
     void Update()
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(camera.transform.position, camera.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        if (Physics.Raycast(
+            playerCamera.transform.position,
+            playerCamera.transform.forward,
+            out hit,
+            raycastDistance))
         {
-            if (hit.transform.CompareTag("ElevatorButton"))
+            bool foundNotification = false;
+
+            foreach (NotificationData data in notifications)
             {
-                text.gameObject.SetActive(true);
+                if (hit.transform.CompareTag(data.tagName))
+                {
+                    textObject.SetActive(true);
+                    notificationText.text = data.message;
 
-
+                    foundNotification = true;
+                    break;
+                }
             }
-            else
+
+            if (!foundNotification)
             {
-                text.gameObject.SetActive(false);
+                textObject.SetActive(false);
             }
         }
-
+        else
+        {
+            textObject.SetActive(false);
+        }
     }
 }
