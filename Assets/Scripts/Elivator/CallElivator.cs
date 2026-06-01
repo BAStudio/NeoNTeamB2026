@@ -11,6 +11,8 @@ public class CallElivator : MonoBehaviour
     [SerializeField] private GameObject ElivButtonInside;
     [SerializeField] private Transform Leftdoor;
     [SerializeField] private Transform Rightdoor;
+    [SerializeField] private GameObject MaptobesetInactive;
+    [SerializeField] private GameObject MaptobeLoaded;
 
     [Header("Audio")]
     [SerializeField] private AudioSource ElivatorMusic;
@@ -23,6 +25,7 @@ public class CallElivator : MonoBehaviour
 
     private bool elevatorCalled = false;
     private bool doorsclosed = false;
+    private bool doorslocked = false;
 
     private Vector3 leftClosedPos;
     private Vector3 rightClosedPos;
@@ -43,14 +46,18 @@ public class CallElivator : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         if (distanceToPlayer < 5f)
         {
-            if (Input.GetKeyDown(KeyCode.E) && !elevatorCalled)
+            if (doorslocked == false)
             {
-                StartCoroutine(CallElevator());
-                doorsclosed = false;
+                if (Input.GetKeyDown(KeyCode.E) && !elevatorCalled)
+                {
+                    StartCoroutine(CallElevator());
+                    doorsclosed = false;
+                }
             }
         }
         if (distanceToPlayer < 2f && doorsclosed == true)
         {
+            doorslocked = true;
             gameObject.BroadcastMessage("StartElevator");
         }
     }
