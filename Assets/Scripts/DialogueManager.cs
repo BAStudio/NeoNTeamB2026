@@ -57,10 +57,10 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowNextIndicator()
     {
-        if (dialogueText.text == currentLines[index])
-        {
-            NextIndicator.SetActive(true);
-        }
+        if (NextIndicator == null || currentLines == null || dialogueText == null)
+            return;
+
+        NextIndicator.SetActive(dialogueText.text == currentLines[index] && index < currentLines.Length - 1);
     }
 
     void HandleAction(string actionID)
