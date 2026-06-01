@@ -81,12 +81,18 @@ public class InteractLift : MonoBehaviour
 
     void ClearNotification()
     {
-        if (lastActiveTag != "")
+        if (string.IsNullOrEmpty(lastActiveTag) && !textObject.activeSelf)
+            return;
+
+        lastActiveTag = string.Empty;
+
+        if (typingCoroutine != null)
         {
-            lastActiveTag = "";
-            if (typingCoroutine != null) StopCoroutine(typingCoroutine);
-            notificationText.text = string.Empty;
-            textObject.SetActive(false);
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
         }
+
+        notificationText.text = string.Empty;
+        textObject.SetActive(false);
     }
 }
