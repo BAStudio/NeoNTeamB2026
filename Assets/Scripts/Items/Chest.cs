@@ -21,9 +21,10 @@ public class Chest : MonoBehaviour
             {
                 OpenChest();
 
-                
-                GameEvents.OnDialogueStart?.Invoke(chestID);
-
+                if (!string.IsNullOrEmpty(chestID))
+                {
+                    GameEvents.OnDialogueStart?.Invoke(chestID);
+                }
                 Destroy(gameObject);
             }
             else
