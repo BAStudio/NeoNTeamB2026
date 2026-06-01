@@ -98,11 +98,16 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TypeLine()
     {
+        dialogueText.text = string.Empty;
+        NextIndicator?.SetActive(false);
+
         foreach (char c in currentLines[index])
         {
             dialogueText.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
+
+        ShowNextIndicator();
     }
 
     void NextLine()
