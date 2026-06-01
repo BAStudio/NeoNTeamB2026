@@ -3,6 +3,7 @@
 public class ItemPickup : MonoBehaviour
 {
     [Header("Item Identification")]
+
     public string itemID; 
     public float pickupRange = 3f;
     private Camera playerCamera;
@@ -49,6 +50,8 @@ public class ItemPickup : MonoBehaviour
                 if (added)
                 {
                     Debug.Log("Picked up: " + item.name);
+
+                    GameEvents.OnDialogueStart?.Invoke(itemID);
                 }
                 else
                 {
