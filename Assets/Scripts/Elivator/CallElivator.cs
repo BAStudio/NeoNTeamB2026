@@ -11,6 +11,8 @@ public class CallElivator : MonoBehaviour
     [SerializeField] private GameObject ElivButtonInside;
     [SerializeField] private Transform Leftdoor;
     [SerializeField] private Transform Rightdoor;
+    [SerializeField] private GameObject MaptobesetInactive;
+    [SerializeField] private GameObject MaptobeLoaded;
 
     [Header("Audio")]
     [SerializeField] private AudioSource ElivatorMusic;

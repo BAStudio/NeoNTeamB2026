@@ -96145,7 +96145,7 @@ MonoBehaviour:
   LightningGroundStrikeOdds: 100
   LightningStrikeEffect: {fileID: 1535608796004206, guid: 5fef780c945f5f14488871b19748cf32, type: 3}
   LightningStrikeFire: {fileID: 1364074241210124, guid: 6ab6b768af98858439bce16dbf6c68ad, type: 3}
-  WeatherGeneration: 1
+  WeatherGeneration: 0
   LightningStrikes: 0
   CloudShadows: 0
   LightningStrikesEmeraldAI: 1
@@ -379072,7 +379072,8 @@ MonoBehaviour:
   elevator: {fileID: 1481884687}
   Player: {fileID: 791238151}
   brokenparticleeffects: {fileID: 885870014}
-  AbovebunkerLightingAtmosphere: {fileID: 0}
+  MaptobesetInactive: {fileID: 0}
+  MaptobeLoaded: {fileID: 0}
   elevatorSpeed: 6
   elevatorTravelDistance: -101.2
   elevatorIsUp: 1
@@ -379097,6 +379098,8 @@ MonoBehaviour:
   ElivButtonInside: {fileID: 1834584496}
   Leftdoor: {fileID: 736908141}
   Rightdoor: {fileID: 49564901}
+  MaptobesetInactive: {fileID: 0}
+  MaptobeLoaded: {fileID: 0}
   ElivatorMusic: {fileID: 1481884686}
   Elivatorarivalding: {fileID: 1481884686}
   ElivatorMusicVolume: 0.5
@@ -403265,7 +403268,8 @@ MonoBehaviour:
   elevator: {fileID: 1816759283}
   Player: {fileID: 791238151}
   brokenparticleeffects: {fileID: 1684731001}
-  AbovebunkerLightingAtmosphere: {fileID: 0}
+  MaptobesetInactive: {fileID: 804275635}
+  MaptobeLoaded: {fileID: 1633222395}
   elevatorSpeed: 6
   elevatorTravelDistance: -101.2
   elevatorIsUp: 1
@@ -403290,6 +403294,8 @@ MonoBehaviour:
   ElivButtonInside: {fileID: 1019040164}
   Leftdoor: {fileID: 712342316}
   Rightdoor: {fileID: 453556091}
+  MaptobesetInactive: {fileID: 0}
+  MaptobeLoaded: {fileID: 0}
   ElivatorMusic: {fileID: 1816759282}
   Elivatorarivalding: {fileID: 1816759282}
   ElivatorMusicVolume: 0.5
@@ -404372,7 +404378,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147483797
+    m_Bits: 2147483861
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -583426,7 +583432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1633222396
 Transform:
   m_ObjectHideFlags: 0
