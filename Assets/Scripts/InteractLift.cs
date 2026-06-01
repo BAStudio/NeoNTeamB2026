@@ -72,7 +72,7 @@ public class InteractLift : MonoBehaviour
     IEnumerator TypeLine(string message)
     {
         notificationText.text = string.Empty;
-        foreach (char c in message.ToCharArray())
+        foreach (char c in message)
         {
             notificationText.text += c;
             yield return new WaitForSeconds(textSpeed);
