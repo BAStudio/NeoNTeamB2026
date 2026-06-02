@@ -8,18 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Damage.unity
     guid: a7fb3c6a7c30192428b5edd56da6b99e
   - enabled: 0
     path: Assets/Scenes/HighLight.unity
     guid: 99559fe20686f67429cd3faa051ead03
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Liftintro2zodatgeenconflicts.unity
     guid: 5b797498714817e4a9c905faa7384037
-  - enabled: 1
-    path: Assets/Scenes/StagingGame/Staging.unity
-    guid: cbc2d52248c045d44a1b594541aa88b3
   m_configObjects:
     com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: c2b8240f7ffb0634c92c275ba43cd57e, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 9c7067e5a349e4148927b011022be3d6, type: 2}

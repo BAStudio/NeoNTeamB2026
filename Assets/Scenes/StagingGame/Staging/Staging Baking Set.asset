@@ -1530,7 +1530,7 @@ MonoBehaviour:
             elementCount: 7
           - offset: 81395712
             elementCount: 5
-        m_Asset: {fileID: 0}
+        m_Asset: {fileID: 4900000, guid: 8bb85e2a8b378cb4d8df53b3d0a5d135, type: 3}
       cellProbeOcclusionDataAsset:
         m_AssetGUID: 23a00a6dd86dcd44b893ffd508ce8689
         m_StreamableAssetPath: APVStreamingAssets\33abc872887ba614092cc017150d64b4\23a00a6dd86dcd44b893ffd508ce8689.bytes
@@ -1992,7 +1992,7 @@ MonoBehaviour:
         elementCount: 7
       - offset: 162791424
         elementCount: 5
-    m_Asset: {fileID: 0}
+    m_Asset: {fileID: 4900000, guid: 99d0bcfd8ebf1fb449c80a7da88e2388, type: 3}
   chunkSizeInBricks: 128
   maxCellPosition: {x: 7, y: 2, z: 6}
   minCellPosition: {x: 0, y: 0, z: -1}
@@ -2036,12 +2036,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   minRendererVolumeSize: 0.1
-  skyOcclusion: 1
+  skyOcclusion: 0
   skyOcclusionBakingSamples: 2048
   skyOcclusionBakingBounces: 2
   skyOcclusionAverageAlbedo: 0.6
   skyOcclusionBackFaceCulling: 0
-  skyOcclusionShadingDirection: 1
+  skyOcclusionShadingDirection: 0
   useRenderingLayers: 0
   renderingLayerMasks: []
   m_SceneBakeData:
