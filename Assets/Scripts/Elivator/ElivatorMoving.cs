@@ -8,10 +8,8 @@ public class ElevatorMoving : MonoBehaviour
     [SerializeField] private Transform elevator;
     [SerializeField] private Transform Player;
     [SerializeField] private GameObject brokenparticleeffects;
+    [SerializeField] private GameObject AbovebunkerLightingAtmosphere;
 
-    [Header("Maps")]
-    [SerializeField] private GameObject MaptobesetInactive;
-    [SerializeField] private GameObject MaptobeLoaded;
 
     [Header("Settings")]
     [SerializeField] private float elevatorSpeed = 2f;
@@ -27,8 +25,7 @@ public class ElevatorMoving : MonoBehaviour
     {
         if (elevatorIsBroken == true)
         {
-            MaptobesetInactive.SetActive(false);
-
+            AbovebunkerLightingAtmosphere.SetActive(false);
             gameObject.BroadcastMessage("StartEncounter");
             brokenparticleeffects.SetActive(true);
         }
@@ -43,7 +40,6 @@ public class ElevatorMoving : MonoBehaviour
     {
         while (Vector3.Distance(elevator.localPosition, targetPosition) > 0.01f)
         {
-            MaptobeLoaded.SetActive(true);
             elevator.localPosition = Vector3.MoveTowards(
                 elevator.localPosition,
                 targetPosition,

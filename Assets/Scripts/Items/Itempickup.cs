@@ -2,77 +2,85 @@
 
 public class ItemPickup : MonoBehaviour
 {
-    public ItemData itemData;
-
     [Header("Item Identification")]
-    public string itemID;
-
+    public string itemID; 
     public float pickupRange = 3f;
-    private Camera playerCamera;
+    public Transform handAttachPoint;
+
+    private Camera cam;
+    private GameObject heldItem;
 
     void Start()
     {
-        playerCamera = Camera.main;
+        cam = Camera.main;
 
-        if (itemData != null)
-            itemID = itemData.itemName;
+        if (handAttachPoint == null)
+        {
+            GameObject t = new GameObject("HandAttachPoint");
+            t.transform.SetParent(cam.transform);
+            t.transform.localPosition = new Vector3(0.5f, -0.5f, 1.5f);
+            handAttachPoint = t.transform;
+        }
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
-        {
             TryPickup();
-        }
 
         if (Input.GetKeyDown(KeyCode.Q))
+            DropItem();
+
+        if (heldItem != null)
         {
-            InventorySystem.Instance.DropCurrentItem();
+            heldItem.transform.position = handAttachPoint.position;
+            heldItem.transform.rotation = handAttachPoint.rotation;
         }
     }
 
+
+
     void TryPickup()
     {
-        RaycastHit hit;
+        if (heldItem != null)
+            return;
 
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, pickupRange))
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange))
         {
             if (hit.transform.CompareTag("Item"))
             {
-                GameObject item = hit.transform.gameObject;
+                heldItem = hit.transform.gameObject;
 
-                ItemPickup pickup = item.GetComponent<ItemPickup>();
+                // Zet het item in de hand
+                heldItem.transform.position = handAttachPoint.position;
 
-                if (pickup == null || pickup.itemData == null)
-                {
-                    Debug.LogError("Dit item mist ItemPickup of ItemData.");
-                    return;
-                }
-
-                Rigidbody rb = item.GetComponent<Rigidbody>();
-
+                // Fysica uitzetten zodat hij niet valt
+                Rigidbody rb = heldItem.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
+                    rb.useGravity = false;
                     rb.isKinematic = true;
-                    rb.detectCollisions = false;
-                }
-
-                bool added = InventorySystem.Instance.AddItemToInventory(item);
-                // Hierdoor komt Metal echt in je InventoryUI, niet los als plaatje
-
-                if (added)
-                {
-                    Debug.Log("Picked up: " + item.name);
-                }
-                else
-                {
-                    if (rb != null)
-                    {
-                        rb.isKinematic = false;
-                        rb.detectCollisions = true;
-                    }
                 }
             }
         }
+    }
+
+    void DropItem()
+    {
+        if (heldItem == null)
+            return;
+
+        // Loslaten
+        heldItem.transform.SetParent(null);
+
+        Rigidbody rb = heldItem.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.useGravity = true;
+            rb.isKinematic = false;
+        }
+
+        heldItem = null;
     }
 }
