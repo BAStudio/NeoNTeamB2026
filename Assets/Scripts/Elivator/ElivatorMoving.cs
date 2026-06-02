@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Diagnostics.Tracing;
+using UniStorm;
 
 public class ElevatorMoving : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ElevatorMoving : MonoBehaviour
     [Header("Maps")]
     [SerializeField] private GameObject MaptobesetInactive;
     [SerializeField] private GameObject MaptobeLoaded;
+
+    [SerializeField] private WeatherType foggy;
 
     [Header("Settings")]
     [SerializeField] private float elevatorSpeed = 2f;
@@ -27,8 +30,8 @@ public class ElevatorMoving : MonoBehaviour
     {
         if (elevatorIsBroken == true)
         {
-            MaptobesetInactive.SetActive(false);
-
+            Destroy(MaptobesetInactive);
+            UniStorm.WeatherType weatherType = foggy;
             gameObject.BroadcastMessage("StartEncounter");
             brokenparticleeffects.SetActive(true);
         }
