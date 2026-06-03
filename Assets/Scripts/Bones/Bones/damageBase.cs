@@ -7,6 +7,7 @@ public class DamageBase : MonoBehaviour
     protected float LeftArmDamage = 0f;
     protected float RightArmDamage = 0f;
     protected static float FullyBodyHealth = 100f;
+    protected static float Health = 0;
 
     protected bool Leftlegisbroken = false;
     protected bool Rightlegisbroken = false;
