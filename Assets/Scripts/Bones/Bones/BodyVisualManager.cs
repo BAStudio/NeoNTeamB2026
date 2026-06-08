@@ -50,6 +50,8 @@ public class BodyVisualManager : DamageBase
         Updatepart(rightArmImage, RightArmDamage);
         Updatepart(LeftLegImage, LeftLegDamage);
         Updatepart(RightLegImage, RightLegDamage);
+        Updatepart(bodyImage, TorsoDamage);
+        Updatepart(HeadImage, HeadDamage);
         UpdateVignette();
     }
 
