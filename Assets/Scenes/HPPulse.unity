@@ -34029,10 +34029,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 1670947091}
-  rightArmDamage: {fileID: 0}
-  leftArmDamage: {fileID: 0}
-  rightLegDamage: {fileID: 0}
-  leftLegDamage: {fileID: 0}
+  rightArmDamage: {fileID: 487627635}
+  leftArmDamage: {fileID: 180321007}
+  rightLegDamage: {fileID: 509621950}
+  leftLegDamage: {fileID: 334343123}
 --- !u!114 &1670947094
 MonoBehaviour:
   m_ObjectHideFlags: 0
