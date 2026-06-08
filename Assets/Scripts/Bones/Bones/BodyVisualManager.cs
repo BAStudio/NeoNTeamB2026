@@ -37,9 +37,8 @@ public class BodyVisualManager : DamageBase
     {
 
       if (Vignette == null) return;
-      float damagePercentage = Mathf.Clamp01(FullyBodyHealth / 10f);
+      float damagePercentage = 1f - Mathf.Clamp01(FullyBodyHealth / 100f);
       Vignette.weight = damagePercentage;
-
     }
     // Update is called once per frame
 
