@@ -13,6 +13,7 @@ TagManager:
   - ElevatorButton
   - Enemy
   - Chest
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -34,6 +35,7 @@ TagManager:
   - 
   - 
   - 
+  - Lights
   - 
   - 
   - 
@@ -45,9 +47,6 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - Walls
   m_SortingLayers:
   - name: Default
     uniqueID: 0
