@@ -6,8 +6,11 @@ public class TorsoDamage : DamageBase
     [SerializeField] private AudioSource Aud;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
+    {
         TorsoDamage = 0.0f;
         TorsoDamage = Mathf.Clamp(TorsoDamage, 0.0f, 3.0f);
+    }
+        
     [System.Obsolete]
     protected virtual void Awake()
     {
@@ -16,14 +19,15 @@ public class TorsoDamage : DamageBase
 
     // Update is called once per frame
     void Update()
+    {
         if (!TorsoisBroken && TorsoDamage >= 3f)
         {
             damageDebuff();
             TorsoisBroken = true;
             return;
         }
-        }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision detected with " + other.gameObject.tag);
