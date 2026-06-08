@@ -6,10 +6,8 @@ public class TorsoDamage : DamageBase
     [SerializeField] private AudioSource Aud;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
         TorsoDamage = 0.0f;
-        Mathf.Clamp(TorsoDamage, 0.0f, 3.0f);
-    }   
+        TorsoDamage = Mathf.Clamp(TorsoDamage, 0.0f, 3.0f);
     [System.Obsolete]
     protected virtual void Awake()
     {
