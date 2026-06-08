@@ -398004,7 +398004,6 @@ MonoBehaviour:
   brokenparticleeffects: {fileID: 1684731001}
   MaptobesetInactive: {fileID: 804275635}
   MaptobeLoaded: {fileID: 1633222395}
-  foggy: {fileID: 11400000, guid: 817c2abbadfb7c04cbd380d43ef46e06, type: 2}
   elevatorSpeed: 6
   elevatorTravelDistance: -101.2
   elevatorIsUp: 1
