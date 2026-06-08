@@ -18,12 +18,12 @@ public class TorsoDamage : DamageBase
 
     // Update is called once per frame
     void Update()
-    {
-        if (!Rightlegisbroken && TorsoDamage >= 3f)
+        if (!TorsoisBroken && TorsoDamage >= 3f)
         {
             damageDebuff();
             TorsoisBroken = true;
             return;
+        }
         }
     }
     private void OnTriggerEnter(Collider other)
