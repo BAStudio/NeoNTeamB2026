@@ -29,9 +29,8 @@ public class BodyVisualManager : DamageBase
     {
 
         if (img == null) return;
-        float damagePercentage = Mathf.Clamp01(currentDamage / 10f);
+        float damagePercentage = Mathf.Clamp01(currentDamage / Mathf.Max(maxDamageBeforeBroken, 0.0001f));
         img.color = Color.Lerp(healthyColor, brokenColor, damagePercentage);
-    }
 
     private void UpdateVignette()
 
