@@ -22,7 +22,7 @@ public class HeadDamage : DamageBase
         if (!Headisbroken && HeadDamage >= 3f)
         {
             damageDebuff();
-            TorsoisBroken = true;
+            Headisbroken = true;
             return;
         }
     }
@@ -31,21 +31,21 @@ public class HeadDamage : DamageBase
         Debug.Log("Collision detected with " + other.gameObject.tag);
         if (other.gameObject.tag == "damage")
         {
-            Debug.Log("Right leg damaged" + HeadDamage);
+            Debug.Log("Head damaged " + HeadDamage);
             HeadDamage = Mathf.Clamp(HeadDamage + 1f, 0f, 3f);
             FullyBodyHealth -= 10;
         }
     }
     private void damageDebuff()
     {
-        Debug.Log("Right leg damaged, movement speed reduced");
+        Debug.Log("Head damaged, movement speed reduced");
         playerMovement.ApplySpeedMultiplier(0.6f);
         Aud.Play();
     }
 
-    public void RightLegHealed()
+    public void HeadHealed()
     {
-        Debug.Log("Right leg healed, movement speed restored");
+        Debug.Log("Head healed, movement speed restored");
         Headisbroken = false;
         HeadDamage = Mathf.Clamp(HeadDamage - 1f, 0f, 3f);
         playerMovement.ResetSpeed();
