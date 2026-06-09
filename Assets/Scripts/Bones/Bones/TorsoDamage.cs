@@ -33,21 +33,21 @@ public class TorsoDamage : DamageBase
         Debug.Log("Collision detected with " + other.gameObject.tag);
         if (other.gameObject.tag == "damage")
         {
-            Debug.Log("Right leg damaged" + TorsoDamage);
+            Debug.Log("Torso damaged " + TorsoDamage);
             TorsoDamage = Mathf.Clamp(TorsoDamage + 1f, 0f, 3f);
             FullyBodyHealth -= 10;
         }
     }
     private void damageDebuff()
     {
-        Debug.Log("Right leg damaged, movement speed reduced");
+        Debug.Log("Torso damaged, movement speed reduced");
         playerMovement.ApplySpeedMultiplier(0.6f);
         Aud.Play();
     }
 
-    public void RightLegHealed()
+    public void TorsoHealed()
     {
-        Debug.Log("Right leg healed, movement speed restored");
+        Debug.Log("Torso healed, movement speed restored");
         TorsoisBroken = false;
         TorsoDamage = Mathf.Clamp(TorsoDamage - 1f, 0f, 3f);
         playerMovement.ResetSpeed();
