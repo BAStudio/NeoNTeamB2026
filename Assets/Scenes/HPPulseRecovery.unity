@@ -938,6 +938,8 @@ MonoBehaviour:
   ElivButtonInside: {fileID: 1797848164}
   Leftdoor: {fileID: 262213306}
   Rightdoor: {fileID: 1430358576}
+  MaptobesetInactive: {fileID: 0}
+  MaptobeLoaded: {fileID: 0}
   ElivatorMusic: {fileID: 1463260592}
   Elivatorarivalding: {fileID: 1463260592}
   ElivatorMusicVolume: 0.5
@@ -973,6 +975,8 @@ MonoBehaviour:
   elevator: {fileID: 1463260591}
   Player: {fileID: 1670947090}
   brokenparticleeffects: {fileID: 1601516523}
+  MaptobesetInactive: {fileID: 0}
+  MaptobeLoaded: {fileID: 0}
   elevatorSpeed: 2
   elevatorTravelDistance: 25
   elevatorIsUp: 1
@@ -2210,7 +2214,7 @@ GameObject:
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &180321005
 Transform:
   m_ObjectHideFlags: 0
@@ -9166,7 +9170,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &334343121
 Transform:
   m_ObjectHideFlags: 0
@@ -10688,7 +10692,7 @@ GameObject:
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &487627633
 Transform:
   m_ObjectHideFlags: 0
@@ -11125,7 +11129,7 @@ GameObject:
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &509621948
 Transform:
   m_ObjectHideFlags: 0
@@ -11619,7 +11623,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.033333335
   m_MinRegionArea: 3
   m_NavMeshData: {fileID: 23800000, guid: b05b242a175fb464887e475eb9a29a6d, type: 2}
   m_BuildHeightMesh: 0
@@ -24173,7 +24177,7 @@ GameObject:
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1177292396
 Transform:
   m_ObjectHideFlags: 0
@@ -34067,7 +34071,6 @@ MonoBehaviour:
   textObject: {fileID: 1983837363}
   notificationText: {fileID: 1492550707}
   raycastDistance: 5
-  textSpeed: 0.05
   notifications:
   - tagName: ElevatorButton
     message: Press E to open
@@ -34082,7 +34085,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670947089}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05147a58146abbf42bc7aef3eababed0, type: 3}
   m_Name: 
@@ -35888,7 +35891,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2fe11ac48ace246ba7516f1920d8ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySystem
-  handTransform: {fileID: 461561229}
+  handTransform: {fileID: 0}
+  inventorySlotsUI: []
   currentSlot: 0
 --- !u!4 &1785288879
 Transform:
@@ -39163,7 +39167,7 @@ GameObject:
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2041891099
 Transform:
   m_ObjectHideFlags: 0
@@ -42261,6 +42265,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 552219660604020410, guid: fde4d326ed9852748b8cc31ade05c382, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 72c875cf782c193428ea8f067c2cc280, type: 2}
     - target: {fileID: 7653638774671271396, guid: fde4d326ed9852748b8cc31ade05c382, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.17
