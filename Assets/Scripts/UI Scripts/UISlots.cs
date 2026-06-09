@@ -5,6 +5,10 @@ using TMPro;           // Use this if you are using TextMeshPro
 
 public class UISlot : MonoBehaviour
 {
+    [Header("Slot Animations")]
+    [SerializeField] private float animationDuration = 0.15f;
+    [SerializeField] private Vector3 hoveredScale = new Vector3(1.2f, 1.2f, 1.2f);
+
     [Header("Slot Configuration")]
     [SerializeField] Image backgroundVisual;
     [SerializeField] private int slotIndex; // Set this to 0, 1, 2, etc. in the Inspector
@@ -73,18 +77,25 @@ public class UISlot : MonoBehaviour
             }
         }
 
-        // 3. Handle the selection color logic (guard backgroundVisual)
+        // 3. Handle the selection color and scale animation logic
         if (backgroundVisual != null)
         {
             int activeIndex = InventorySystem.Instance.GetCurrentSlotIndex();
+            RectTransform rect = GetComponent<RectTransform>();
 
             if (slotIndex == activeIndex)
             {
                 backgroundVisual.color = activeColor;
+
+                // Fire and forget: Scales up to 1.2x (adjust the Vector3 as you like)
+                UIAnimations.ScaleElement(this, rect, new Vector3(1.2f, 1.2f, 1.2f), 0.15f);
             }
             else
             {
                 backgroundVisual.color = inactiveColor;
+
+                // Fire and forget: Scales back down to normal size
+                UIAnimations.ScaleElement(this, rect, Vector3.one, 0.15f);
             }
         }
     }
