@@ -12,6 +12,7 @@ TagManager:
   - ElevatorButton
   - Enemy
   - Chest
+  - Bone
   layers:
   - Default
   - TransparentFX

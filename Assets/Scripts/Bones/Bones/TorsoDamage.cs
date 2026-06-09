@@ -12,9 +12,9 @@ public class TorsoDamage : DamageBase
     }
         
     [System.Obsolete]
-    protected virtual void Awake()
+    protected virtual void Awake() //deprecated?
     {
-        if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>();
+        if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>(); //deprecated, gebruik FindFirstObjectByType
     }
 
     // Update is called once per frame
