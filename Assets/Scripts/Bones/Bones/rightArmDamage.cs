@@ -32,7 +32,7 @@ public class RightArmDamage : DamageBase
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "damage")
+        if (other.gameObject.tag == "Enemy")
         {
             Debug.Log("Right Arm damaged" + RightArmDamage);
             RightArmDamage = Mathf.Clamp(RightArmDamage + 1f, 0f, 3f);

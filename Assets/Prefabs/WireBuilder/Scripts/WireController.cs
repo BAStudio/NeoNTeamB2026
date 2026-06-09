@@ -109,7 +109,36 @@ public class WireController : MonoBehaviour
 #if UNITY_EDITOR
     private void Start()
     {
-        mousePossHelper.gameObject.SetActive(false);
+        // Ensure we don't throw if the reference wasn't assigned in the inspector.
+        if (mousePossHelper == null)
+        {
+            // Try to find a helper by common names as a convenience for the user.
+            Transform found = transform.Find("MousePosHelper") ?? transform.Find("mousePossHelper");
+            if (found == null)
+            {
+                GameObject foundGo = GameObject.Find("MousePosHelper") ?? GameObject.Find("mousePossHelper");
+                if (foundGo != null) found = foundGo.transform;
+            }
+
+            // If still not found, create a simple child helper in the editor so the script can run
+            // without requiring manual assignment in the inspector.
+            if (found == null)
+            {
+#if UNITY_EDITOR
+                GameObject helper = new GameObject("MousePosHelper");
+                helper.transform.SetParent(transform, false);
+                helper.transform.localPosition = Vector3.zero;
+                mousePossHelper = helper.transform;
+#endif
+            }
+            else
+            {
+                mousePossHelper = found;
+            }
+        }
+
+        if (mousePossHelper != null)
+            mousePossHelper.gameObject.SetActive(false);
     }
 
     private void OnValidate()

@@ -28,7 +28,7 @@ public class LeftArmDamage : DamageBase
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "damage")
+        if (other.gameObject.tag == "Enemy")
         {
             Debug.Log("Left arm damaged" + RightArmDamage);
             LeftArmDamage = Mathf.Clamp(LeftArmDamage + 1f, 0f, 3f);
@@ -44,7 +44,7 @@ public class LeftArmDamage : DamageBase
     public void LeftArmHealing()
     {
         Leftarmisbroken = false;
-        LeftArmDamage =- 1f;
+        LeftArmDamage = Mathf.Clamp(LeftArmDamage - 1f, 0f, 3f);
         Debug.Log("Left arm healed, Use of heavy weapons possible");
     }
 }
