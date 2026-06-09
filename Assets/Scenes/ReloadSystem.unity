@@ -3066,7 +3066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbe463334d78a84f9e0515f1f289f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarDropZone
-  hotbarIndex: 5
+  hotbarIndex: 4
   itemUIPrefab: {fileID: 5533814321626775743, guid: fa9718886b36a6f43966c79cde87737e, type: 3}
 --- !u!1 &625510938
 GameObject:
@@ -10414,6 +10414,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1764579534}
     - target: {fileID: 8083963440112613245, guid: a2742251c673c254c8ab18cd07858031, type: 3}
+      propertyPath: inventorySlotsUI.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083963440112613245, guid: a2742251c673c254c8ab18cd07858031, type: 3}
       propertyPath: 'inventorySlotsUI.Array.data[0]'
       value: 
       objectReference: {fileID: 778716457}
@@ -10459,6 +10463,10 @@ PrefabInstance:
       objectReference: {fileID: 194271546}
     - target: {fileID: 8083963440112613245, guid: a2742251c673c254c8ab18cd07858031, type: 3}
       propertyPath: 'inventorySlotsUI.Array.data[11]'
+      value: 
+      objectReference: {fileID: 994196956}
+    - target: {fileID: 8083963440112613245, guid: a2742251c673c254c8ab18cd07858031, type: 3}
+      propertyPath: 'inventorySlotsUI.Array.data[12]'
       value: 
       objectReference: {fileID: 994196956}
     - target: {fileID: 8583206173575942601, guid: a2742251c673c254c8ab18cd07858031, type: 3}
