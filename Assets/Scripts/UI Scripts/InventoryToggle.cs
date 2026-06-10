@@ -32,7 +32,7 @@ public class InventoryToggle : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             if (IsOpen)
                 CloseInventory();
