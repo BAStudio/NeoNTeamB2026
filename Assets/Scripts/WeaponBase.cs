@@ -12,6 +12,7 @@ public abstract class WeaponBase : MonoBehaviour
     public float Accuracy => accuracy;
     public int CurrentAmmo => currentAmmo;
     public int MaxAmmo => maxAmmo;
+    public bool IsReloading => isReloading;
     protected float OriginalAccuracy;
     protected float lastShootTime = 0f;
     protected bool isReloading = false;
