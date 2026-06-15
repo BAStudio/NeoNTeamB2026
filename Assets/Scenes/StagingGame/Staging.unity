@@ -14202,6 +14202,77 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37027cd9f10201e49a1c9f9c27e1257d, type: 3}
+--- !u!1 &37494053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 37494054}
+  - component: {fileID: 37494056}
+  - component: {fileID: 37494055}
+  m_Layer: 0
+  m_Name: Saferoom 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &37494054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37494053}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.35439682, z: -0, w: 0.93509513}
+  m_LocalPosition: {x: -24.18, y: -99.32, z: 5.94}
+  m_LocalScale: {x: 9.741704, y: 4.3952746, z: 3.8857088}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753287148}
+  m_LocalEulerAnglesHint: {x: 0, y: 41.513, z: 0}
+--- !u!114 &37494055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37494053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: b5b21ee48e70c2241a2d6d68c86b9ee6, type: 2}
+--- !u!65 &37494056
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37494053}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &37515185 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2283261821360185116, guid: 37949b4b220e48746935bef941bd89f7, type: 3}
@@ -20806,6 +20877,77 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee0cdcbfcd5bcd458180b69d987b293, type: 3}
+--- !u!1 &57919926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 57919927}
+  - component: {fileID: 57919929}
+  - component: {fileID: 57919928}
+  m_Layer: 0
+  m_Name: Bunker atmosphere (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &57919927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57919926}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.35221294, z: -0, w: 0.9359199}
+  m_LocalPosition: {x: 43.19, y: -99.32, z: 10.17}
+  m_LocalScale: {x: 17.568848, y: 6.614582, z: 5.2087135}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753287148}
+  m_LocalEulerAnglesHint: {x: 0, y: 41.246, z: 0}
+--- !u!114 &57919928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57919926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 524bb5c28ec745b469f7d744f5c733c0, type: 2}
+--- !u!65 &57919929
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57919926}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &58077540 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3673914198085714659, guid: 9e0955a0285348f449d7e17fcdb51fde, type: 3}
@@ -106066,6 +106208,77 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3208386099636661247, guid: 6f19be2bfcc02124aa424a04ac32a16d, type: 3}
   m_PrefabInstance: {fileID: 347376433}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &293266970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 293266971}
+  - component: {fileID: 293266973}
+  - component: {fileID: 293266972}
+  m_Layer: 0
+  m_Name: Bunker atmosphere (9)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &293266971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293266970}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.35221294, z: -0, w: 0.9359199}
+  m_LocalPosition: {x: 48.9, y: -99.32, z: 19.26}
+  m_LocalScale: {x: 23.254723, y: 6.614582, z: 16.263199}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753287148}
+  m_LocalEulerAnglesHint: {x: 0, y: 41.246, z: 0}
+--- !u!114 &293266972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293266970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 524bb5c28ec745b469f7d744f5c733c0, type: 2}
+--- !u!65 &293266973
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293266970}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &293393484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6424038513341753484, guid: dee0cdcbfcd5bcd458180b69d987b293, type: 3}
@@ -112833,6 +113046,77 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee0cdcbfcd5bcd458180b69d987b293, type: 3}
+--- !u!1 &310077151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 310077152}
+  - component: {fileID: 310077154}
+  - component: {fileID: 310077153}
+  m_Layer: 0
+  m_Name: Bunker atmosphere (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &310077152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310077151}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.35221294, z: -0, w: 0.9359199}
+  m_LocalPosition: {x: 24.54, y: -99.32, z: -42.71}
+  m_LocalScale: {x: 12.148679, y: 6.614582, z: 7.7711644}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753287148}
+  m_LocalEulerAnglesHint: {x: 0, y: 41.246, z: 0}
+--- !u!114 &310077153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310077151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 524bb5c28ec745b469f7d744f5c733c0, type: 2}
+--- !u!65 &310077154
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310077151}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &310110384 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2283261821360185116, guid: 37949b4b220e48746935bef941bd89f7, type: 3}
@@ -126384,6 +126668,77 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f19be2bfcc02124aa424a04ac32a16d, type: 3}
+--- !u!1 &347514467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 347514468}
+  - component: {fileID: 347514470}
+  - component: {fileID: 347514469}
+  m_Layer: 0
+  m_Name: Bunker atmosphere (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &347514468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347514467}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.35221294, z: -0, w: 0.9359199}
+  m_LocalPosition: {x: -7.82, y: -99.32, z: -10.69}
+  m_LocalScale: {x: 8.964709, y: 6.614582, z: 6.172103}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753287148}
+  m_LocalEulerAnglesHint: {x: 0, y: 41.246, z: 0}
+--- !u!114 &347514469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347514467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 524bb5c28ec745b469f7d744f5c733c0, type: 2}
+--- !u!65 &347514470
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347514467}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &347954152 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2283261821360185116, guid: 37949b4b220e48746935bef941bd89f7, type: 3}
@@ -231994,6 +232349,77 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69116ce6a394ac748966beb2821db445, type: 3}
+--- !u!1 &630422324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 630422325}
+  - component: {fileID: 630422327}
+  - component: {fileID: 630422326}
+  m_Layer: 0
+  m_Name: Bunker atmosphere (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &630422325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630422324}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.35221294, z: -0, w: 0.9359199}
+  m_LocalPosition: {x: 39.06, y: -99.32, z: 7.55}
+  m_LocalScale: {x: 24.16068, y: 6.614582, z: 3.8624432}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753287148}
+  m_LocalEulerAnglesHint: {x: 0, y: 41.246, z: 0}
+--- !u!114 &630422326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630422324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 524bb5c28ec745b469f7d744f5c733c0, type: 2}
+--- !u!65 &630422327
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630422324}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &630474245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -254842,6 +255268,77 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37027cd9f10201e49a1c9f9c27e1257d, type: 3}
+--- !u!1 &690645871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 690645872}
+  - component: {fileID: 690645874}
+  - component: {fileID: 690645873}
+  m_Layer: 0
+  m_Name: Bunker atmosphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &690645872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690645871}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.35221294, z: -0, w: 0.9359199}
+  m_LocalPosition: {x: 22.38, y: -99.32, z: -17.76}
+  m_LocalScale: {x: 33.932014, y: 6.614582, z: 55.160744}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753287148}
+  m_LocalEulerAnglesHint: {x: 0, y: 41.246, z: 0}
+--- !u!114 &690645873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690645871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 524bb5c28ec745b469f7d744f5c733c0, type: 2}
+--- !u!65 &690645874
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690645871}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &690734580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -260671,6 +261168,77 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8102293392968810012, guid: 37027cd9f10201e49a1c9f9c27e1257d, type: 3}
   m_PrefabInstance: {fileID: 1259597704}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &708982042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 708982043}
+  - component: {fileID: 708982045}
+  - component: {fileID: 708982044}
+  m_Layer: 0
+  m_Name: Bunker atmosphere (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &708982043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708982042}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.35221294, z: -0, w: 0.9359199}
+  m_LocalPosition: {x: 1.2, y: -99.32, z: 15.3}
+  m_LocalScale: {x: 42.472538, y: 6.614582, z: 43.1748}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753287148}
+  m_LocalEulerAnglesHint: {x: 0, y: 41.246, z: 0}
+--- !u!114 &708982044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708982042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 524bb5c28ec745b469f7d744f5c733c0, type: 2}
+--- !u!65 &708982045
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708982042}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &709021171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -277109,6 +277677,19 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1887316760}
+  - {fileID: 929308542}
+  - {fileID: 37494054}
+  - {fileID: 1260746514}
+  - {fileID: 690645872}
+  - {fileID: 310077152}
+  - {fileID: 861883242}
+  - {fileID: 937519006}
+  - {fileID: 708982043}
+  - {fileID: 347514468}
+  - {fileID: 1387974681}
+  - {fileID: 57919927}
+  - {fileID: 630422325}
+  - {fileID: 293266971}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &753471050 stripped
@@ -314730,6 +315311,77 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbfd00bf8f276e146a8d3b401ef56d17, type: 3}
+--- !u!1 &861883241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 861883242}
+  - component: {fileID: 861883244}
+  - component: {fileID: 861883243}
+  m_Layer: 0
+  m_Name: Bunker atmosphere (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &861883242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861883241}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.35221294, z: -0, w: 0.9359199}
+  m_LocalPosition: {x: 17.2, y: -99.32, z: 59.2}
+  m_LocalScale: {x: 76.323586, y: 6.614582, z: 43.307922}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753287148}
+  m_LocalEulerAnglesHint: {x: 0, y: 41.246, z: 0}
+--- !u!114 &861883243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861883241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 524bb5c28ec745b469f7d744f5c733c0, type: 2}
+--- !u!65 &861883244
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861883241}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &861998020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320155,6 +320807,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 564005106}
     m_Modifications:
+    - target: {fileID: 3401708622942570034, guid: 9e0955a0285348f449d7e17fcdb51fde, type: 3}
+      propertyPath: m_Intensity
+      value: 6.43
+      objectReference: {fileID: 0}
     - target: {fileID: 3673914198085714659, guid: 9e0955a0285348f449d7e17fcdb51fde, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.10000002
@@ -340171,6 +340827,77 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8602499679320605727, guid: 69599d049f0e1bb4ea6b363111c300e0, type: 3}
   m_PrefabInstance: {fileID: 754343145}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &929308541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 929308542}
+  - component: {fileID: 929308544}
+  - component: {fileID: 929308543}
+  m_Layer: 0
+  m_Name: Saferoom 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &929308542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929308541}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00095879444, y: 0.3495879, z: -0.0026385793, w: 0.9368994}
+  m_LocalPosition: {x: 44.1, y: -99.31, z: -25.85}
+  m_LocalScale: {x: 8.733626, y: 5.701844, z: 11.434788}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753287148}
+  m_LocalEulerAnglesHint: {x: 0.003, y: 40.924, z: -0.322}
+--- !u!114 &929308543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929308541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: b5b21ee48e70c2241a2d6d68c86b9ee6, type: 2}
+--- !u!65 &929308544
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929308541}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &929467575 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6424038513341753484, guid: dee0cdcbfcd5bcd458180b69d987b293, type: 3}
@@ -344183,6 +344910,77 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1512828163633421649, guid: dbfd00bf8f276e146a8d3b401ef56d17, type: 3}
   m_PrefabInstance: {fileID: 1371315517}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &937519005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 937519006}
+  - component: {fileID: 937519008}
+  - component: {fileID: 937519007}
+  m_Layer: 0
+  m_Name: Bunker atmosphere (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &937519006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937519005}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.35221294, z: -0, w: 0.9359199}
+  m_LocalPosition: {x: -26.1, y: -99.32, z: 55.3}
+  m_LocalScale: {x: 19.039148, y: 6.614582, z: 32.55644}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753287148}
+  m_LocalEulerAnglesHint: {x: 0, y: 41.246, z: 0}
+--- !u!114 &937519007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937519005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 524bb5c28ec745b469f7d744f5c733c0, type: 2}
+--- !u!65 &937519008
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937519005}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &937642033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -468448,6 +469246,77 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee0cdcbfcd5bcd458180b69d987b293, type: 3}
+--- !u!1 &1260746513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1260746514}
+  - component: {fileID: 1260746516}
+  - component: {fileID: 1260746515}
+  m_Layer: 0
+  m_Name: Saferoom 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1260746514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260746513}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.35238284, z: -0, w: 0.935856}
+  m_LocalPosition: {x: -8.64, y: -99.32, z: 47.17}
+  m_LocalScale: {x: 10.386372, y: 1.7749807, z: 8.278323}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753287148}
+  m_LocalEulerAnglesHint: {x: 0, y: 41.266, z: 0}
+--- !u!114 &1260746515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260746513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: b5b21ee48e70c2241a2d6d68c86b9ee6, type: 2}
+--- !u!65 &1260746516
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260746513}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1260922748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1512828163633421649, guid: dbfd00bf8f276e146a8d3b401ef56d17, type: 3}
@@ -515398,6 +516267,77 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8102293392968810012, guid: 37027cd9f10201e49a1c9f9c27e1257d, type: 3}
   m_PrefabInstance: {fileID: 1764794654}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1387974680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1387974681}
+  - component: {fileID: 1387974683}
+  - component: {fileID: 1387974682}
+  m_Layer: 0
+  m_Name: Bunker atmosphere (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1387974681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387974680}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.35221294, z: -0, w: 0.9359199}
+  m_LocalPosition: {x: -13.5, y: -99.32, z: 35.8}
+  m_LocalScale: {x: 8.964709, y: 6.614582, z: 9.567396}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753287148}
+  m_LocalEulerAnglesHint: {x: 0, y: 41.246, z: 0}
+--- !u!114 &1387974682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387974680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 524bb5c28ec745b469f7d744f5c733c0, type: 2}
+--- !u!65 &1387974683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387974680}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1388162444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -711661,7 +712601,7 @@ GameObject:
   - component: {fileID: 1887316762}
   - component: {fileID: 1887316761}
   m_Layer: 0
-  m_Name: LowerBunkerAtmosphere
+  m_Name: Saferoom 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -711675,13 +712615,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887316759}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.36406183, z: -0, w: 0.9313748}
-  m_LocalPosition: {x: 7.58, y: -99.32, z: 15.22}
-  m_LocalScale: {x: 66.84432, y: 5.781319, z: 68.88325}
+  m_LocalRotation: {x: -0, y: 0.35221294, z: -0, w: 0.9359199}
+  m_LocalPosition: {x: 34.41, y: -99.32, z: 17.18}
+  m_LocalScale: {x: 4.991064, y: 5.587584, z: 5.143305}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 753287148}
-  m_LocalEulerAnglesHint: {x: 0, y: 42.7, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 41.246, z: 0}
 --- !u!114 &1887316761
 MonoBehaviour:
   m_ObjectHideFlags: 0
