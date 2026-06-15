@@ -62,7 +62,8 @@ public class ItemPickup : MonoBehaviour
 
                 if (added)
                 {
-                    Debug.Log("Picked up: " + item.name);
+                    Debug.Log("Pickup successful. Attempting to trigger: " + itemID);
+                    GameEvents.OnDialogueStart?.Invoke(pickup.itemID);
                 }
                 else
                 {
