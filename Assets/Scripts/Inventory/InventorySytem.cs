@@ -99,6 +99,7 @@ public class InventorySystem : MonoBehaviour
             if (slots[realIndex] == null)
             {
                 bool added = AddItemToInventorySlot(i, item);
+                GameEvents.OnDialogueStart?.Invoke(pickup.itemID);
                 // Zet item in de echte inventory-data
 
                 if (added)

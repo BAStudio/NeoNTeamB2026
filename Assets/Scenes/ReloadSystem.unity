@@ -5821,6 +5821,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1764579534}
     - target: {fileID: 8083963440112613245, guid: a2742251c673c254c8ab18cd07858031, type: 3}
+      propertyPath: inventorySlotsUI.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083963440112613245, guid: a2742251c673c254c8ab18cd07858031, type: 3}
       propertyPath: 'inventorySlotsUI.Array.data[0]'
       value: 
       objectReference: {fileID: 778716457}
