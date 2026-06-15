@@ -82,13 +82,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.7751945, y: 1, z: 0.97502166, w: -0.48533875}
+    m_Value: {x: 0.7751945, y: 1, z: 0.97502166, w: 1}
   midtones:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 0.8254076, y: 1, z: 0.9665465, w: 0}
   highlights:
-    m_OverrideState: 1
-    m_Value: {x: 0.89255035, y: 1, z: 0.99445903, w: 0}
+    m_OverrideState: 0
+    m_Value: {x: 0.89255035, y: 1, z: 0.99445903, w: -0.00000066194315}
   shadowsStart:
     m_OverrideState: 1
     m_Value: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd486065ce11414fa40e631affc4900, type: 3}
   m_Name: ProbeVolumesOptions
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.ProbeVolumesOptions
-  active: 1
+  active: 0
   normalBias:
     m_OverrideState: 1
     m_Value: 0.05
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: LowerBunkerAtmosphere Profile
+  m_Name: BunkerAtmosphere
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.VolumeProfile
   components:
   - {fileID: -676078550112086102}
@@ -236,4 +236,4 @@ MonoBehaviour:
     m_Value: {x: 0.9682069, y: 0.96496165, z: 1, w: -0.01685194}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.7515999}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.98237914}
