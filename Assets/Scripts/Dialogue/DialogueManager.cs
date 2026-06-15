@@ -38,7 +38,8 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (currentLines == null)
+
+        if (currentLines == null || index < 0 || index >= currentLines.Length)
             return;
 
         if (Input.GetMouseButtonDown(0))
