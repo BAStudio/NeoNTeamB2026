@@ -5109,16 +5109,20 @@ PrefabInstance:
       value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 6814650463043460577, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
+      propertyPath: avoidancePriority
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814650463043460577, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_StoppingDistance
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14319,6 +14323,7 @@ GameObject:
   - component: {fileID: 37494054}
   - component: {fileID: 37494056}
   - component: {fileID: 37494055}
+  - component: {fileID: 37494057}
   m_Layer: 0
   m_Name: Saferoom 3
   m_TagString: Untagged
@@ -14379,6 +14384,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &37494057
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37494053}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &37515185 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2283261821360185116, guid: 37949b4b220e48746935bef941bd89f7, type: 3}
@@ -343536,6 +343557,7 @@ GameObject:
   - component: {fileID: 929308542}
   - component: {fileID: 929308544}
   - component: {fileID: 929308543}
+  - component: {fileID: 929308545}
   m_Layer: 0
   m_Name: Saferoom 2
   m_TagString: Untagged
@@ -343596,6 +343618,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &929308545
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929308541}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &929467575 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6424038513341753484, guid: dee0cdcbfcd5bcd458180b69d987b293, type: 3}
@@ -472499,6 +472537,7 @@ GameObject:
   - component: {fileID: 1260746514}
   - component: {fileID: 1260746516}
   - component: {fileID: 1260746515}
+  - component: {fileID: 1260746517}
   m_Layer: 0
   m_Name: Saferoom 4
   m_TagString: Untagged
@@ -472559,6 +472598,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &1260746517
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260746513}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &1260922748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1512828163633421649, guid: dbfd00bf8f276e146a8d3b401ef56d17, type: 3}
@@ -523930,16 +523985,20 @@ PrefabInstance:
       value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 6814650463043460577, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
+      propertyPath: avoidancePriority
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814650463043460577, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_StoppingDistance
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -610956,16 +611015,20 @@ PrefabInstance:
       value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 6814650463043460577, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
+      propertyPath: avoidancePriority
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814650463043460577, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_StoppingDistance
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -694361,6 +694424,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2155133263258576714, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
+      propertyPath: MinDistance
+      value: 1.0743713
+      objectReference: {fileID: 0}
     - target: {fileID: 3459152863833145124, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_Name
       value: MasterZombie
@@ -694390,20 +694457,24 @@ PrefabInstance:
       value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 6814650463043460577, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
+      propertyPath: avoidancePriority
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814650463043460577, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_StoppingDistance
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 218.37
+      value: 243
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -694411,7 +694482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 191.5
+      value: 233.7
       objectReference: {fileID: 0}
     - target: {fileID: 8643821878400177583, guid: 5623f4933b85327419d47cf26cb741fd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -717243,6 +717314,7 @@ GameObject:
   - component: {fileID: 1887316760}
   - component: {fileID: 1887316762}
   - component: {fileID: 1887316761}
+  - component: {fileID: 1887316763}
   m_Layer: 0
   m_Name: Saferoom 1
   m_TagString: Untagged
@@ -717303,6 +717375,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &1887316763
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887316759}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &1887439496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2283261821360185116, guid: 37949b4b220e48746935bef941bd89f7, type: 3}
