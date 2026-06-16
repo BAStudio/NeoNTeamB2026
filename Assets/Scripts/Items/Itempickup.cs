@@ -37,7 +37,7 @@ public class ItemPickup : MonoBehaviour
 
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, pickupRange))
         {
-            if (hit.transform.CompareTag("Item"))
+            if (hit.transform.CompareTag("Item") || hit.transform.CompareTag("Pistol"))
             {
                 GameObject item = hit.transform.gameObject;
 
