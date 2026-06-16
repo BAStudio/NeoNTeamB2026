@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - damage
+  - ClimableObject
+  - Item
+  - Screwdriver
+  - SoundObject
+  - Ground
+  - ElevatorButton
+  - Enemy
+  - Chest
+  - Bone
   layers:
   - Default
   - TransparentFX
@@ -13,6 +23,12 @@ TagManager:
   - UI
   - Character Layer
   - Left Shoulder
+  - Ground
+  - Wire
+  - Plug
+  - Attack
+  - Pickup
+  - outline
   - 
   - 
   - 
@@ -34,9 +50,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Walls
   m_SortingLayers:
   - name: Default
     uniqueID: 0

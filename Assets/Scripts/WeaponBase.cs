@@ -23,6 +23,11 @@ public abstract class WeaponBase : MonoBehaviour
     protected float lastShootTime = 0f;
     protected bool isReloading = false;
     protected float reloadCooldown = 0f;
+    [SerializeField] protected ItemData ammoItemData;
+    // Sleep hier je Ammo ItemData in bij de pistol
+    [Header("Audio")]
+    [SerializeField] private AudioClip reloadSound;
+    [SerializeField] private AudioSource audioSource;
 
     protected virtual void Start()
     {
@@ -109,13 +114,60 @@ public abstract class WeaponBase : MonoBehaviour
     protected abstract void Shoot();
     protected virtual void StartReload()
     {
-        Debug.Log("reloading");
+        if (ammoItemData == null)
+        {
+            Debug.LogError("Geen Ammo ItemData gekoppeld aan dit wapen.");
+            return;
+        }
+
+        if (InventorySystem.Instance == null)
+        {
+            Debug.LogError("Geen InventorySystem gevonden.");
+            return;
+        }
+
+        bool hasAmmo = InventorySystem.Instance.HasItem(ammoItemData.itemName);
+        // Checkt of Ammo in je inventory/hotbar zit
+
+        if (!hasAmmo)
+        {
+            Debug.Log("Geen ammo in inventory.");
+            return;
+        }
+
+        Debug.Log("Reloading...");
         isReloading = true;
         reloadCooldown = reloadTime;
     }
     protected virtual void CompleteReload()
     {
+        if (ammoItemData == null)
+        {
+            Debug.LogError("Geen Ammo ItemData gekoppeld.");
+            isReloading = false;
+            return;
+        }
+
+        bool removedAmmo = InventorySystem.Instance.RemoveOneItemByName(ammoItemData.itemName);
+        // Verbruikt 1 Ammo item uit je inventory
+
+        if (!removedAmmo)
+        {
+            Debug.Log("Reload mislukt: geen ammo meer.");
+            isReloading = false;
+            return;
+        }
+
         currentAmmo = maxAmmo;
+        // Pistool is weer vol geladen
+
         isReloading = false;
+
+        if (audioSource != null && reloadSound != null)
+        {
+            audioSource.PlayOneShot(reloadSound);
+        }
+
+        Debug.Log("Reload compleet. Ammo verbruikt: " + ammoItemData.itemName);
     }
 }
