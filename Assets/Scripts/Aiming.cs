@@ -11,6 +11,7 @@ public class Aiming : MonoBehaviour
         originalPos = transform.localPosition;
     }
 
+
     // Update is called once per frame
     void Update()
     {
