@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
@@ -9,16 +8,12 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected float reloadTime = 1.5f;
     [SerializeField] protected float accuracy = 0.5f;
     [SerializeField] protected float aimAccuracy = 1f;
-    [SerializeField] protected GameObject bulletHolePrefab;
+    //[SerializeField] protected GameObject bulletHolePrefab;
     [SerializeField] protected GameObject muzzleFlashPrefab;
     [SerializeField] protected bool shootUseMouseButtonDown = true;
-    [SerializeField] protected GameObject bulletSmoke;
-    [SerializeField] protected float screenshakeMagnitude = 0.2f;
-    [SerializeField] protected float screenshakeDuration = 0.1f;
     public float Accuracy => accuracy;
     public int CurrentAmmo => currentAmmo;
     public int MaxAmmo => maxAmmo;
-    public bool IsReloading => isReloading;
     protected float OriginalAccuracy;
     protected float lastShootTime = 0f;
     protected bool isReloading = false;
@@ -86,29 +81,6 @@ public abstract class WeaponBase : MonoBehaviour
         Vector2 randomCircle = UnityEngine.Random.insideUnitCircle * spread;
         direction += cam.transform.right * randomCircle.x + cam.transform.up * randomCircle.y;
         return direction.normalized;
-    }
-
-    protected void ScreenShake()
-    {
-        StartCoroutine(ScreenShakeCoroutine());
-    }
-
-    protected IEnumerator ScreenShakeCoroutine()
-    {
-        Camera cam = Camera.main;
-        Vector3 originalPos = cam.transform.position;
-        float elapsed = 0f;
-
-        while (elapsed < screenshakeDuration)
-        {
-            float x = Random.Range(-1f, 1f) * screenshakeMagnitude;
-            float y = Random.Range(-1f, 1f) * screenshakeMagnitude;
-            cam.transform.position = originalPos + new Vector3(x, y, 0f);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        cam.transform.position = originalPos;
     }
 
     protected abstract void Shoot();

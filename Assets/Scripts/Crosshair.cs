@@ -14,14 +14,6 @@ public class Crosshair : MonoBehaviour
         cam = Camera.main;
     }
 
-    private void Awake()
-    {
-        if (weapon == null)
-        {
-            weapon = GetComponent<WeaponBase>();
-        }
-    }
-
     void Update()
     {
         if (weapon == null) return;
