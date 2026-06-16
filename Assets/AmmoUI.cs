@@ -5,25 +5,15 @@ public class AmmoUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI ammoText;
     [SerializeField] private Pistol pistolScript;
-
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (pistolScript == null)
-        {
-            pistolScript = FindObjectOfType<Pistol>();
-        }
+        
     }
 
+    // Update is called once per frame
     void Update()
     {
-        if (pistolScript == null)
-        {
-            pistolScript = FindObjectOfType<Pistol>();
-        }
-
-        if (pistolScript != null)
-        {
-            ammoText.text = pistolScript.CurrentAmmo.ToString() + " / " + pistolScript.MaxAmmo.ToString();
-        }
+        ammoText.text = pistolScript.CurrentAmmo.ToString() + " / " + pistolScript.MaxAmmo.ToString();
     }
 }
