@@ -1,5 +1,6 @@
 # NeoNTeamB2026
 
+```mermaid
 classDiagram
     class UIAnimations {
         <<static>>
