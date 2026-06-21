@@ -1,5 +1,6 @@
 # NeoNTeamB2026
 
+## UI animation
 ```mermaid
 classDiagram
     class UIAnimations {
@@ -37,4 +38,23 @@ classDiagram
     }
 
     DialogueManager *-- DialogueEntry : "bevat lijst van"
-    ```
+
+```
+
+## Health popup
+
+```mermaid 
+classDiagram
+    class ShowHealth {
+        <<MonoBehaviour>>
+        -KeyCode PopupKey
+        -GameObject HealthWatch
+        -float PopupSpeed
+        -float PopupAmount
+        -bool IsUP
+        -Vector3 startLocalPosition
+        -Vector3 targetLocalPosition
+        -Start()
+        -Update()
+    }
+```
