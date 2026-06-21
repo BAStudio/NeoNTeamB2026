@@ -10,6 +10,8 @@ classDiagram
     }
 ```
 
+## Dialogue Manager
+
 ```mermaid
 classDiagram
     class DialogueManager {
