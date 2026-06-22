@@ -62,33 +62,85 @@ classDiagram
 ## UI slots
 
 ```mermaid
-graph TD
-    A[Start: OnEnable] --> B{InventorySystem beschikbaar?}
-    
-    B -- Ja --> C[Subscribe aan OnInventoryChanged]
-    C --> D[UpdateSlotVisuals]
-    
-    B -- Nee --> E[Start Coroutine: WaitForInventorySystem]
-    E --> F{InventorySystem gevonden?}
-    F -- Nee --> F
-    F -- Ja --> G[Subscribe aan OnInventoryChanged]
-    G --> D
-    
-    D --> H{Item in slot?}
-    H -- Ja --> I[Toon item naam]
-    H -- Nee --> J[Maak tekst leeg/onzichtbaar]
-    
-    I --> K{Slot is actief?}
-    J --> K
-    
-    K -- Ja --> L[Kleur = ActiveColor]
-    L --> M[Start Scale Animation: 1.2x]
-    
-    K -- Nee --> N[Kleur = InactiveColor]
-    N --> O[Start Scale Animation: 1.0x]
-    
-    %% Cleanup
-    P[OnDisable] --> Q[Unsubscribe]
-    Q --> R[Stop Coroutine]
+classDiagram
+    class MonoBehaviour {
+        <<class>>
+    }
+
+    class Image {
+        <<class>>
+    }
+
+    class TextMeshProUGUI {
+        <<class>>
+    }
+
+    class Vector3 {
+        <<struct>>
+    }
+
+    class Color {
+        <<struct>>
+    }
+
+    class GameObject {
+        <<class>>
+    }
+
+    class IEnumerator {
+        <<interface>>
+    }
+
+    class InventorySystem {
+        <<class>>
+        +Instance : InventorySystem
+        +OnInventoryChanged : Action
+        +GetItemInSlot(slotIndex : int) : GameObject
+        +GetCurrentSlotIndex() : int
+    }
+
+    class UIAnimations {
+        <<class>>
+        +ScaleElement(owner : MonoBehaviour, element : RectTransform, targetScale : Vector3, duration : float) : void
+    }
+
+    class RectTransform {
+        <<class>>
+    }
+
+    class UISlot {
+        -animationDuration : float = 0.15f
+        -hoveredScale : Vector3
+        -backgroundVisual : Image
+        -slotIndex : int
+        -nameText : TextMeshProUGUI
+        -activeColor : Color
+        -inactiveColor : Color
+        -OnEnable() : void
+        -OnDisable() : void
+        -WaitForInventorySystem() : IEnumerator
+        -UpdateSlotVisuals() : void
+        -GetComponent~T~() : T
+        -StartCoroutine(routine : IEnumerator) : void
+        -StopCoroutine(routine : IEnumerator) : void
+    }
+
+    %% Overerving
+    MonoBehaviour <|-- UISlot
+    MonoBehaviour <|-- InventorySystem
+
+    %% Associaties (Velden en Gebruik)
+    UISlot --> Vector3 : hoveredScale
+    UISlot --> Image : backgroundVisual
+    UISlot --> TextMeshProUGUI : nameText
+    UISlot --> Color : activeColor
+    UISlot --> Color : inactiveColor
+    UISlot --> InventorySystem : Gebruikt via Instance
+
+    %% Interacties (binnen methoden)
+    UISlot ..> GameObject : Verkrijgt item data
+    UISlot ..> IEnumerator : Start/Stopt Coroutine
+    UISlot ..> UIAnimations : Roept ScaleElement aan
+    UISlot ..> RectTransform : Verkrijgt via GetComponent
 
 ```
